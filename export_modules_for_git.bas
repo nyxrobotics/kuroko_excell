@@ -1,50 +1,96 @@
 Attribute VB_Name = "export_modules_for_git"
 Sub ExportAll()
-    Dim module                  As VBComponent      '// ƒ‚ƒWƒ…[ƒ‹
-    Dim moduleList              As VBComponents     '// VBAƒvƒƒWƒFƒNƒg‚Ì‘Sƒ‚ƒWƒ…[ƒ‹
-    Dim extension                                   '// ƒ‚ƒWƒ…[ƒ‹‚ÌŠg’£q
-    Dim sPath                                       '// ˆ—‘ÎÛƒuƒbƒN‚ÌƒpƒX
-    Dim sFilePath                                   '// ƒGƒNƒXƒ|[ƒgƒtƒ@ƒCƒ‹ƒpƒX
-    Dim TargetBook                                  '// ˆ—‘ÎÛƒuƒbƒNƒIƒuƒWƒFƒNƒg
+    Dim module                  As VBComponent      '// ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
+    Dim moduleList              As VBComponents     '// VBAãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®å…¨ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
+    Dim extension                                   '// ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ‹¡å¼µå­
+    Dim sPath                                       '// å‡¦ç†å¯¾è±¡ãƒ–ãƒƒã‚¯ã®ãƒ‘ã‚¹
+    Dim sFilePath                                   '// ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹
+    Dim TargetBook                                  '// å‡¦ç†å¯¾è±¡ãƒ–ãƒƒã‚¯ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     
-    '// ƒuƒbƒN‚ªŠJ‚©‚ê‚Ä‚¢‚È‚¢ê‡‚ÍŒÂl—pƒ}ƒNƒƒuƒbƒNipersonal.xlsbj‚ğ‘ÎÛ‚Æ‚·‚é
+    '// ãƒ–ãƒƒã‚¯ãŒé–‹ã‹ã‚Œã¦ã„ãªã„å ´åˆã¯å€‹äººç”¨ãƒã‚¯ãƒ­ãƒ–ãƒƒã‚¯ï¼ˆpersonal.xlsbï¼‰ã‚’å¯¾è±¡ã¨ã™ã‚‹
     If (Workbooks.count = 1) Then
         Set TargetBook = ThisWorkbook
-    '// ƒuƒbƒN‚ªŠJ‚©‚ê‚Ä‚¢‚éê‡‚Í•\¦‚µ‚Ä‚¢‚éƒuƒbƒN‚ğ‘ÎÛ‚Æ‚·‚é
+    '// ãƒ–ãƒƒã‚¯ãŒé–‹ã‹ã‚Œã¦ã„ã‚‹å ´åˆã¯è¡¨ç¤ºã—ã¦ã„ã‚‹ãƒ–ãƒƒã‚¯ã‚’å¯¾è±¡ã¨ã™ã‚‹
     Else
         Set TargetBook = ActiveWorkbook
     End If
     
     sPath = TargetBook.Path
     
-    '// ˆ—‘ÎÛƒuƒbƒN‚Ìƒ‚ƒWƒ…[ƒ‹ˆê——‚ğæ“¾
+    '// å‡¦ç†å¯¾è±¡ãƒ–ãƒƒã‚¯ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ä¸€è¦§ã‚’å–å¾—
     Set moduleList = TargetBook.VBProject.VBComponents
     
-    '// VBAƒvƒƒWƒFƒNƒg‚ÉŠÜ‚Ü‚ê‚é‘S‚Ä‚Ìƒ‚ƒWƒ…[ƒ‹‚ğƒ‹[ƒv
+    '// VBAãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«å«ã¾ã‚Œã‚‹å…¨ã¦ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒ«ãƒ¼ãƒ—
     For Each module In moduleList
-        '// ƒNƒ‰ƒX
+        '// ã‚¯ãƒ©ã‚¹
         If (module.Type = vbext_ct_ClassModule) Then
             extension = "cls"
-        '// ƒtƒH[ƒ€
+        '// ãƒ•ã‚©ãƒ¼ãƒ 
         ElseIf (module.Type = vbext_ct_MSForm) Then
-            '// .frx‚àˆê‚ÉƒGƒNƒXƒ|[ƒg‚³‚ê‚é
+            '// .frxã‚‚ä¸€ç·’ã«ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã•ã‚Œã‚‹
             extension = "frm"
-        '// •W€ƒ‚ƒWƒ…[ƒ‹
+        '// æ¨™æº–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
         ElseIf (module.Type = vbext_ct_StdModule) Then
             extension = "bas"
-        '// ‚»‚Ì‘¼
+        '// ãã®ä»–
         Else
-            '// ƒGƒNƒXƒ|[ƒg‘ÎÛŠO‚Ì‚½‚ßŸƒ‹[ƒv‚Ö
+            '// ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆå¯¾è±¡å¤–ã®ãŸã‚æ¬¡ãƒ«ãƒ¼ãƒ—ã¸
             GoTo CONTINUE
         End If
         
-        '// ƒGƒNƒXƒ|[ƒgÀ{
+        '// ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆå®Ÿæ–½
         sFilePath = sPath & "\" & module.Name & "." & extension
         Call module.Export(sFilePath)
+        convertCharCode_SJIS_to_utf8 (sFilePath)
         
-        '// o—ÍæŠm”F—pƒƒOo—Í
+        '// å‡ºåŠ›å…ˆç¢ºèªç”¨ãƒ­ã‚°å‡ºåŠ›
         Debug.Print sFilePath
 CONTINUE:
     Next
 End Sub
 
+' ãƒ•ã‚¡ã‚¤ãƒ«ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’SJISã‹ã‚‰UTF8(BOMç„¡ã—)ã«å¤‰æ›ã™ã‚‹
+Private Sub convertCharCode_SJIS_to_utf8(file As String)
+    Dim destWithBOM As Object: Set destWithBOM = CreateObject("ADODB.Stream")
+    With destWithBOM
+        .Type = 2
+        .Charset = "utf-8"
+        .Open
+        
+        ' ãƒ•ã‚¡ã‚¤ãƒ«ã‚’SJIS ã§é–‹ã„ã¦ã€dest ã¸ å‡ºåŠ›
+        With CreateObject("ADODB.Stream")
+            .Type = 2
+            .Charset = "shift-jis"
+            .Open
+            .LoadFromFile file
+            .Position = 0
+            .copyTo destWithBOM
+            .Close
+        End With
+        
+        ' BOMæ¶ˆå»
+        ' 3ãƒã‚¤ãƒˆç„¡è¦–ã—ã¦ã‹ã‚‰ãƒã‚¤ãƒŠãƒªã¨ã—ã¦å‡ºåŠ›
+        .Position = 0
+        .Type = 1 ' adTypeBinary
+        .Position = 3
+        
+        Dim dest: Set dest = CreateObject("ADODB.Stream")
+        With dest
+            .Type = 1 ' adTypeBinary
+            .Open
+            destWithBOM.copyTo dest
+            .savetofile file, 2
+            .Close
+        End With
+        
+        .Close
+    End With
+End Sub
+
+Public Property Get isExportSelf() As Boolean
+    isExportSelf = exportSelf
+End Property
+
+Public Property Let isExportSelf(ByVal vNewValue As Boolean)
+    exportSelf = vNewValue
+End Property

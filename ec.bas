@@ -3,69 +3,69 @@ Option Explicit
 '   EasyComm
 '   Module ec.bas
 
-'||||||EasyComm —˜—p‹K’è||||||
-'   ‰º‹LğŒ‚É“¯ˆÓ‚³‚ê‚½•û‚Ì‚İ‚²—˜—p‚­‚¾‚³‚¢D
-'   i‚d‚‚“‚™‚b‚‚‚‚ğ‚…‚ƒ‚Æ—ª‹L‚µ‚Ü‚·j
+'ï¼ï¼ï¼ï¼ï¼ï¼EasyComm åˆ©ç”¨è¦å®šï¼ï¼ï¼ï¼ï¼ï¼
+'   ä¸‹è¨˜æ¡ä»¶ã«åŒæ„ã•ã‚ŒãŸæ–¹ã®ã¿ã”åˆ©ç”¨ãã ã•ã„ï¼
+'   ï¼ˆï¼¥ï½ï½“ï½™ï¼£ï½ï½ï½ã‚’ï½…ï½ƒã¨ç•¥è¨˜ã—ã¾ã™ï¼‰
 '
-'i‚Pj‚…‚ƒ‚ğ’P‘Ì‚Å”Ì”„‚·‚é‚±‚Æ‚Ío—ˆ‚Ü‚¹‚ñD
-'i‚Qj‚…‚ƒ‚ğ“®ì‚³‚¹‚½Œ‹‰ÊC‚¢‚©‚È‚é‘¹ŠQ‚ª”­¶‚µ‚Ä‚àC–Ø‰º—²‚ÍˆêØÓ”C‚ğ•‰‚¢‚Ü‚¹‚ñD
-'i‚Rj‚…‚ƒ‚ÍŒÂlC‰ïĞ‚ğ–â‚í‚¸C–Ø‰º—²‚Ì‹–‰Â–³‚­©—R‚É”z•z‚µCƒ_ƒEƒ“ƒ[ƒh‚Å‚«‚Ü‚·D
-'i‚Sj‚…‚ƒ‚ğ“Æ©‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚É‘g‚İ‚ñ‚¾ê‡C–Ø‰º—²‚Ì‹–‰Â–³‚­©—R‚É”z•zC”Ì”„
-'       ‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·D
-'i‚Tj‚…‚ƒ‚ÍCƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ìˆê•”‚Æ‚µ‚Ä—˜—p‚·‚éê‡‚ÉŒÀ‚Á‚ÄC–Ø‰º—²‚Ì‹–‰Â–³‚­©—R
-'       ‚É‰ü‘¢‚µC‚Ü‚½‚Íˆê•”‚ğˆø—p‚µ‚Ä—˜—pC”z•zC”Ì”„‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·D
+'ï¼ˆï¼‘ï¼‰ï½…ï½ƒã‚’å˜ä½“ã§è²©å£²ã™ã‚‹ã“ã¨ã¯å‡ºæ¥ã¾ã›ã‚“ï¼
+'ï¼ˆï¼’ï¼‰ï½…ï½ƒã‚’å‹•ä½œã•ã›ãŸçµæœï¼Œã„ã‹ãªã‚‹æå®³ãŒç™ºç”Ÿã—ã¦ã‚‚ï¼Œæœ¨ä¸‹éš†ã¯ä¸€åˆ‡è²¬ä»»ã‚’è² ã„ã¾ã›ã‚“ï¼
+'ï¼ˆï¼“ï¼‰ï½…ï½ƒã¯å€‹äººï¼Œä¼šç¤¾ã‚’å•ã‚ãšï¼Œæœ¨ä¸‹éš†ã®è¨±å¯ç„¡ãè‡ªç”±ã«é…å¸ƒã—ï¼Œãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã§ãã¾ã™ï¼
+'ï¼ˆï¼”ï¼‰ï½…ï½ƒã‚’ç‹¬è‡ªã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã«çµ„ã¿è¾¼ã‚“ã å ´åˆï¼Œæœ¨ä¸‹éš†ã®è¨±å¯ç„¡ãè‡ªç”±ã«é…å¸ƒï¼Œè²©å£²
+'       ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ï¼
+'ï¼ˆï¼•ï¼‰ï½…ï½ƒã¯ï¼Œã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ä¸€éƒ¨ã¨ã—ã¦åˆ©ç”¨ã™ã‚‹å ´åˆã«é™ã£ã¦ï¼Œæœ¨ä¸‹éš†ã®è¨±å¯ç„¡ãè‡ªç”±
+'       ã«æ”¹é€ ã—ï¼Œã¾ãŸã¯ä¸€éƒ¨ã‚’å¼•ç”¨ã—ã¦åˆ©ç”¨ï¼Œé…å¸ƒï¼Œè²©å£²ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ï¼
 '
 '   Version 1.00    Aug 25,2000  Created by T.Kinoshita
 '   Version 1.10    Nov 21,2000
 '   Version 1.20    Jan 14,2001
-'       DCD,RI,BreakƒvƒƒpƒeƒB’Ç‰Á
+'       DCD,RI,Breakãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¿½åŠ 
 '   Version 1.30    Mar 31,2001
-'       ‘—Mƒoƒbƒtƒ@‚Ì‰Šúİ’è’l‚ğ•ÏX
-'       ƒfƒtƒHƒ‹ƒg‚Ì‘—óMƒoƒbƒtƒ@‚Ìİ’è•û–@‚ğ•ÏX
-'       Xerror=1‚ÅCSTOP‚ÌŒã‚É‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚é‚æ‚¤‚ÉƒR[ƒh‚ğ’Ç‰Á
+'       é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã®åˆæœŸè¨­å®šå€¤ã‚’å¤‰æ›´
+'       ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®é€å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®è¨­å®šæ–¹æ³•ã‚’å¤‰æ›´
+'       Xerror=1ã§ï¼ŒSTOPã®å¾Œã«ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã‚‹ã‚ˆã†ã«ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ 
 '   Version 1.31    May 17,2001
-'       WAITmS‚ÌƒoƒOC³i’¬“c—l‚Ì‚²w“E‚É‚æ‚éj
+'       WAITmSã®ãƒã‚°ä¿®æ­£ï¼ˆç”ºç”°æ§˜ã®ã”æŒ‡æ‘˜ã«ã‚ˆã‚‹ï¼‰
 '   Version 1.40    Jul 25,2001
-'       BinaryƒvƒƒpƒeƒB‚Ì‘‚«‚İ‚¶‚Ìƒf[ƒ^Œ^‘Î‰‚ğŠg’£
-'       ƒ‚[ƒhƒ[ƒ‚ÌƒGƒ‰[”­¶‚ÍC‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚é‚æ‚¤‚Éd—l•ÏX
-'       ‰B‚µƒƒ\ƒbƒh‚ÌCLoseAll‚ğCloseAll‚É•ÏX
-'       ƒƒOƒtƒ@ƒCƒ‹‚Ì”p~
-'       ƒfƒtƒHƒ‹ƒg‚Ìƒnƒ“ƒhƒVƒF[ƒLƒ“ƒO‚ğ"N"‚É•ÏX
-'       ƒfƒŠƒ~ƒ^w’è—p•¶š—ñ‚ğæ“¾‚·‚é‚½‚ß‚Ì“Ç‚İæ‚èê—pƒvƒƒpƒeƒBDELIMS‚ğ’Ç‰Á
-'       ƒnƒ“ƒhƒVƒF[ƒLƒ“ƒOw’è—p•¶š—ñ‚ğæ“¾‚·‚é‚½‚ß‚Ì“Ç‚İæ‚èê—pƒvƒƒpƒeƒBHANDSHAKEs‚ğ’Ç‰Á
-'       ƒfƒtƒHƒ‹ƒg‚Ìİ’è‚ğ•ÏX
+'       Binaryãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ›¸ãè¾¼ã¿ã˜ã®ãƒ‡ãƒ¼ã‚¿å‹å¯¾å¿œã‚’æ‹¡å¼µ
+'       ãƒ¢ãƒ¼ãƒ‰ã‚¼ãƒ­ã®ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã¯ï¼Œã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã‚‹ã‚ˆã†ã«ä»•æ§˜å¤‰æ›´
+'       éš ã—ãƒ¡ã‚½ãƒƒãƒ‰ã®CLoseAllã‚’CloseAllã«å¤‰æ›´
+'       ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®å»ƒæ­¢
+'       ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚­ãƒ³ã‚°ã‚’"N"ã«å¤‰æ›´
+'       ãƒ‡ãƒªãƒŸã‚¿æŒ‡å®šç”¨æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®èª­ã¿å–ã‚Šå°‚ç”¨ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£DELIMSã‚’è¿½åŠ 
+'       ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚­ãƒ³ã‚°æŒ‡å®šç”¨æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®èª­ã¿å–ã‚Šå°‚ç”¨ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£HANDSHAKEsã‚’è¿½åŠ 
+'       ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è¨­å®šã‚’å¤‰æ›´
 '
 '   Version 1.50    Oct 23,2001
-'       Windows2000‚É‘Î‰iReadFile,WriteFile‚Ì’è‹`•”C³
+'       Windows2000ã«å¯¾å¿œï¼ˆReadFile,WriteFileã®å®šç¾©éƒ¨ä¿®æ­£
 '
 '   Version 1.51    Jan 17,2002
-'       tomot‚³‚ñ‚Ì‚²ˆÓŒ©‚ğQl‚ÉCAsciiLine‚Ì“Ç‚İo‚µƒ^ƒCƒ€ƒAƒEƒg‚ğ’Ç‰Á‚µ‚Ü‚µ‚½D
+'       tomotã•ã‚“ã®ã”æ„è¦‹ã‚’å‚è€ƒã«ï¼ŒAsciiLineã®èª­ã¿å‡ºã—ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’è¿½åŠ ã—ã¾ã—ãŸï¼
 '   Version 1.51a   Jan 17,2002
-'       COMnƒvƒƒpƒeƒB‚Éƒ[ƒˆÈ‰º‚Ì’l‚ğ‘ã“ü‚µ‚½‚Æ‚«Cƒ|[ƒgƒZƒbƒeƒBƒ“ƒO•Ï”‚ğƒŠƒZƒbƒg‚·‚é‚æ‚¤‚É•ÏX
-'       COMnCloseƒvƒƒpƒeƒB‚Å•Â‚¶‚½ƒ|[ƒg‚É‘Î‚µ‚Ä‚àCƒ|[ƒgƒZƒbƒeƒBƒ“ƒO•Ï”‚ğƒŠƒZƒbƒg‚·‚é—p‚É•ÏX
+'       COMnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¼ãƒ­ä»¥ä¸‹ã®å€¤ã‚’ä»£å…¥ã—ãŸã¨ãï¼Œãƒãƒ¼ãƒˆã‚»ãƒƒãƒ†ã‚£ãƒ³ã‚°å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã‚ˆã†ã«å¤‰æ›´
+'       COMnCloseãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§é–‰ã˜ãŸãƒãƒ¼ãƒˆã«å¯¾ã—ã¦ã‚‚ï¼Œãƒãƒ¼ãƒˆã‚»ãƒƒãƒ†ã‚£ãƒ³ã‚°å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ç”¨ã«å¤‰æ›´
 '   Version 1.60    Jul 9,2002
-'       VersionƒvƒƒpƒeƒB’Ç‰Á(Private‚ğPublic‚É•ÏX)
-'       DoseSecondsƒvƒƒpƒeƒB‚Ì’Ç‰Á
-'       Å‘å“¯ƒI[ƒvƒ“ƒ|[ƒg”‚ğ20‚©‚ç50‚ÉŠg‘å
-'       ƒtƒ@ƒCƒ‹ƒnƒ“ƒhƒ‹‚ğ‹L‰¯‚·‚éƒeƒ“ƒ|ƒ‰ƒŠƒtƒ@ƒCƒ‹ecPort.tmp‚Ìg—p
-'       AsciiLineƒvƒƒpƒeƒB‚ÌóM‚ÅCİ’è‚É‚æ‚Á‚Ä‚Í•¶š—ñ‚Ì––”ö‚Échr(0)‚ª“ü‚éƒoƒO‚ğC³
+'       Versionãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¿½åŠ (Privateã‚’Publicã«å¤‰æ›´)
+'       DoseSecondsãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¿½åŠ 
+'       æœ€å¤§åŒæ™‚ã‚ªãƒ¼ãƒ—ãƒ³ãƒãƒ¼ãƒˆæ•°ã‚’20ã‹ã‚‰50ã«æ‹¡å¤§
+'       ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ³ãƒ‰ãƒ«ã‚’è¨˜æ†¶ã™ã‚‹ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ•ã‚¡ã‚¤ãƒ«ecPort.tmpã®ä½¿ç”¨
+'       AsciiLineãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å—ä¿¡ã§ï¼Œè¨­å®šã«ã‚ˆã£ã¦ã¯æ–‡å­—åˆ—ã®æœ«å°¾ã«chr(0)ãŒå…¥ã‚‹ãƒã‚°ã‚’ä¿®æ­£
 '   Version 1.61    Jul 23,2002
-'       shin‚³‚ñ‚Ì‚²w“E‚É‚æ‚èCƒeƒ“ƒ|ƒ‰ƒŠƒtƒ@ƒCƒ‹‚ÌƒtƒHƒ‹ƒ_‚ğThisWorkbook.Path‚É‚µ‚Ä‚¢‚½‚½‚ßC
-'       ExcelˆÈŠO‚ÌƒAƒvƒŠ‚Åg—p•s”\‚É‚È‚Á‚Ä‚¢‚½ƒoƒO‚ğC³D
-'       Windows‚Ìƒeƒ“ƒ|ƒ‰ƒŠƒtƒ@ƒCƒ‹‚Éì¬‚·‚é‚æ‚¤‚É‚µ‚½D
+'       shinã•ã‚“ã®ã”æŒ‡æ‘˜ã«ã‚ˆã‚Šï¼Œãƒ†ãƒ³ãƒãƒ©ãƒªãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’ThisWorkbook.Pathã«ã—ã¦ã„ãŸãŸã‚ï¼Œ
+'       Excelä»¥å¤–ã®ã‚¢ãƒ—ãƒªã§ä½¿ç”¨ä¸èƒ½ã«ãªã£ã¦ã„ãŸãƒã‚°ã‚’ä¿®æ­£ï¼
+'       Windowsã®ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ•ã‚¡ã‚¤ãƒ«ã«ä½œæˆã™ã‚‹ã‚ˆã†ã«ã—ãŸï¼
 '   Version 1.62    Jul 31,2002
-'       ‚­‚è‚³‚ñ‚Ì‚²w“E‚É‚æ‚èExcel97‚Å‚Ì•s‹ï‡‚ğC³
+'       ãã‚Šã•ã‚“ã®ã”æŒ‡æ‘˜ã«ã‚ˆã‚ŠExcel97ã§ã®ä¸å…·åˆã‚’ä¿®æ­£
 '   Version 1.62a   Aug 10,2002
-'       —˜—p‹K’è‚ğ•ÏX
+'       åˆ©ç”¨è¦å®šã‚’å¤‰æ›´
 '   Version 1.70    Mar 6,2003
-'       BinaryƒvƒƒpƒeƒB“Ç‚İo‚µ‚ÌƒoƒCƒg”‚ğw’è‚·‚éBinaryBytesƒvƒƒpƒeƒB‚ğ’Ç‰ÁD
-'       AsciiƒvƒƒpƒeƒB“Ç‚İo‚µ‚ÌƒoƒCƒg”‚ğw’è‚·‚éAsciiBytesƒvƒƒpƒeƒB‚ğ’Ç‰ÁD
-'       ‚¢‚¸‚ê‚àƒfƒtƒHƒ‹ƒg‚Åƒ[ƒ(‹Œƒo[ƒWƒ‡ƒ“ŒİŠ·)
-'       InBufferClearƒƒ\ƒbƒh‚ğ’Ç‰Á(ƒƒ\ƒbƒh‚Í‰‚ß‚Ä)
+'       Binaryãƒ—ãƒ­ãƒ‘ãƒ†ã‚£èª­ã¿å‡ºã—æ™‚ã®ãƒã‚¤ãƒˆæ•°ã‚’æŒ‡å®šã™ã‚‹BinaryBytesãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¿½åŠ ï¼
+'       Asciiãƒ—ãƒ­ãƒ‘ãƒ†ã‚£èª­ã¿å‡ºã—æ™‚ã®ãƒã‚¤ãƒˆæ•°ã‚’æŒ‡å®šã™ã‚‹AsciiBytesãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¿½åŠ ï¼
+'       ã„ãšã‚Œã‚‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã‚¼ãƒ­(æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³äº’æ›)
+'       InBufferClearãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ (ãƒ¡ã‚½ãƒƒãƒ‰ã¯åˆã‚ã¦)
 '   Version 1.71    Mar 7,2003
-'       ‚²–À˜f’ÂÓƒo[ƒWƒ‡ƒ“
-'       BinaryBytes,AsciiBytesƒvƒƒpƒeƒB‚ÌƒoƒOC³
-'       w’èƒoƒCƒg”‚Ìƒf[ƒ^‚ªƒoƒbƒtƒ@‚É–³‚¢‚ÍCóM‚³‚ê‚é‚Ü‚Å’â~ó‘Ô‚É‚È‚éƒoƒO‚ÌC³
+'       ã”è¿·æƒ‘é™³è¬ãƒãƒ¼ã‚¸ãƒ§ãƒ³
+'       BinaryBytes,AsciiBytesãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ãƒã‚°ä¿®æ­£
+'       æŒ‡å®šãƒã‚¤ãƒˆæ•°ã®ãƒ‡ãƒ¼ã‚¿ãŒãƒãƒƒãƒ•ã‚¡ã«ç„¡ã„æ™‚ã¯ï¼Œå—ä¿¡ã•ã‚Œã‚‹ã¾ã§åœæ­¢çŠ¶æ…‹ã«ãªã‚‹ãƒã‚°ã®ä¿®æ­£
 '
 Public Const Version As String = "1.71"
 '
@@ -76,37 +76,37 @@ Public Const Version As String = "1.71"
 
 
 '===================================
-' •Ï”‚Ì’è‹`
+' å¤‰æ•°ã®å®šç¾©
 '===================================
 
 '-----------------------------------
-'   AsciiBytesƒvƒƒpƒeƒB(Version1.70‚©‚ç’Ç‰Á)
+'   AsciiBytesãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(Version1.70ã‹ã‚‰è¿½åŠ )
 '-----------------------------------
-'AsciiƒvƒƒpƒeƒB“Ç‚İo‚µ‚ÉóMƒoƒbƒtƒ@‚©‚çæ‚èo‚·ƒoƒCƒg”‚ğw’è‚µ‚Ü‚·
-'ƒfƒtƒHƒ‹ƒg‚Íƒ[ƒ‚ÅCƒ[ƒˆÈ‰º‚Ì‚ÍóMƒoƒbƒtƒ@‚Ìƒf[ƒ^‚ğ‚·‚×‚Äæ“¾‚µ‚Ü‚·D
+'Asciiãƒ—ãƒ­ãƒ‘ãƒ†ã‚£èª­ã¿å‡ºã—æ™‚ã«å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰å–ã‚Šå‡ºã™ãƒã‚¤ãƒˆæ•°ã‚’æŒ‡å®šã—ã¾ã™
+'ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã‚¼ãƒ­ã§ï¼Œã‚¼ãƒ­ä»¥ä¸‹ã®æ™‚ã¯å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ãƒ‡ãƒ¼ã‚¿ã‚’ã™ã¹ã¦å–å¾—ã—ã¾ã™ï¼
 Public AsciiBytes As Long
 
 '-----------------------------------
-'   BinaryBytesƒvƒƒpƒeƒB(Version1.70‚©‚ç’Ç‰Á)
+'   BinaryBytesãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(Version1.70ã‹ã‚‰è¿½åŠ )
 '-----------------------------------
-'AsciiƒvƒƒpƒeƒB“Ç‚İo‚µ‚ÉóMƒoƒbƒtƒ@‚©‚çæ‚èo‚·ƒoƒCƒg”‚ğw’è‚µ‚Ü‚·
-'ƒfƒtƒHƒ‹ƒg‚Íƒ[ƒ‚ÅCƒ[ƒˆÈ‰º‚Ì‚ÍóMƒoƒbƒtƒ@‚Ìƒf[ƒ^‚ğ‚·‚×‚Äæ“¾‚µ‚Ü‚·D
+'Asciiãƒ—ãƒ­ãƒ‘ãƒ†ã‚£èª­ã¿å‡ºã—æ™‚ã«å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰å–ã‚Šå‡ºã™ãƒã‚¤ãƒˆæ•°ã‚’æŒ‡å®šã—ã¾ã™
+'ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã‚¼ãƒ­ã§ï¼Œã‚¼ãƒ­ä»¥ä¸‹ã®æ™‚ã¯å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ãƒ‡ãƒ¼ã‚¿ã‚’ã™ã¹ã¦å–å¾—ã—ã¾ã™ï¼
 Public BinaryBytes As Long
 
 '-----------------------------------
-'   XerrorƒvƒƒpƒeƒB
+'   Xerrorãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'ƒGƒ‰[ƒ‚[ƒh‚ğw’è‚·‚éƒvƒƒpƒeƒB
-'ƒ[ƒ(‹K’èj‚Ì‚ÍEasyComm•W€‚ÌƒGƒ‰[ƒ‚[ƒh‚ÅCƒGƒ‰[‚ª”­¶‚·‚é‚Æ’â~‚µ‚Ü‚·D
-'Version1.4‚©‚ç‚ÍC‚±‚Ìƒ‚[ƒh‚ÅƒGƒ‰[‚ª”­¶‚·‚é‚Æ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚é‚æ‚¤‚Éd—l•ÏXD
-'‚P‚Ì‚Íƒgƒ‰ƒbƒv‰Â”\‚ÈƒGƒ‰[‚ğ”­¶D
-'‚½‚¾‚µC‚P‚Éİ’è‚µ‚ÄƒGƒ‰[‚ª”­¶‚µ‚½‚Æ‚«Cƒgƒ‰ƒbƒvƒ‹[ƒeƒBƒ“‚ª‚È‚¢‚ÆƒvƒƒOƒ‰ƒ€‚ğI‚µC‚Ä•Ï”‚ğ
-'ƒŠƒZƒbƒg‚·‚é‚Ì‚ÅC‚·‚Å‚ÉŠJ‚©‚ê‚½ƒ|[ƒg‚ğ•Â‚¶‚é‚±‚Æ‚ª‚Å‚«‚È‚­‚È‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·D
-'‚Q‚Ì‚ÍCƒGƒ‰[‚ğ–³‹‚µ‚Ü‚·D
-'PublicéŒ¾‚·‚é‚±‚Æ‚É‚æ‚Á‚ÄC“Ç‚İ‘‚«‰Â”\‚ÈƒvƒƒpƒeƒB‚É‚µ‚Ä‚¢‚Ü‚·D
+'ã‚¨ãƒ©ãƒ¼ãƒ¢ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
+'ã‚¼ãƒ­(è¦å®šï¼‰ã®æ™‚ã¯EasyCommæ¨™æº–ã®ã‚¨ãƒ©ãƒ¼ãƒ¢ãƒ¼ãƒ‰ã§ï¼Œã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã™ã‚‹ã¨åœæ­¢ã—ã¾ã™ï¼
+'Version1.4ã‹ã‚‰ã¯ï¼Œã“ã®ãƒ¢ãƒ¼ãƒ‰ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã™ã‚‹ã¨ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã‚‹ã‚ˆã†ã«ä»•æ§˜å¤‰æ›´ï¼
+'ï¼‘ã®æ™‚ã¯ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ãªã‚¨ãƒ©ãƒ¼ã‚’ç™ºç”Ÿï¼
+'ãŸã ã—ï¼Œï¼‘ã«è¨­å®šã—ã¦ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã¨ãï¼Œãƒˆãƒ©ãƒƒãƒ—ãƒ«ãƒ¼ãƒ†ã‚£ãƒ³ãŒãªã„ã¨ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚ã—ï¼Œã¦å¤‰æ•°ã‚’
+'ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã®ã§ï¼Œã™ã§ã«é–‹ã‹ã‚ŒãŸãƒãƒ¼ãƒˆã‚’é–‰ã˜ã‚‹ã“ã¨ãŒã§ããªããªã‚‹ã“ã¨ãŒã‚ã‚Šã¾ã™ï¼
+'ï¼’ã®æ™‚ã¯ï¼Œã‚¨ãƒ©ãƒ¼ã‚’ç„¡è¦–ã—ã¾ã™ï¼
+'Publicå®£è¨€ã™ã‚‹ã“ã¨ã«ã‚ˆã£ã¦ï¼Œèª­ã¿æ›¸ãå¯èƒ½ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã—ã¦ã„ã¾ã™ï¼
 Public Xerror As Long
 
-'ƒfƒŠƒ~ƒ^w’è•¶š—ñ
+'ãƒ‡ãƒªãƒŸã‚¿æŒ‡å®šæ–‡å­—åˆ—
 Type DelimType
     Cr      As String   ' CR
     Lf      As String   ' LF
@@ -114,52 +114,52 @@ Type DelimType
     LfCr    As String   ' LF + CR
 End Type
 
-'ƒnƒ“ƒhƒVƒF[ƒLƒ“ƒOw’è•¶š—ñ
+'ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚­ãƒ³ã‚°æŒ‡å®šæ–‡å­—åˆ—
 Type HandShakingType
-    No      As String   ' ‚È‚µ
+    No      As String   ' ãªã—
     XonXoff As String   ' Xon/Off
     RTSCTS  As String   ' RTS/CTS
     DTRDSR  As String   ' DTR/DSR
 End Type
 
 '===================================
-'   ƒvƒƒpƒeƒBCƒƒ\ƒbƒh‚Ì’è‹`
+'   ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼Œãƒ¡ã‚½ãƒƒãƒ‰ã®å®šç¾©
 '===================================
 
 '-----------------------------------
-'   InBufferClearƒƒ\ƒbƒh
+'   InBufferClearãƒ¡ã‚½ãƒƒãƒ‰
 '-----------------------------------
-'COMnƒvƒƒpƒeƒB‚Åw’è‚³‚ê‚Ä‚¢‚éƒ|[ƒg‚ÌóMƒoƒbƒtƒ@‚Ìƒf[ƒ^‚ğƒNƒŠƒA‚µ‚Ü‚·.
-'AsciiƒvƒƒpƒeƒB‚Ì“Ç‚İo‚µ‚Å‘ã—p‚µ‚Ä‚¢‚Ü‚µ‚½‚ªCAsciiBytesƒvƒƒpƒeƒB‚Ì’Ç‰Á‚É”º‚¢CInBufferClearƒƒ\ƒbƒh‚ğ’Ç‰Á‚µ‚Ü‚µ‚½D
+'COMnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãƒãƒ¼ãƒˆã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ãƒ‡ãƒ¼ã‚¿ã‚’ã‚¯ãƒªã‚¢ã—ã¾ã™.
+'Asciiãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®èª­ã¿å‡ºã—ã§ä»£ç”¨ã—ã¦ã„ã¾ã—ãŸãŒï¼ŒAsciiBytesãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¿½åŠ ã«ä¼´ã„ï¼ŒInBufferClearãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ ã—ã¾ã—ãŸï¼
 Public Sub InBufferClear()
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10280, _
-                    Description:="InBufferClear " & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="InBufferClear " & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Sub
         End Select
     End If
     If ecDef.PurgeComm(ecH(Cn).Handle, ecDef.PURGE_RXCLEAR) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' óMƒoƒbƒtƒ@‚ÌƒNƒŠƒA‚É¸”s‚µ‚Ü‚µ‚½D
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ã‚¯ãƒªã‚¢ã«å¤±æ•—ã—ã¾ã—ãŸï¼
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10281, _
-                    Description:="InBufferClear " & Chr$(&HA) & "óMƒoƒbƒtƒ@‚ÌƒNƒŠƒA‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="InBufferClear " & Chr$(&HA) & "å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ã‚¯ãƒªã‚¢ã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Sub
         End Select
     End If
@@ -167,63 +167,63 @@ Public Sub InBufferClear()
 End Sub
 
 '-----------------------------------
-'   COMnƒvƒƒpƒeƒB(“Ç‚İo‚µC‘‚«‚İ)
+'   COMnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(èª­ã¿å‡ºã—ï¼Œæ›¸ãè¾¼ã¿)
 '-----------------------------------
-'‘€ì‚Ì‘ÎÛ‚Æ‚È‚¤ƒ|[ƒg”Ô†‚ğw’èC‚Ü‚½‚Íæ“¾‚µ‚Ü‚·D
-'COMnƒvƒƒpƒeƒB‚Éƒ[ƒˆÈ‰º‚Ì®”‚ğ‘ã“ü‚·‚é‚ÆC‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-'ec.COMn = 0 ‚Æ ec.COMnClose = 0 ‚ÍC“¯‚¶“®ì‚ğ‚µ‚Ü‚·D
-'ƒvƒƒOƒ‰ƒ€‚ÌI—¹‚ÉC‚¢‚¸‚ê‚©‚ÌƒR[ƒh‚Å‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ä‚­‚¾‚³‚¢D
+'æ“ä½œã®å¯¾è±¡ã¨ãªã†ãƒãƒ¼ãƒˆç•ªå·ã‚’æŒ‡å®šï¼Œã¾ãŸã¯å–å¾—ã—ã¾ã™ï¼
+'COMnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¼ãƒ­ä»¥ä¸‹ã®æ•´æ•°ã‚’ä»£å…¥ã™ã‚‹ã¨ï¼Œã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+'ec.COMn = 0 ã¨ ec.COMnClose = 0 ã¯ï¼ŒåŒã˜å‹•ä½œã‚’ã—ã¾ã™ï¼
+'ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®çµ‚äº†æ™‚ã«ï¼Œã„ãšã‚Œã‹ã®ã‚³ãƒ¼ãƒ‰ã§ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¦ãã ã•ã„ï¼
 
-'“Ç‚İo‚µƒvƒƒV[ƒWƒƒ
+'èª­ã¿å‡ºã—ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
 Public Property Get COMn() As Long
     COMn = Cn
 End Property
 
-'‘‚«‚İƒvƒƒV[ƒWƒƒ
+'æ›¸ãè¾¼ã¿ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
 Public Property Let COMn(PortNumber As Long)
     Dim rv As Long
     Dim PortName As String
-    Dim SettingFlag As Boolean          ' •W€İ’è—pƒtƒ‰ƒO
+    Dim SettingFlag As Boolean          ' æ¨™æº–è¨­å®šç”¨ãƒ•ãƒ©ã‚°
     Dim i As Integer
-    Dim Fnumb As Integer                ' ‹L˜^ƒtƒ@ƒCƒ‹‚Ìƒtƒ@ƒCƒ‹”Ô†
-    Dim RxBuffer As Long                ' óMƒoƒbƒtƒ@ƒTƒCƒY‚Ìİ’è—p•Ï”
-    Dim TxBuffer As Long                ' ‘—Mƒoƒbƒtƒ@ƒTƒCƒY‚Ìİ’è—p•Ï”
-    Dim FileNumber As Integer           ' ƒI[ƒvƒ“‰Â”\‚Èƒtƒ@ƒCƒ‹”Ô†
+    Dim Fnumb As Integer                ' è¨˜éŒ²ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ã‚¡ã‚¤ãƒ«ç•ªå·
+    Dim RxBuffer As Long                ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®è¨­å®šç”¨å¤‰æ•°
+    Dim TxBuffer As Long                ' é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®è¨­å®šç”¨å¤‰æ•°
+    Dim FileNumber As Integer           ' ã‚ªãƒ¼ãƒ—ãƒ³å¯èƒ½ãªãƒ•ã‚¡ã‚¤ãƒ«ç•ªå·
     Dim Handle As Long
     Dim Fpath As String * 260
     FileNumber = FreeFile()
 
     If PortNumber <= 0 Then
-        '‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·
+        'ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™
         ec.CloseAll
 
       ElseIf PortNumber > ecMaxPort Then
 
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' w’è‚³‚ê‚½ƒ|[ƒg”Ô†‚Í‹–—e”ÍˆÍ‚É‚ ‚è‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒˆç•ªå·ã¯è¨±å®¹ç¯„å›²ã«ã‚ã‚Šã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10010, _
-                    Description:="COMn - Write" & Chr$(&HA) & "w’è‚³‚ê‚½ƒ|[ƒg”Ô†(" & PortNumber & ")‚Í‹–—e”ÍˆÍ‚É‚ ‚è‚Ü‚¹‚ñ"
+                    Description:="COMn - Write" & Chr$(&HA) & "æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒˆç•ªå·(" & PortNumber & ")ã¯è¨±å®¹ç¯„å›²ã«ã‚ã‚Šã¾ã›ã‚“"
                 End
 
         End Select
         
       Else
         
-        'Šù‚ÉŠJ‚©‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©ƒ`ƒFƒbƒN
+        'æ—¢ã«é–‹ã‹ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯
         If ecH(PortNumber).Handle > 0 Then
-            'Šù‚ÉŠJ‚©‚ê‚Ä‚¢‚é
-            Cn = PortNumber     'ˆ—‘ÎÛ‚Ìƒ|[ƒg‚ğˆø”‚Éİ’è
-            Exit Property       'Š®—¹
+            'æ—¢ã«é–‹ã‹ã‚Œã¦ã„ã‚‹
+            Cn = PortNumber     'å‡¦ç†å¯¾è±¡ã®ãƒãƒ¼ãƒˆã‚’å¼•æ•°ã«è¨­å®š
+            Exit Property       'å®Œäº†
         End If
 
-        'ƒ|[ƒgƒI[ƒvƒ“ˆ—
+        'ãƒãƒ¼ãƒˆã‚ªãƒ¼ãƒ—ãƒ³å‡¦ç†
         
         PortName = "\\.\COM" & Trim(Str(PortNumber))
         rv = CreateFile(PortName, GENERIC_READ Or GENERIC_WRITE, _
@@ -231,15 +231,15 @@ Public Property Let COMn(PortNumber As Long)
 
         GetTempPath 260, Fpath
         If rv <> INVALID_HANDLE_VALUE Then
-            ' ‹L˜^
+            ' è¨˜éŒ²
             Open Left(Fpath, InStr(Fpath, vbNullChar) - 1) & "ecPort.tmp" For Random Access Read Write As #FileNumber Len = Len(Handle)
             Put #FileNumber, PortNumber, rv
             Close #FileNumber
             
-            ecH(PortNumber).Handle = rv     ' ƒnƒ“ƒhƒ‹ƒŠƒXƒg‚ÌXV
+            ecH(PortNumber).Handle = rv     ' ãƒãƒ³ãƒ‰ãƒ«ãƒªã‚¹ãƒˆã®æ›´æ–°
         End If
-        Cn = PortNumber                     ' ƒAƒNƒeƒBƒuƒ|[ƒg”Ô†‚Ìİ’è
-        ' ¸”s‚µ‚½‚Æ‚«‚Í‹L˜^‚³‚ê‚Ä‚¢‚éƒnƒ“ƒhƒ‹‚ğg‚Á‚Äƒ|[ƒg‚ğ•Â‚¶‚Ä‚©‚çÄ’§í
+        Cn = PortNumber                     ' ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒãƒ¼ãƒˆç•ªå·ã®è¨­å®š
+        ' å¤±æ•—ã—ãŸã¨ãã¯è¨˜éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒ³ãƒ‰ãƒ«ã‚’ä½¿ã£ã¦ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¦ã‹ã‚‰å†æŒ‘æˆ¦
         If rv = INVALID_HANDLE_VALUE Then
             Open Left(Fpath, InStr(Fpath, vbNullChar) - 1) & "ecPort.tmp" For Random Access Read Write As #FileNumber Len = Len(Handle)
             Get #FileNumber, PortNumber, Handle
@@ -248,76 +248,76 @@ Public Property Let COMn(PortNumber As Long)
                 rv = CreateFile(PortName, GENERIC_READ Or GENERIC_WRITE, _
                                 0&, 0&, OPEN_EXISTING, 0&, 0&)
                 If rv <> INVALID_HANDLE_VALUE Then
-                    ' ‹L˜^
+                    ' è¨˜éŒ²
                     Put #FileNumber, PortNumber, rv
-                    ecH(PortNumber).Handle = rv     ' ƒnƒ“ƒhƒ‹ƒŠƒXƒg‚ÌXV
+                    ecH(PortNumber).Handle = rv     ' ãƒãƒ³ãƒ‰ãƒ«ãƒªã‚¹ãƒˆã®æ›´æ–°
                   Else
                     rv = 0&
                     Put #FileNumber, PortNumber, rv
-                    ecH(PortNumber).Handle = 0      ' ƒnƒ“ƒhƒ‹ƒŠƒXƒg‚ÌXV
+                    ecH(PortNumber).Handle = 0      ' ãƒãƒ³ãƒ‰ãƒ«ãƒªã‚¹ãƒˆã®æ›´æ–°
                 End If
             End If
             Close #FileNumber
         End If
 
         If rv = INVALID_HANDLE_VALUE Then
-            'ƒGƒ‰[ˆ—
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' w’è‚³‚ê‚½ƒ|[ƒg”Ô†‚ğŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒˆç•ªå·ã‚’é–‹ã‘ã¾ã›ã‚“ã§ã—ãŸ
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10011, _
-                        Description:="COMn - Write" & Chr$(&HA) & "w’è‚³‚ê‚½ƒ|[ƒg”Ô†(" & PortNumber & ")‚ğŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½"
+                        Description:="COMn - Write" & Chr$(&HA) & "æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒˆç•ªå·(" & PortNumber & ")ã‚’é–‹ã‘ã¾ã›ã‚“ã§ã—ãŸ"
                     End
             
             End Select
         End If
 
         '--------------------------
-        'ŠJ‚¢‚½ƒ|[ƒg‚Ì•W€İ’è
+        'é–‹ã„ãŸãƒãƒ¼ãƒˆã®æ¨™æº–è¨­å®š
         SettingFlag = True
         
-        'ƒ|[ƒg‚Ì‹@”\‚ğæ“¾
+        'ãƒãƒ¼ãƒˆã®æ©Ÿèƒ½ã‚’å–å¾—
         If GetCommProperties(ecH(Cn).Handle, fCOMMPROP) = False Then
-            'ƒGƒ‰[ˆ—
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' ƒ|[ƒg‚Ìî•ñ‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' ãƒãƒ¼ãƒˆã®æƒ…å ±ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸ
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
     
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10013, _
-                        Description:="InCount - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ìî•ñ‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½"
+                        Description:="InCount - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®æƒ…å ±ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸ"
                     Exit Property
             
             End Select
         End If
 
-        ' óMƒoƒbƒtƒ@ƒTƒCƒY‚Ìİ’è
+        ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®è¨­å®š
         RxBuffer = ecDef.fCOMMPROP.dwMaxRxQueue
-        If RxBuffer = 0 Then    ' –³§ŒÀ‚Ì
-            RxBuffer = ecDef.ecInBufferSize     ' ‹K’è‚ÌÅ‘å’l‚É§ŒÀ‚·‚é
+        If RxBuffer = 0 Then    ' ç„¡åˆ¶é™ã®æ™‚
+            RxBuffer = ecDef.ecInBufferSize     ' è¦å®šã®æœ€å¤§å€¤ã«åˆ¶é™ã™ã‚‹
         End If
 
-        ' ‘—Mƒoƒbƒtƒ@ƒTƒCƒY‚Ìİ’è
+        ' é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®è¨­å®š
         TxBuffer = ecDef.fCOMMPROP.dwMaxTxQueue
-        If TxBuffer = 0 Then    ' –³§ŒÀ‚Ì
-            TxBuffer = ecDef.ecOutBufferSize    ' ‹K’è‚ÌÅ‘å’l‚É§ŒÀ‚·‚é
+        If TxBuffer = 0 Then    ' ç„¡åˆ¶é™ã®æ™‚
+            TxBuffer = ecDef.ecOutBufferSize    ' è¦å®šã®æœ€å¤§å€¤ã«åˆ¶é™ã™ã‚‹
         End If
 
-        ' Às
+        ' å®Ÿè¡Œ
         If SetupComm(ecH(PortNumber).Handle, RxBuffer, TxBuffer) = False Then
             SettingFlag = False
         End If
 
-        ' DCB‚ÌƒZƒbƒg
-        ' •W€İ’è’l‚Íˆê”Ê“I‚È‚à‚Ì‚È‚Ì‚ÅCƒTƒ|[ƒg‚Ì—L–³‚ğŠm”F‚µ‚È‚¢D
+        ' DCBã®ã‚»ãƒƒãƒˆ
+        ' æ¨™æº–è¨­å®šå€¤ã¯ä¸€èˆ¬çš„ãªã‚‚ã®ãªã®ã§ï¼Œã‚µãƒãƒ¼ãƒˆã®æœ‰ç„¡ã‚’ç¢ºèªã—ãªã„ï¼
         If GetCommState(ecH(PortNumber).Handle, fDCB) <> False Then
             If BuildCommDCB(ecSetting, fDCB) <> False Then
                 fDCB.fBitFields = &H1011
@@ -333,7 +333,7 @@ Public Property Let COMn(PortNumber As Long)
             SettingFlag = False
         End If
         
-        'ƒoƒbƒtƒ@‚ÌƒNƒŠƒA
+        'ãƒãƒƒãƒ•ã‚¡ã®ã‚¯ãƒªã‚¢
         If PurgeComm(ecH(PortNumber).Handle, PURGE_TXCLEAR) = False Then
             SettingFlag = False
         End If
@@ -341,9 +341,9 @@ Public Property Let COMn(PortNumber As Long)
             SettingFlag = False
         End If
     
-        'ƒ^ƒCƒ€ƒAƒEƒg‚Ìİ’è
+        'ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®è¨­å®š
         If GetCommTimeouts(ecH(PortNumber).Handle, fCOMMTIMEOUTS) <> False Then
-            'ƒ^ƒCƒ€ƒAƒEƒg’l‚Ì•W€İ’è
+            'ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå€¤ã®æ¨™æº–è¨­å®š
             With fCOMMTIMEOUTS
                 .ReadIntervalTimeout = ecReadIntervalTimeout
                 .ReadTotalTimeoutConstant = ecReadTotalTimeoutConstant
@@ -359,17 +359,17 @@ Public Property Let COMn(PortNumber As Long)
         End If
         If SettingFlag = False Then
             
-            'ƒGƒ‰[ˆ—
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' ƒ|[ƒg‚Ì•W€İ’è‚ªo—ˆ‚Ü‚¹‚ñ‚Å‚µ‚½
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' ãƒãƒ¼ãƒˆã®æ¨™æº–è¨­å®šãŒå‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸ
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
                 
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10012, _
-                        Description:="COMn - Write" & Chr$(&HA) & "w’è‚³‚ê‚½ƒ|[ƒg”Ô†(" & PortNumber & ")‚Ì•W€İ’è‚ªo—ˆ‚Ü‚¹‚ñ‚Å‚µ‚½"
+                        Description:="COMn - Write" & Chr$(&HA) & "æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒˆç•ªå·(" & PortNumber & ")ã®æ¨™æº–è¨­å®šãŒå‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸ"
                         Exit Property
             
             End Select
@@ -380,53 +380,53 @@ Public Property Let COMn(PortNumber As Long)
 End Property
 
 '-----------------------------------
-'   COMnCloseƒvƒƒpƒeƒB
+'   COMnCloseãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'w’è‚µ‚½”Ô†‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-'COMnCloseƒvƒƒpƒeƒB‚Éƒ[ƒˆÈ‰º‚Ì®”‚ğ‘ã“ü‚·‚é‚ÆC‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-'ec.COMn = 0 ‚Æ ec.COMnClose = 0 ‚ÍC“¯‚¶“®ì‚ğ‚µ‚Ü‚·D
-'ƒvƒƒOƒ‰ƒ€‚ÌI—¹‚ÉC‚¢‚¸‚ê‚©‚ÌƒR[ƒh‚Å‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ä‚­‚¾‚³‚¢D
+'æŒ‡å®šã—ãŸç•ªå·ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+'COMnCloseãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚¼ãƒ­ä»¥ä¸‹ã®æ•´æ•°ã‚’ä»£å…¥ã™ã‚‹ã¨ï¼Œã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+'ec.COMn = 0 ã¨ ec.COMnClose = 0 ã¯ï¼ŒåŒã˜å‹•ä½œã‚’ã—ã¾ã™ï¼
+'ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®çµ‚äº†æ™‚ã«ï¼Œã„ãšã‚Œã‹ã®ã‚³ãƒ¼ãƒ‰ã§ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¦ãã ã•ã„ï¼
 Public Property Let COMnClose(PortNumber As Long)
     Dim rv As Long
     Dim SheetObj As Object
     Dim i As Integer
     Dim Fnumb As Integer
-    Dim FileNumber As Integer           ' ƒI[ƒvƒ“‰Â”\‚Èƒtƒ@ƒCƒ‹”Ô†
+    Dim FileNumber As Integer           ' ã‚ªãƒ¼ãƒ—ãƒ³å¯èƒ½ãªãƒ•ã‚¡ã‚¤ãƒ«ç•ªå·
     Dim Handle As Long
     Dim Fpath As String * 260
     FileNumber = FreeFile()
 
     If PortNumber <= 0 Then
-        '‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·
-        'ƒGƒ‰[‚ğ•Ô‚µ‚Ü‚¹‚ñ
+        'ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™
+        'ã‚¨ãƒ©ãƒ¼ã‚’è¿”ã—ã¾ã›ã‚“
         ec.CloseAll
       Else
-        'w’è‚³‚ê‚½ƒ|[ƒg‚ğ•Â‚¶‚Ü‚·
-        'ƒGƒ‰[‚ğ•Ô‚µ‚Ü‚·D
+        'æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™
+        'ã‚¨ãƒ©ãƒ¼ã‚’è¿”ã—ã¾ã™ï¼
         rv = CloseHandle(ecH(PortNumber).Handle)
 
-       'ÅIˆ—
+       'æœ€çµ‚å‡¦ç†
         If rv = False Then
-            '¸”s
-            'ƒGƒ‰[ˆ—
+            'å¤±æ•—
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' w’è‚³‚ê‚½ƒ|[ƒg”Ô†‚ÌƒNƒ[ƒY‚É¸”s‚µ‚Ü‚µ‚½
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒˆç•ªå·ã®ã‚¯ãƒ­ãƒ¼ã‚ºã«å¤±æ•—ã—ã¾ã—ãŸ
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
                 
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10020, _
-                        Description:="COMnClose - Write" & Chr$(&HA) & "w’è‚³‚ê‚½ƒ|[ƒg”Ô†(" & PortNumber & ")‚ÌƒNƒ[ƒY‚É¸”s‚µ‚Ü‚µ‚½"
+                        Description:="COMnClose - Write" & Chr$(&HA) & "æŒ‡å®šã•ã‚ŒãŸãƒãƒ¼ãƒˆç•ªå·(" & PortNumber & ")ã®ã‚¯ãƒ­ãƒ¼ã‚ºã«å¤±æ•—ã—ã¾ã—ãŸ"
             
             End Select
           
           Else
-            '¬Œ÷
-            ecH(PortNumber).Handle = 0          'ƒnƒ“ƒhƒ‹ƒŠƒXƒg‚ÌXV
-            ecH(PortNumber).Delimiter = ""      '•W€ƒfƒŠƒ~ƒ^
-            ecH(PortNumber).LineInTimeOut = 0   'AsciiLineTimeOut‚ÌƒŠƒZƒbƒg
+            'æˆåŠŸ
+            ecH(PortNumber).Handle = 0          'ãƒãƒ³ãƒ‰ãƒ«ãƒªã‚¹ãƒˆã®æ›´æ–°
+            ecH(PortNumber).Delimiter = ""      'æ¨™æº–ãƒ‡ãƒªãƒŸã‚¿
+            ecH(PortNumber).LineInTimeOut = 0   'AsciiLineTimeOutã®ãƒªã‚»ãƒƒãƒˆ
             GetTempPath 260, Fpath
             Open Left(Fpath, InStr(Fpath, vbNullChar) - 1) & "ecPort.tmp" For Random Access Read Write As #FileNumber Len = Len(Handle)
             rv = 0&
@@ -437,47 +437,47 @@ Public Property Let COMnClose(PortNumber As Long)
 End Property
 
 '-----------------------------------
-'   SettingƒvƒƒpƒeƒB(‘‚«‚İ“Ç‚İo‚µ)
+'   Settingãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(æ›¸ãè¾¼ã¿èª­ã¿å‡ºã—)
 '-----------------------------------
-'‘€ì‚Ì‘ÎÛ‚Æ‚È‚Á‚Ä‚¢‚éƒ|[ƒg‚Ì’ÊMğŒ‚Ìİ’èC‚Ü‚½‚Í“Ç‚İo‚µ‚ğs‚È‚¢‚Ü‚·D
+'æ“ä½œã®å¯¾è±¡ã¨ãªã£ã¦ã„ã‚‹ãƒãƒ¼ãƒˆã®é€šä¿¡æ¡ä»¶ã®è¨­å®šï¼Œã¾ãŸã¯èª­ã¿å‡ºã—ã‚’è¡Œãªã„ã¾ã™ï¼
 
-'“Ç‚İo‚µ
+'èª­ã¿å‡ºã—
 Public Property Get Setting() As String
 
     Dim ModeStr As String
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10038, _
-                    Description:="Setting - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="Setting - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
     
     End If
 
-    If GetCommState(ecH(Cn).Handle, fDCB) = False Then     'DCB‚Ì“Ç‚İo‚µ
+    If GetCommState(ecH(Cn).Handle, fDCB) = False Then     'DCBã®èª­ã¿å‡ºã—
         
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' Œ»İİ’è’l(DCB)‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ç¾åœ¨è¨­å®šå€¤(DCB)ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10030, _
-                    Description:="Setting - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌŒ»İİ’è’l(DCB)‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="Setting - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®ç¾åœ¨è¨­å®šå€¤(DCB)ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
@@ -519,135 +519,135 @@ Public Property Get Setting() As String
 
 End Property
 
-'‘‚«‚İ
+'æ›¸ãè¾¼ã¿
 Public Property Let Setting(Mode As String)
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10039, _
-                    Description:="Setting - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="Setting - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
         
     End If
 
-    ' DCB‚Ì“Ç‚İo‚µ
+    ' DCBã®èª­ã¿å‡ºã—
     If GetCommState(ecH(Cn).Handle, fDCB) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' Œ»İİ’è’l(DCB)‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ç¾åœ¨è¨­å®šå€¤(DCB)ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10031, _
-                    Description:="Setting - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌŒ»İİ’è’l(DCB)‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="Setting - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®ç¾åœ¨è¨­å®šå€¤(DCB)ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
         
     End If
 
-    '•¶š—ñ‚Ì•ÏŠ·
+    'æ–‡å­—åˆ—ã®å¤‰æ›
     If BuildCommDCB(Mode, fDCB) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' İ’è•¶š—ñ‚Ì‰ğÍ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' è¨­å®šæ–‡å­—åˆ—ã®è§£æã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10032, _
-                    Description:="Setting - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ìİ’è•¶š—ñ(" & Mode & ")‚Ì‰ğÍ‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="Setting - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®è¨­å®šæ–‡å­—åˆ—(" & Mode & ")ã®è§£æã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
 
     End If
     
-    'DCB‚Ì‘‚«‚İ
+    'DCBã®æ›¸ãè¾¼ã¿
     If SetCommState(ecH(Cn).Handle, fDCB) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' Œ»İİ’è’l(DCB)‚Ì‘‚«‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ç¾åœ¨è¨­å®šå€¤(DCB)ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10033, _
-                    Description:="Setting - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌŒ»İİ’è’l(DCB)‚Ì‘‚«‚İ‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="Setting - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®ç¾åœ¨è¨­å®šå€¤(DCB)ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
         
     End If
     
-    'ƒoƒbƒtƒ@‚ÌƒNƒŠƒA
-    '‚±‚±‚Ü‚ÅƒpƒX‚µ‚Ä‚¢‚È‚ª‚çƒoƒbƒtƒ@‚ÌƒNƒŠƒA‚ÅƒGƒ‰[‚ª”­¶‚·‚é‰Â”\«‚Í‚È‚¢‚Æv‚í‚ê‚é‚Ì‚ÅC
-    'ƒGƒ‰[ƒ`ƒFƒbƒN‚Ís‚¢‚Ü‚¹‚ñD
+    'ãƒãƒƒãƒ•ã‚¡ã®ã‚¯ãƒªã‚¢
+    'ã“ã“ã¾ã§ãƒ‘ã‚¹ã—ã¦ã„ãªãŒã‚‰ãƒãƒƒãƒ•ã‚¡ã®ã‚¯ãƒªã‚¢ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã™ã‚‹å¯èƒ½æ€§ã¯ãªã„ã¨æ€ã‚ã‚Œã‚‹ã®ã§ï¼Œ
+    'ã‚¨ãƒ©ãƒ¼ãƒã‚§ãƒƒã‚¯ã¯è¡Œã„ã¾ã›ã‚“ï¼
     PurgeComm ecH(Cn).Handle, PURGE_TXCLEAR + PURGE_RXCLEAR
 
 End Property
 
 
 '-----------------------------------
-'   HandShakingƒvƒƒpƒeƒB(“Ç‚İo‚µ‘‚«‚İ)
+'   HandShakingãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(èª­ã¿å‡ºã—æ›¸ãè¾¼ã¿)
 '-----------------------------------
-'COMnƒvƒƒpƒeƒB‚Åw’è‚³‚ê‚Ä‚¢‚éƒ|[ƒg‚Ìƒtƒ[§Œä•û®‚ğİ’èC‚Ü‚½‚Íæ“¾‚µ‚Ü‚·
+'COMnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãƒãƒ¼ãƒˆã®ãƒ•ãƒ­ãƒ¼åˆ¶å¾¡æ–¹å¼ã‚’è¨­å®šï¼Œã¾ãŸã¯å–å¾—ã—ã¾ã™
 
-'“Ç‚İo‚µ
+'èª­ã¿å‡ºã—
 Public Property Get HandShaking() As String
     Dim Flow As String
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
         
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10188, _
-                    Description:="HandShaking - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="HandShaking - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
 
     End If
     
-    ' DCB‚Ì“Ç‚İo‚µ
+    ' DCBã®èª­ã¿å‡ºã—
     If GetCommState(ecH(Cn).Handle, fDCB) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' Œ»İİ’è’l(DCB)‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ç¾åœ¨è¨­å®šå€¤(DCB)ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10180, _
-                    Description:="HandShaking - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ìó‘Ô‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="HandShaking - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®çŠ¶æ…‹ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -656,17 +656,17 @@ Public Property Get HandShaking() As String
     
     Flow = ""
 
-    'RTSƒnƒ“ƒhƒVƒF[ƒN‚Ìƒ`ƒFƒbƒN
+    'RTSãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯ã®ãƒã‚§ãƒƒã‚¯
     If (fDCB.fBitFields And &H2000) <> 0 Then
         Flow = ec.HANDSHAKEs.RTSCTS
     End If
 
-    'XON/OFFƒnƒ“ƒhƒVƒF[ƒN‚Ìƒ`ƒFƒbƒN
+    'XON/OFFãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯ã®ãƒã‚§ãƒƒã‚¯
     If (fDCB.fBitFields And &H300) <> 0 Then
         Flow = Flow & ec.HANDSHAKEs.XonXoff
     End If
     
-    'DTR/DSRƒnƒ“ƒhƒVƒF[ƒN‚Ìƒ`ƒFƒbƒN
+    'DTR/DSRãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯ã®ãƒã‚§ãƒƒã‚¯
     If (fDCB.fBitFields And &H20) <> 0 Then
         Flow = Flow & ec.HANDSHAKEs.DTRDSR
     End If
@@ -679,44 +679,44 @@ Public Property Get HandShaking() As String
 
 End Property
 
-'‘‚«‚İ
+'æ›¸ãè¾¼ã¿
 Public Property Let HandShaking(Flow As String)
     Dim f As String
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10189, _
-                    Description:="HandShaking - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="HandShaking - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
         
     End If
     
-    f = Left(UCase(Flow), 1)        'æ“ª‚P•¶š‚Ì‚İ—LŒø
+    f = Left(UCase(Flow), 1)        'å…ˆé ­ï¼‘æ–‡å­—ã®ã¿æœ‰åŠ¹
     
-    ' DCB‚Ì“Ç‚İo‚µ
+    ' DCBã®èª­ã¿å‡ºã—
     If GetCommState(ecH(Cn).Handle, fDCB) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' Œ»İİ’è’l(DCB)‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ç¾åœ¨è¨­å®šå€¤(DCB)ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10181, _
-                    Description:="HandShaking - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ìó‘Ô‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="HandShaking - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®çŠ¶æ…‹ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -724,37 +724,37 @@ Public Property Let HandShaking(Flow As String)
     End If
 
     With fDCB
-        .fBitFields = .fBitFields And &HCC83            'ŠY“–ƒrƒbƒg‚ÌƒŠƒZƒbƒg
+        .fBitFields = .fBitFields And &HCC83            'è©²å½“ãƒ“ãƒƒãƒˆã®ãƒªã‚»ãƒƒãƒˆ
         Select Case f
             Case Is = "N"
-                'ƒtƒ[‚È‚µ
-                .fBitFields = .fBitFields Or &H1010     'ŠY“–ƒrƒbƒg‚ÌƒZƒbƒg
+                'ãƒ•ãƒ­ãƒ¼ãªã—
+                .fBitFields = .fBitFields Or &H1010     'è©²å½“ãƒ“ãƒƒãƒˆã®ã‚»ãƒƒãƒˆ
             Case Is = "X"
-                'Xon/Off‚É‚æ‚éƒnƒ“ƒhƒVƒFƒCƒN
-                .fBitFields = .fBitFields Or &H1310     'ŠY“–ƒrƒbƒg‚ÌƒZƒbƒg
+                'Xon/Offã«ã‚ˆã‚‹ãƒãƒ³ãƒ‰ã‚·ã‚§ã‚¤ã‚¯
+                .fBitFields = .fBitFields Or &H1310     'è©²å½“ãƒ“ãƒƒãƒˆã®ã‚»ãƒƒãƒˆ
             Case Is = "R"
-                'RTS‚É‚æ‚éƒnƒ“ƒhƒVƒF[ƒN
-                .fBitFields = .fBitFields Or &H2014     'ŠY“–ƒrƒbƒg‚ÌƒZƒbƒg
+                'RTSã«ã‚ˆã‚‹ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯
+                .fBitFields = .fBitFields Or &H2014     'è©²å½“ãƒ“ãƒƒãƒˆã®ã‚»ãƒƒãƒˆ
             Case Is = "D"
-                'DTR‚É‚æ‚éƒnƒ“ƒhƒVƒF[ƒN
-                .fBitFields = .fBitFields Or &H1068     'ŠY“–ƒrƒbƒg‚ÌƒZƒbƒg
+                'DTRã«ã‚ˆã‚‹ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯
+                .fBitFields = .fBitFields Or &H1068     'è©²å½“ãƒ“ãƒƒãƒˆã®ã‚»ãƒƒãƒˆ
         End Select
     End With
 
-    ' DCB‚Ì‘‚«‚İ
+    ' DCBã®æ›¸ãè¾¼ã¿
     If SetCommState(ecH(Cn).Handle, fDCB) = False Then
 
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ƒnƒ“ƒhƒVƒF[ƒN‚ğ‘‚«‚ß‚Ü‚¹‚ñ‚Å‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯ã‚’æ›¸ãè¾¼ã‚ã¾ã›ã‚“ã§ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10182, _
-                    Description:="HandShaking - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ìƒnƒ“ƒhƒVƒF[ƒN‚ğ‘‚«‚ß‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="HandShaking - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯ã‚’æ›¸ãè¾¼ã‚ã¾ã›ã‚“ã§ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -762,28 +762,28 @@ Public Property Let HandShaking(Flow As String)
 End Property
 
 '-----------------------------------
-'   InBufferƒvƒƒpƒeƒB(“Ç‚İo‚µ‘‚«‚İ)
+'   InBufferãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(èª­ã¿å‡ºã—æ›¸ãè¾¼ã¿)
 '-----------------------------------
-'COMnƒvƒƒpƒeƒB‚Åw’è‚³‚ê‚Ä‚¢‚éƒ|[ƒg‚ÌóMƒoƒbƒtƒ@‚Ìó‘Ô‚ğİ’èC‚Ü‚½‚Íæ“¾‚µ‚Ü‚·D
+'COMnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãƒãƒ¼ãƒˆã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®çŠ¶æ…‹ã‚’è¨­å®šï¼Œã¾ãŸã¯å–å¾—ã—ã¾ã™ï¼
 
-'“Ç‚İo‚µ
-'óMƒoƒbƒtƒ@‚É‚½‚Ü‚Á‚½óMƒf[ƒ^‚ÌƒoƒCƒg”‚ğæ“¾‚µ‚Ü‚·D
+'èª­ã¿å‡ºã—
+'å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã«ãŸã¾ã£ãŸå—ä¿¡ãƒ‡ãƒ¼ã‚¿ã®ãƒã‚¤ãƒˆæ•°ã‚’å–å¾—ã—ã¾ã™ï¼
 Public Property Get InBuffer() As Long
     Dim Er As Long
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10068, _
-                    Description:="InBuffer - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="InBuffer - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
@@ -791,17 +791,17 @@ Public Property Get InBuffer() As Long
     End If
     
     If ClearCommError(ecH(Cn).Handle, Er, fCOMSTAT) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' óMƒoƒbƒtƒ@‚Ìƒf[ƒ^ƒoƒCƒg”‚Ì“Ç‚İæ‚è‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ãƒ‡ãƒ¼ã‚¿ãƒã‚¤ãƒˆæ•°ã®èª­ã¿å–ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10060, _
-                    Description:="InBuffer - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌóMƒoƒbƒtƒ@‚Ìƒf[ƒ^ƒoƒCƒg”‚Ì“Ç‚İæ‚è‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="InBuffer - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ãƒ‡ãƒ¼ã‚¿ãƒã‚¤ãƒˆæ•°ã®èª­ã¿å–ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
@@ -810,128 +810,128 @@ Public Property Get InBuffer() As Long
     InBuffer = fCOMSTAT.cbInQue
 End Property
 
-'‘‚«‚İˆ—
-'óMƒoƒbƒtƒ@ƒTƒCƒY‚ğw’è‚µ‚Ü‚·D
-'Å¬İ’è’l‚ÍecMinimumInBuffer‚Åw’è‚³‚ê‚Ü‚·D
-'ecMinimumInBuffer‚ÍCecDef“à‚Å’è‹`‚³‚ê‚Ä‚¢‚Ü‚·D
+'æ›¸ãè¾¼ã¿å‡¦ç†
+'å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’æŒ‡å®šã—ã¾ã™ï¼
+'æœ€å°è¨­å®šå€¤ã¯ecMinimumInBufferã§æŒ‡å®šã•ã‚Œã¾ã™ï¼
+'ecMinimumInBufferã¯ï¼ŒecDefå†…ã§å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ï¼
 Public Property Let InBuffer(BufferSize As Long)
-    Dim InBuff As Long      'Œ»İ‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY
-    Dim OutBuff As Long     'Œ»İ‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY
+    Dim InBuff As Long      'ç¾åœ¨ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+    Dim OutBuff As Long     'ç¾åœ¨ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10069, _
-                    Description:="InBuffer - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="InBuffer - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
 
     End If
 
-    'w’èƒTƒCƒY‰ºŒÀ‚Ìƒ`ƒFƒbƒN
+    'æŒ‡å®šã‚µã‚¤ã‚ºä¸‹é™ã®ãƒã‚§ãƒƒã‚¯
     If BufferSize < ecMinimumInBuffer Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ƒoƒbƒtƒ@‚Ì’l‚ª­‚È‚·‚¬‚Ü‚·D
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ãƒãƒƒãƒ•ã‚¡ã®å€¤ãŒå°‘ãªã™ãã¾ã™ï¼
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10065, _
-                    Description:="InBuffer - Write" & Chr$(&HA) & "ƒoƒbƒtƒ@‚Í " & ecMinimumInBuffer & "ˆÈã‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢"
+                    Description:="InBuffer - Write" & Chr$(&HA) & "ãƒãƒƒãƒ•ã‚¡ã¯ " & ecMinimumInBuffer & "ä»¥ä¸Šã«è¨­å®šã—ã¦ãã ã•ã„"
                 Exit Property
         
         End Select
         
     End If
     
-    'ƒ|[ƒg‚Ìİ’è’l‚Ìæ“¾
+    'ãƒãƒ¼ãƒˆã®è¨­å®šå€¤ã®å–å¾—
     If GetCommProperties(ecH(Cn).Handle, fCOMMPROP) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' óMƒoƒbƒtƒ@ƒTƒCƒY‚Ì“Ç‚İæ‚è‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®èª­ã¿å–ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10061, _
-                    Description:="InBuffer - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY‚Ì“Ç‚İæ‚è‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="InBuffer - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®èª­ã¿å–ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
         
     End If
 
-    'ãŒÀ’l‚Ìƒ`ƒFƒbƒN
-    If fCOMMPROP.dwMaxRxQueue <> 0 Then     'ƒ[ƒ‚Ì‚ÍãŒÀ‚È‚µ
-        'ãŒÀ’l‚ ‚è
+    'ä¸Šé™å€¤ã®ãƒã‚§ãƒƒã‚¯
+    If fCOMMPROP.dwMaxRxQueue <> 0 Then     'ã‚¼ãƒ­ã®æ™‚ã¯ä¸Šé™ãªã—
+        'ä¸Šé™å€¤ã‚ã‚Š
         If BufferSize > fCOMMPROP.dwMaxRxQueue Then
-            'ãŒÀ‚ğ’´‚¦‚½İ’è
-            'ƒGƒ‰[ˆ—
+            'ä¸Šé™ã‚’è¶…ãˆãŸè¨­å®š
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' ƒ|[ƒg‚ÌÅ‘åƒoƒbƒtƒ@ƒTƒCƒY‚ğ‰z‚¦‚½İ’è‚ğ‚µ‚æ‚¤‚Æ‚µ‚Ü‚µ‚½D
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' ãƒãƒ¼ãƒˆã®æœ€å¤§ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¶ŠãˆãŸè¨­å®šã‚’ã—ã‚ˆã†ã¨ã—ã¾ã—ãŸï¼
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
     
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10066, _
-                        Description:="InBuffer - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌóMƒoƒbƒtƒ@‚ÌãŒÀ’l (" & fCOMMPROP.dwMaxRxQueue & "‚ğ‰z‚¦‚éİ’è‚Ío—ˆ‚Ü‚¹‚ñD"
+                        Description:="InBuffer - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ä¸Šé™å€¤ (" & fCOMMPROP.dwMaxRxQueue & "ã‚’è¶Šãˆã‚‹è¨­å®šã¯å‡ºæ¥ã¾ã›ã‚“ï¼"
                     Exit Property
             
             End Select
         End If
     End If
     
-    InBuff = fCOMMPROP.dwCurrentRxQueue     'óMƒoƒbƒtƒ@‚Ìİ’è‚ğ“Ç‚İo‚·
-    OutBuff = fCOMMPROP.dwCurrentTxQueue    '‘—Mƒoƒbƒtƒ@‚Ìİ’è‚ğ“Ç‚İo‚·
+    InBuff = fCOMMPROP.dwCurrentRxQueue     'å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®è¨­å®šã‚’èª­ã¿å‡ºã™
+    OutBuff = fCOMMPROP.dwCurrentTxQueue    'é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã®è¨­å®šã‚’èª­ã¿å‡ºã™
     
-    'V‚µ‚¢ƒTƒCƒY‚Ìİ’è
+    'æ–°ã—ã„ã‚µã‚¤ã‚ºã®è¨­å®š
     If SetupComm(ecH(Cn).Handle, BufferSize, OutBuff) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' óMƒoƒbƒtƒ@ƒTƒCƒY‚Ì‘‚«‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10062, _
-                    Description:="InBuffer - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY‚Ì‘‚«‚İ‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="InBuffer - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
         
     End If
         
-    ' DCB‚Ì“Ç‚İo‚µ
+    ' DCBã®èª­ã¿å‡ºã—
     If GetCommState(ecH(Cn).Handle, fDCB) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' Œ»İİ’è’l(DCB)‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ç¾åœ¨è¨­å®šå€¤(DCB)ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10063, _
-                    Description:="InBuffer - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌŒ»İİ’è’l(DCB)‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="InBuffer - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®ç¾åœ¨è¨­å®šå€¤(DCB)ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
@@ -939,17 +939,17 @@ Public Property Let InBuffer(BufferSize As Long)
     End If
     
     If SetCommState(ecH(Cn).Handle, fDCB) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' Œ»İİ’è’l(DCB)‚Ì‘‚«‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ç¾åœ¨è¨­å®šå€¤(DCB)ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10064, _
-                    Description:="InBuffer - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ìİ’è’l(DCB)‚Ì‘‚«‚İ‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="InBuffer - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®è¨­å®šå€¤(DCB)ã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
@@ -959,48 +959,48 @@ Public Property Let InBuffer(BufferSize As Long)
 End Property
 
 '-----------------------------------
-'   OutBufferƒvƒƒpƒeƒB(‘‚«‚İê—p)
+'   OutBufferãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(æ›¸ãè¾¼ã¿å°‚ç”¨)
 '-----------------------------------
-'COMnƒvƒƒpƒeƒB‚Åw’è‚³‚ê‚Ä‚¢‚éƒ|[ƒg‚Ì‘—Mƒoƒbƒtƒ@‚Ìó‘Ô‚ğİ’èC‚Ü‚½‚Íæ“¾‚µ‚Ü‚·D
-'Å¬İ’è’l‚ÍecMinimumOutBuffer‚Åw’è‚³‚ê‚Ü‚·D
-'ecMinimumOutBuffer‚ÍCecDef“à‚Å’è‹`‚³‚ê‚Ä‚¢‚Ü‚·D
+'COMnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãƒãƒ¼ãƒˆã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã®çŠ¶æ…‹ã‚’è¨­å®šï¼Œã¾ãŸã¯å–å¾—ã—ã¾ã™ï¼
+'æœ€å°è¨­å®šå€¤ã¯ecMinimumOutBufferã§æŒ‡å®šã•ã‚Œã¾ã™ï¼
+'ecMinimumOutBufferã¯ï¼ŒecDefå†…ã§å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ï¼
 Public Property Let OutBuffer(BufferSize As Long)
     
-    Dim InBuff As Long      'Œ»İ‚ÌóMƒoƒbƒtƒ@ƒTƒCƒY
-    Dim OutBuff As Long     'Œ»İ‚Ì‘—Mƒoƒbƒtƒ@ƒTƒCƒY
+    Dim InBuff As Long      'ç¾åœ¨ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
+    Dim OutBuff As Long     'ç¾åœ¨ã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10079, _
-                    Description:="OutBuffer - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="OutBuffer - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
 
     End If
     
-    'w’èƒTƒCƒY‚Ìƒ`ƒFƒbƒN
+    'æŒ‡å®šã‚µã‚¤ã‚ºã®ãƒã‚§ãƒƒã‚¯
     If BufferSize < ecMinimumOutBuffer Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘—Mƒoƒbƒtƒ@‚Ìİ’è’l‚ª¬‚³‚·‚¬‚Ü‚·
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã®è¨­å®šå€¤ãŒå°ã•ã™ãã¾ã™
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10073, _
-                    Description:="InBuffer - Write" & Chr$(&HA) & "ƒoƒbƒtƒ@‚Í " & ecMinimumOutBuffer & "ˆÈã‚Éİ’è‚µ‚Ä‚­‚¾‚³‚¢"
+                    Description:="InBuffer - Write" & Chr$(&HA) & "ãƒãƒƒãƒ•ã‚¡ã¯ " & ecMinimumOutBuffer & "ä»¥ä¸Šã«è¨­å®šã—ã¦ãã ã•ã„"
                 Exit Property
         
         End Select
@@ -1008,60 +1008,60 @@ Public Property Let OutBuffer(BufferSize As Long)
     End If
     
     If GetCommProperties(ecH(Cn).Handle, fCOMMPROP) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘—Mƒoƒbƒtƒ@ƒTƒCƒY‚Ì“Ç‚İæ‚è‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®èª­ã¿å–ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10071, _
-                    Description:="OutBuffer - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ì‘—Mƒoƒbƒtƒ@ƒTƒCƒY‚Ì“Ç‚İæ‚è‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="OutBuffer - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®èª­ã¿å–ã‚Šã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
     End If
     
-    'ãŒÀ’l‚Ìƒ`ƒFƒbƒN
-    If fCOMMPROP.dwMaxTxQueue <> 0 Then     'ƒ[ƒ‚Ì‚ÍãŒÀ‚È‚µ
-        'ãŒÀ’l‚ ‚è
+    'ä¸Šé™å€¤ã®ãƒã‚§ãƒƒã‚¯
+    If fCOMMPROP.dwMaxTxQueue <> 0 Then     'ã‚¼ãƒ­ã®æ™‚ã¯ä¸Šé™ãªã—
+        'ä¸Šé™å€¤ã‚ã‚Š
         If BufferSize > fCOMMPROP.dwMaxTxQueue Then
-            'ãŒÀ‚ğ’´‚¦‚½İ’è
-            'ƒGƒ‰[ˆ—
+            'ä¸Šé™ã‚’è¶…ãˆãŸè¨­å®š
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' ƒ|[ƒg‚ÌÅ‘åƒoƒbƒtƒ@ƒTƒCƒY‚ğ‰z‚¦‚½İ’è‚ğ‚µ‚æ‚¤‚Æ‚µ‚Ü‚µ‚½D
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' ãƒãƒ¼ãƒˆã®æœ€å¤§ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¶ŠãˆãŸè¨­å®šã‚’ã—ã‚ˆã†ã¨ã—ã¾ã—ãŸï¼
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
     
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10076, _
-                        Description:="InBuffer - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌóMƒoƒbƒtƒ@‚ÌãŒÀ’l (" & fCOMMPROP.dwMaxRxQueue & "‚ğ‰z‚¦‚éİ’è‚Ío—ˆ‚Ü‚¹‚ñD"
+                        Description:="InBuffer - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ä¸Šé™å€¤ (" & fCOMMPROP.dwMaxRxQueue & "ã‚’è¶Šãˆã‚‹è¨­å®šã¯å‡ºæ¥ã¾ã›ã‚“ï¼"
                     Exit Property
             
             End Select
         End If
     End If
     
-    InBuff = fCOMMPROP.dwCurrentRxQueue     'óMƒoƒbƒtƒ@‚Ìİ’è‚ğ“Ç‚İo‚·
-    OutBuff = fCOMMPROP.dwCurrentTxQueue    '‘—Mƒoƒbƒtƒ@‚Ìİ’è‚ğ“Ç‚İo‚·
+    InBuff = fCOMMPROP.dwCurrentRxQueue     'å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®è¨­å®šã‚’èª­ã¿å‡ºã™
+    OutBuff = fCOMMPROP.dwCurrentTxQueue    'é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã®è¨­å®šã‚’èª­ã¿å‡ºã™
     
-    'V‚µ‚¢ƒTƒCƒY‚Ìİ’è
+    'æ–°ã—ã„ã‚µã‚¤ã‚ºã®è¨­å®š
     If SetupComm(ecH(Cn).Handle, InBuff, BufferSize) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘—Mƒoƒbƒtƒ@ƒTƒCƒY‚Ì‘‚«‚İ‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10072, _
-                    Description:="OutBuffer - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ì‘—Mƒoƒbƒtƒ@ƒTƒCƒY‚Ì‘‚«‚İ‚É¸”s‚µ‚Ü‚µ‚½"
+                    Description:="OutBuffer - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®æ›¸ãè¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ"
                 Exit Property
         
         End Select
@@ -1071,71 +1071,71 @@ Public Property Let OutBuffer(BufferSize As Long)
 End Property
 
 '-----------------------------------
-'   AsciiƒvƒƒpƒeƒB
+'   Asciiãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'“Ç‚İo‚µ
+'èª­ã¿å‡ºã—
 Public Property Get Ascii() As String
-    Dim ReadBytes As Long       'óMƒoƒCƒg”
-    Dim ReadedBytes As Long     '“Ç‚İ‚ß‚½ƒoƒCƒg”
-    Dim bdata() As Byte         'ƒoƒCƒiƒŠ”z—ñ
+    Dim ReadBytes As Long       'å—ä¿¡ãƒã‚¤ãƒˆæ•°
+    Dim ReadedBytes As Long     'èª­ã¿è¾¼ã‚ãŸãƒã‚¤ãƒˆæ•°
+    Dim bdata() As Byte         'ãƒã‚¤ãƒŠãƒªé…åˆ—
     Dim Er As Long              ' error value
-    Dim ErrorFlag As Boolean    'ƒGƒ‰[ƒtƒ‰ƒO
+    Dim ErrorFlag As Boolean    'ã‚¨ãƒ©ãƒ¼ãƒ•ãƒ©ã‚°
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10108, _
-                    Description:="Ascii - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="Ascii - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
     End If
 
     If ClearCommError(ecH(Cn).Handle, Er, fCOMSTAT) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' óMƒoƒbƒtƒ@‚Ìó‘Ô‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®çŠ¶æ…‹ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10100, _
-                    Description:="Ascii - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌóMƒoƒbƒtƒ@‚Ìó‘Ô‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="Ascii - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®çŠ¶æ…‹ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
                 Exit Property
         
         End Select
     
     End If
     
-    '--------- Version1.70‚Å•ÏX
-'    ReadBytes = fCOMSTAT.cbInQue       'óMƒoƒCƒg”‚Ìæ“¾
+    '--------- Version1.70ã§å¤‰æ›´
+'    ReadBytes = fCOMSTAT.cbInQue       'å—ä¿¡ãƒã‚¤ãƒˆæ•°ã®å–å¾—
     If ec.AsciiBytes <= 0 Then
-        ' ‹Œƒo[ƒWƒ‡ƒ“ŒİŠ·
-        ReadBytes = fCOMSTAT.cbInQue    'óMƒoƒCƒg”‚Ìæ“¾
+        ' æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³äº’æ›
+        ReadBytes = fCOMSTAT.cbInQue    'å—ä¿¡ãƒã‚¤ãƒˆæ•°ã®å–å¾—
       Else
-        '--------- Version1.71‚ÅC³
+        '--------- Version1.71ã§ä¿®æ­£
 '        ReadBytes = ec.AsciiBytes
         If ec.AsciiBytes <= fCOMSTAT.cbInQue Then
             ReadBytes = ec.AsciiBytes
           Else
-            ReadBytes = fCOMSTAT.cbInQue    'óMƒoƒCƒg”‚Ìæ“¾
+            ReadBytes = fCOMSTAT.cbInQue    'å—ä¿¡ãƒã‚¤ãƒˆæ•°ã®å–å¾—
         End If
-        '--------- ‚±‚±‚Ü‚Å
+        '--------- ã“ã“ã¾ã§
     End If
-    '--------- ‚±‚±‚Ü‚Å
+    '--------- ã“ã“ã¾ã§
 
 
-    If ReadBytes = 0 Then       'ƒf[ƒ^ƒoƒbƒtƒ@‚ª‹ó‚Ì‚Æ‚«
+    If ReadBytes = 0 Then       'ãƒ‡ãƒ¼ã‚¿ãƒãƒƒãƒ•ã‚¡ãŒç©ºã®ã¨ã
         Ascii = ""
         Exit Property
     End If
@@ -1147,17 +1147,17 @@ Public Property Get Ascii() As String
     If ReadFile(ecH(Cn).Handle, bdata(0), ReadBytes, ReadedBytes, 0&) = False Then ErrorFlag = True
     If ReadBytes <> ReadedBytes Then ErrorFlag = True
     If ErrorFlag Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' •¶š—ñóM‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' æ–‡å­—åˆ—å—ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10101, _
-                    Description:="Ascii - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚©‚ç‚Ì•¶š—ñóM‚É¸”s‚µ‚Ü‚µ‚½D"
+                    Description:="Ascii - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã‹ã‚‰ã®æ–‡å­—åˆ—å—ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -1166,33 +1166,33 @@ Public Property Get Ascii() As String
 
 End Property
 
-'‘‚«‚İ
+'æ›¸ãè¾¼ã¿
 Public Property Let Ascii(TxD As String)
-    Dim WriteBytes As Long      '‘—MƒoƒCƒg”
-    Dim WrittenBytes As Long    'ƒoƒbƒtƒ@‚É‘‚«‚ß‚½ƒoƒCƒg”
-    Dim bdata() As Byte         'ƒoƒCƒiƒŠ”z—ñ
-    Dim ErrorFlag As Boolean    'ƒGƒ‰[ƒtƒ‰ƒO
+    Dim WriteBytes As Long      'é€ä¿¡ãƒã‚¤ãƒˆæ•°
+    Dim WrittenBytes As Long    'ãƒãƒƒãƒ•ã‚¡ã«æ›¸ãè¾¼ã‚ãŸãƒã‚¤ãƒˆæ•°
+    Dim bdata() As Byte         'ãƒã‚¤ãƒŠãƒªé…åˆ—
+    Dim ErrorFlag As Boolean    'ã‚¨ãƒ©ãƒ¼ãƒ•ãƒ©ã‚°
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10109, _
-                    Description:="Ascii - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="Ascii - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
 
     End If
     
-    bdata() = StrConv(TxD, vbFromUnicode)   'ANSI‚É•ÏŠ·
+    bdata() = StrConv(TxD, vbFromUnicode)   'ANSIã«å¤‰æ›
     WriteBytes = UBound(bdata()) + 1
     
     ErrorFlag = False
@@ -1204,15 +1204,15 @@ Public Property Let Ascii(TxD As String)
     If WriteBytes <> WrittenBytes Then ErrorFlag = True
     If ErrorFlag Then
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' •¶š—ñ‘—M‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' æ–‡å­—åˆ—é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10102, _
-                    Description:="Ascii - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚©‚ç‚Ì•¶š—ñ‘—M‚É¸”s‚µ‚Ü‚µ‚½D"
+                    Description:="Ascii - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã‹ã‚‰ã®æ–‡å­—åˆ—é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -1220,21 +1220,21 @@ Public Property Let Ascii(TxD As String)
 End Property
 
 '-----------------------------------
-'   AsciiLineTimeOutƒvƒƒpƒeƒB
+'   AsciiLineTimeOutãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'Version1.51‚Å’Ç‰Á
-'AsciiLineƒvƒƒpƒeƒB‚Ì“Ç‚İo‚µ‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğİ’èC‚Ü‚½‚Íİ’è’l‚ğ“Ç‚İo‚µ‚Ü‚·D
-'AsciiLineƒvƒƒpƒeƒB‚ğ“Ç‚İo‚µ‚½“_‚©‚çŒv‘ª‚µCAsciiLineTimeOut(mS)‚ğ‰z‚¦‚Ä‚àƒfƒŠ
-'ƒ~ƒ^‚ªóM‚Å‚«‚È‚©‚Á‚½‚Æ‚«‚Íˆ—‚ğ’†~‚µC‚»‚ê‚Ü‚Å‚ÉóM‚µ‚½•¶š‚ğ‚»‚Ì‚Ü‚Ü•Ô‚µ‚Ü‚·D
-'ƒGƒ‰[‚Í”­¶‚µ‚Ü‚¹‚ñD
-'AsciiLineTimeOutƒvƒƒpƒeƒB‚Íƒ|[ƒg‚²‚Æ‚Éİ’è‚µ‚Ü‚·D
-'‰Šú’l‚Íƒ[ƒ‚Å‚·‚ªCƒ[ƒˆÈ‰º‚Ì’l‚ªİ’è‚³‚ê‚Ä‚¢‚é‚Æƒ^ƒCƒ€ƒAƒEƒg‚Í”­¶‚µ‚Ü‚¹‚ñD
-'‘‚«‚İ
+'Version1.51ã§è¿½åŠ 
+'AsciiLineãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®èª­ã¿å‡ºã—æ™‚ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’è¨­å®šï¼Œã¾ãŸã¯è¨­å®šå€¤ã‚’èª­ã¿å‡ºã—ã¾ã™ï¼
+'AsciiLineãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’èª­ã¿å‡ºã—ãŸæ™‚ç‚¹ã‹ã‚‰è¨ˆæ¸¬ã—ï¼ŒAsciiLineTimeOut(mS)ã‚’è¶Šãˆã¦ã‚‚ãƒ‡ãƒª
+'ãƒŸã‚¿ãŒå—ä¿¡ã§ããªã‹ã£ãŸã¨ãã¯å‡¦ç†ã‚’ä¸­æ­¢ã—ï¼Œãã‚Œã¾ã§ã«å—ä¿¡ã—ãŸæ–‡å­—ã‚’ãã®ã¾ã¾è¿”ã—ã¾ã™ï¼
+'ã‚¨ãƒ©ãƒ¼ã¯ç™ºç”Ÿã—ã¾ã›ã‚“ï¼
+'AsciiLineTimeOutãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯ãƒãƒ¼ãƒˆã”ã¨ã«è¨­å®šã—ã¾ã™ï¼
+'åˆæœŸå€¤ã¯ã‚¼ãƒ­ã§ã™ãŒï¼Œã‚¼ãƒ­ä»¥ä¸‹ã®å€¤ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã¨ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¯ç™ºç”Ÿã—ã¾ã›ã‚“ï¼
+'æ›¸ãè¾¼ã¿
 Public Property Let AsciiLineTimeOut(TimeOut As Long)
     If Cn = 0 Then Exit Property
     ecH(Cn).LineInTimeOut = TimeOut
 End Property
-'“Ç‚İo‚µ
+'èª­ã¿å‡ºã—
 Public Property Get AsciiLineTimeOut() As Long
     If Cn = 0 Then
         AsciiLineTimeOut = 0
@@ -1245,61 +1245,61 @@ Public Property Get AsciiLineTimeOut() As Long
 End Property
 
 '-----------------------------------
-'   AsciiLineƒvƒƒpƒeƒB
+'   AsciiLineãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'ƒfƒŠƒ~ƒ^‚Ü‚Å‚Ì•¶š—ñ‚ğóM
-'ƒfƒŠƒ~ƒ^‚ÍDelimiterƒvƒƒpƒeƒB‚ÅCƒ|[ƒg‚²‚Æ‚Éİ’èE“Ç‚İo‚µ‚ª‰Â”\‚Å‚·D
-'Version1.51‚æ‚èC“Ç‚İo‚µƒ^ƒCƒ€ƒAƒEƒg‚ğƒTƒ|[ƒg‚µ‚Ü‚µ‚½D
-'ƒ^ƒCƒ€ƒAƒEƒg‚Íƒ|[ƒg‚²‚Æ‚Éİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·D
-'AsciiLineƒvƒƒpƒeƒB‚ğ“Ç‚İo‚µ‚½‚Æ‚«‚©‚çCƒfƒŠƒ~ƒ^‚ğóM‚·‚é‚Ü‚Å‚ÌŠÔ‚ªİ’è’l(mS)‚ğ
-'‰z‚¦‚é‚Æƒ^ƒCƒ€ƒAƒEƒg‚ª”­¶‚µCˆ—‚ğI—¹‚µ‚Ü‚·D
-'‚½‚¾‚µƒ^ƒCƒ€ƒAƒEƒg‚ª”­¶‚µ‚Ä‚àƒGƒ‰[‚É‚Í‚È‚ç‚¸C‚»‚±‚Ü‚Å‚É“Ç‚İ‚ñ‚¾•¶š—ñ‚ğ‚»‚Ì‚Ü‚Ü
-'•Ô‚µ‚Ü‚·D
-'ƒ^ƒCƒ€ƒAƒEƒg’l‚ÍAsciiLine‚Ì“Ç‚İo‚µ‚Ì‚İ—LŒø‚Å‚·D
+'ãƒ‡ãƒªãƒŸã‚¿ã¾ã§ã®æ–‡å­—åˆ—ã‚’å—ä¿¡
+'ãƒ‡ãƒªãƒŸã‚¿ã¯Delimiterãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ï¼Œãƒãƒ¼ãƒˆã”ã¨ã«è¨­å®šãƒ»èª­ã¿å‡ºã—ãŒå¯èƒ½ã§ã™ï¼
+'Version1.51ã‚ˆã‚Šï¼Œèª­ã¿å‡ºã—ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’ã‚µãƒãƒ¼ãƒˆã—ã¾ã—ãŸï¼
+'ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¯ãƒãƒ¼ãƒˆã”ã¨ã«è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ï¼
+'AsciiLineãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’èª­ã¿å‡ºã—ãŸã¨ãã‹ã‚‰ï¼Œãƒ‡ãƒªãƒŸã‚¿ã‚’å—ä¿¡ã™ã‚‹ã¾ã§ã®æ™‚é–“ãŒè¨­å®šå€¤(mS)ã‚’
+'è¶Šãˆã‚‹ã¨ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãŒç™ºç”Ÿã—ï¼Œå‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ï¼
+'ãŸã ã—ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãŒç™ºç”Ÿã—ã¦ã‚‚ã‚¨ãƒ©ãƒ¼ã«ã¯ãªã‚‰ãšï¼Œãã“ã¾ã§ã«èª­ã¿è¾¼ã‚“ã æ–‡å­—åˆ—ã‚’ãã®ã¾ã¾
+'è¿”ã—ã¾ã™ï¼
+'ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå€¤ã¯AsciiLineã®èª­ã¿å‡ºã—æ™‚ã®ã¿æœ‰åŠ¹ã§ã™ï¼
 '
-'“Ç‚İo‚µ
+'èª­ã¿å‡ºã—
 Public Property Get AsciiLine() As String
-    Dim ReadBytes As Long       'óMƒoƒCƒg”
-    Dim ReadedBytes As Long     '“Ç‚İ‚ß‚½ƒoƒCƒg”
-    Dim bdata As Byte           'ƒoƒCƒg•Ï”
-    Dim Bstr() As Byte          'ƒoƒCƒg”z—ñ
+    Dim ReadBytes As Long       'å—ä¿¡ãƒã‚¤ãƒˆæ•°
+    Dim ReadedBytes As Long     'èª­ã¿è¾¼ã‚ãŸãƒã‚¤ãƒˆæ•°
+    Dim bdata As Byte           'ãƒã‚¤ãƒˆå¤‰æ•°
+    Dim Bstr() As Byte          'ãƒã‚¤ãƒˆé…åˆ—
     Dim Er As Long              ' error value
-    Dim n As Long               '•¶š”ƒJƒEƒ“ƒg
-    Dim DelimStr As String      'ƒfƒŠƒ~ƒ^
-    Dim ErrorFlag As Boolean    'ƒGƒ‰[ƒtƒ‰ƒO
+    Dim n As Long               'æ–‡å­—æ•°ã‚«ã‚¦ãƒ³ãƒˆ
+    Dim DelimStr As String      'ãƒ‡ãƒªãƒŸã‚¿
+    Dim ErrorFlag As Boolean    'ã‚¨ãƒ©ãƒ¼ãƒ•ãƒ©ã‚°
     
     '----Version 1.51
-    Dim TimeOutFlag As Boolean  ' ƒ^ƒCƒ€ƒAƒEƒgƒtƒ‰ƒO
-    Dim STARTmS As Double       ' ŠJnŠÔ(mS)
-    Dim NOWmS As Double         ' Œ»İ‚ÌŠÔ(mS)
+    Dim TimeOutFlag As Boolean  ' ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãƒ•ãƒ©ã‚°
+    Dim STARTmS As Double       ' é–‹å§‹æ™‚é–“(mS)
+    Dim NOWmS As Double         ' ç¾åœ¨ã®æ™‚é–“(mS)
 
-    STARTmS = GetTickCount      ' ŠJn‚ÌŠÔ‚ğæ“¾
+    STARTmS = GetTickCount      ' é–‹å§‹æ™‚ã®æ™‚é–“ã‚’å–å¾—
     If STARTmS < 0 Then
         STARTmS = STARTmS + 4294967296#
     End If
     TimeOutFlag = False
-    '----‚±‚±‚Ü‚Å
+    '----ã“ã“ã¾ã§
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10218, _
-                    Description:="AsciiLine - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="AsciiLine - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
 
     End If
 
-    ' İ’è’l‚Ì³‹K‰»
+    ' è¨­å®šå€¤ã®æ­£è¦åŒ–
     DelimStr = Trim(UCase(StrConv(ecH(Cn).Delimiter, vbNarrow)))
     Select Case DelimStr
         Case Is = "CR"
@@ -1311,28 +1311,28 @@ Public Property Get AsciiLine() As String
         Case Is = "LFCR"
             ecH(Cn).Delimiter = "LFCR"
         Case Else
-            ecH(Cn).Delimiter = "CR"    ' ‹K’è’lˆÈŠO‚Í‚b‚q‚Æ‚İ‚È‚µ‚Ü‚·D
+            ecH(Cn).Delimiter = "CR"    ' è¦å®šå€¤ä»¥å¤–ã¯ï¼£ï¼²ã¨ã¿ãªã—ã¾ã™ï¼
             DelimStr = "CR"
     End Select
 
 
-    n = 0   ' •¶šƒJƒEƒ“ƒ^‚ÌƒŠƒZƒbƒg
+    n = 0   ' æ–‡å­—ã‚«ã‚¦ãƒ³ã‚¿ã®ãƒªã‚»ãƒƒãƒˆ
 
     Do
-        'ƒf[ƒ^óM‚Ü‚Å‘Ò‚Â
+        'ãƒ‡ãƒ¼ã‚¿å—ä¿¡ã¾ã§å¾…ã¤
         Do
             If ClearCommError(ecH(Cn).Handle, Er, fCOMSTAT) = False Then
-                'ƒGƒ‰[ˆ—
+                'ã‚¨ãƒ©ãƒ¼å‡¦ç†
                 Select Case Xerror
-                    Case Is = 0 '-----•W€ƒGƒ‰[
-                        ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                        Stop            ' óMƒoƒbƒtƒ@‚Ìó‘Ô‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½
-                        End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                    Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                        ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                        Stop            ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®çŠ¶æ…‹ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸ
+                        End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-                    Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                    Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                         err.Raise _
                             Number:=10210, _
-                            Description:="AsciiLine - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌóMƒoƒbƒtƒ@‚Ìó‘Ô‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                            Description:="AsciiLine - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®çŠ¶æ…‹ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
                         Exit Property
                 
                 End Select
@@ -1342,15 +1342,15 @@ Public Property Get AsciiLine() As String
             ReadBytes = fCOMSTAT.cbInQue
             DoEvents
 
-            If ecH(Cn).LineInTimeOut > 0 Then   ' ƒ^ƒCƒ€ƒAƒEƒg‚ªƒ[ƒˆÈ‰º‚È‚ç‚ÎƒXƒLƒbƒv
-                ' Œ»İ‚ÌŠÔ‚ğæ“¾
+            If ecH(Cn).LineInTimeOut > 0 Then   ' ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãŒã‚¼ãƒ­ä»¥ä¸‹ãªã‚‰ã°ã‚¹ã‚­ãƒƒãƒ—
+                ' ç¾åœ¨ã®æ™‚é–“ã‚’å–å¾—
                 NOWmS = GetTickCount
                 If NOWmS < 0 Then
                     NOWmS = NOWmS + 4294967296#
                 End If
-                'ƒ^ƒCƒ€ƒAƒEƒg‚Ìƒ`ƒFƒbƒN
+                'ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®ãƒã‚§ãƒƒã‚¯
                 If STARTmS + ecH(Cn).LineInTimeOut <= NOWmS Then
-                    ' ƒ^ƒCƒ€ƒAƒEƒg‚µ‚½
+                    ' ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã—ãŸ
                     TimeOutFlag = True
                     Exit Do
                 End If
@@ -1359,76 +1359,76 @@ Public Property Get AsciiLine() As String
 
         If TimeOutFlag Then Exit Do
 
-        '‚P•¶šóM
+        'ï¼‘æ–‡å­—å—ä¿¡
         ErrorFlag = False
         
         If ReadFile(ecH(Cn).Handle, bdata, 1&, ReadedBytes, 0&) = False Then ErrorFlag = True
         If ReadedBytes <> 1 Then ErrorFlag = True
         If ErrorFlag Then
-            '¸”s
-            'ƒGƒ‰[ˆ—
+            'å¤±æ•—
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' •¶š—ñóM‚É¸”s‚µ‚Ü‚µ‚½
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' æ–‡å­—åˆ—å—ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸ
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10211, _
-                        Description:="AsciiLine - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚©‚ç‚Ì•¶š—ñóM‚É¸”s‚µ‚Ü‚µ‚½D"
+                        Description:="AsciiLine - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã‹ã‚‰ã®æ–‡å­—åˆ—å—ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                     Exit Property
             
             End Select
         End If
 
-        'óM•¶š‚Ì‰ğÍ
+        'å—ä¿¡æ–‡å­—ã®è§£æ
         Select Case bdata
-            Case Is = &HD   'Cr‚ğóM
+            Case Is = &HD   'Crã‚’å—ä¿¡
                 Select Case DelimStr
                     Case Is = "CR"
-                        Exit Do                     ' ƒfƒŠƒ~ƒ^‚ğóM
+                        Exit Do                     ' ãƒ‡ãƒªãƒŸã‚¿ã‚’å—ä¿¡
                     Case Is = "LF", "CRLF"
-                        ReDim Preserve Bstr(n)      ' ˆÈ‘O‚Ìƒf[ƒ^‚ğc‚µ‚½‚Ü‚ÜÄ’è‹`
-                        Bstr(n) = bdata             ' óM•¶š‚É‰Á‚¦‚é
+                        ReDim Preserve Bstr(n)      ' ä»¥å‰ã®ãƒ‡ãƒ¼ã‚¿ã‚’æ®‹ã—ãŸã¾ã¾å†å®šç¾©
+                        Bstr(n) = bdata             ' å—ä¿¡æ–‡å­—ã«åŠ ãˆã‚‹
                         n = n + 1
                     Case Is = "LFCR"
                         If n >= 1 Then
-                            If Bstr(n - 1) = &HA Then   ' ˆê‚Â‘O‚Ì•¶š‚ÍLf?
-                                n = n - 1               ' ƒfƒŠƒ~ƒ^•¶š‚ğ–³Œø‚É
-                                Exit Do                 ' ƒfƒŠƒ~ƒ^‚ğóM
+                            If Bstr(n - 1) = &HA Then   ' ä¸€ã¤å‰ã®æ–‡å­—ã¯Lf?
+                                n = n - 1               ' ãƒ‡ãƒªãƒŸã‚¿æ–‡å­—ã‚’ç„¡åŠ¹ã«
+                                Exit Do                 ' ãƒ‡ãƒªãƒŸã‚¿ã‚’å—ä¿¡
                             End If
                           Else
-                            ReDim Preserve Bstr(n)  ' ˆÈ‘O‚Ìƒf[ƒ^‚ğc‚µ‚½‚Ü‚ÜÄ’è‹`
-                            Bstr(n) = bdata         ' óM•¶š‚É‰Á‚¦‚é
+                            ReDim Preserve Bstr(n)  ' ä»¥å‰ã®ãƒ‡ãƒ¼ã‚¿ã‚’æ®‹ã—ãŸã¾ã¾å†å®šç¾©
+                            Bstr(n) = bdata         ' å—ä¿¡æ–‡å­—ã«åŠ ãˆã‚‹
                             n = n + 1
                         End If
                 End Select
             
-            Case Is = &HA   'Lf‚ğóM
+            Case Is = &HA   'Lfã‚’å—ä¿¡
                 
                 Select Case DelimStr
                     Case Is = "CR", "LFCR"
-                        ReDim Preserve Bstr(n)      ' ˆÈ‘O‚Ìƒf[ƒ^‚ğc‚µ‚½‚Ü‚ÜÄ’è‹`
-                        Bstr(n) = bdata             ' óM•¶š‚É‰Á‚¦‚é
+                        ReDim Preserve Bstr(n)      ' ä»¥å‰ã®ãƒ‡ãƒ¼ã‚¿ã‚’æ®‹ã—ãŸã¾ã¾å†å®šç¾©
+                        Bstr(n) = bdata             ' å—ä¿¡æ–‡å­—ã«åŠ ãˆã‚‹
                         n = n + 1
-                    Case Is = "LF"                  ' ƒfƒŠƒ~ƒ^‚ğóM
+                    Case Is = "LF"                  ' ãƒ‡ãƒªãƒŸã‚¿ã‚’å—ä¿¡
                         Exit Do
                     Case Is = "CRLF"
                         If n >= 1 Then
-                            If Bstr(n - 1) = &HD Then   ' ˆê‚Â‘O‚Ì•¶š‚ÍCr?
-                                n = n - 1               ' ƒfƒŠƒ~ƒ^•¶š‚ğ–³Œø‚É
-                                Exit Do                 ' ƒfƒŠƒ~ƒ^‚ğóM
+                            If Bstr(n - 1) = &HD Then   ' ä¸€ã¤å‰ã®æ–‡å­—ã¯Cr?
+                                n = n - 1               ' ãƒ‡ãƒªãƒŸã‚¿æ–‡å­—ã‚’ç„¡åŠ¹ã«
+                                Exit Do                 ' ãƒ‡ãƒªãƒŸã‚¿ã‚’å—ä¿¡
                             End If
                           Else
-                            ReDim Preserve Bstr(n)  ' ˆÈ‘O‚Ìƒf[ƒ^‚ğc‚µ‚½‚Ü‚ÜÄ’è‹`
-                            Bstr(n) = bdata         ' óM•¶š‚É‰Á‚¦‚é
+                            ReDim Preserve Bstr(n)  ' ä»¥å‰ã®ãƒ‡ãƒ¼ã‚¿ã‚’æ®‹ã—ãŸã¾ã¾å†å®šç¾©
+                            Bstr(n) = bdata         ' å—ä¿¡æ–‡å­—ã«åŠ ãˆã‚‹
                             n = n + 1
                         End If
                 End Select
                 
-            Case Else   '’Êí‚Ì•¶š
-                ReDim Preserve Bstr(n)          ' ˆÈ‘O‚Ìƒf[ƒ^‚ğc‚µ‚½‚Ü‚ÜÄ’è‹`
+            Case Else   'é€šå¸¸ã®æ–‡å­—
+                ReDim Preserve Bstr(n)          ' ä»¥å‰ã®ãƒ‡ãƒ¼ã‚¿ã‚’æ®‹ã—ãŸã¾ã¾å†å®šç¾©
                 Bstr(n) = bdata
                 n = n + 1
         End Select
@@ -1443,36 +1443,36 @@ Public Property Get AsciiLine() As String
 
 End Property
 
-'w’è‚³‚ê‚½•¶š—ñ‚ÉƒfƒŠƒ~ƒ^‚ğ•t‰Á‚µ‚Ä‘—M
-'‘‚«‚İ
+'æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã«ãƒ‡ãƒªãƒŸã‚¿ã‚’ä»˜åŠ ã—ã¦é€ä¿¡
+'æ›¸ãè¾¼ã¿
 Public Property Let AsciiLine(TxD As String)
-    Dim WriteBytes As Long      '‘—MƒoƒCƒg”
-    Dim WrittenBytes As Long    'ƒoƒbƒtƒ@‚É‘‚«‚ß‚½ƒoƒCƒg”
-    Dim bdata() As Byte         'ƒoƒCƒiƒŠ”z—ñ
-    Dim DelimStr As String      'ƒfƒŠƒ~ƒ^
-    Dim Td As String            '‘—M•¶š—ñ
-    Dim ErrorFlag As Boolean    'ƒGƒ‰[ƒtƒ‰ƒO
+    Dim WriteBytes As Long      'é€ä¿¡ãƒã‚¤ãƒˆæ•°
+    Dim WrittenBytes As Long    'ãƒãƒƒãƒ•ã‚¡ã«æ›¸ãè¾¼ã‚ãŸãƒã‚¤ãƒˆæ•°
+    Dim bdata() As Byte         'ãƒã‚¤ãƒŠãƒªé…åˆ—
+    Dim DelimStr As String      'ãƒ‡ãƒªãƒŸã‚¿
+    Dim Td As String            'é€ä¿¡æ–‡å­—åˆ—
+    Dim ErrorFlag As Boolean    'ã‚¨ãƒ©ãƒ¼ãƒ•ãƒ©ã‚°
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10219, _
-                    Description:="AsciiLine - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="AsciiLine - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
 
     End If
 
-    ' İ’è’l‚Ì³‹K‰»‚Æ•¶š—ñ‚ÉƒfƒŠƒ~ƒ^‚ğ•t‰Á
+    ' è¨­å®šå€¤ã®æ­£è¦åŒ–ã¨æ–‡å­—åˆ—ã«ãƒ‡ãƒªãƒŸã‚¿ã‚’ä»˜åŠ 
     
     DelimStr = Trim(UCase(StrConv(ecH(Cn).Delimiter, vbNarrow)))
     Select Case DelimStr
@@ -1489,11 +1489,11 @@ Public Property Let AsciiLine(TxD As String)
             ecH(Cn).Delimiter = "LFCR"
             Td = TxD & Chr(&HA) & Chr(&HD)
         Case Else
-            ecH(Cn).Delimiter = "CR"        ' ‹K’è’lˆÈŠO‚Í‚b‚q‚Æ‚İ‚È‚µ‚Ü‚·D
+            ecH(Cn).Delimiter = "CR"        ' è¦å®šå€¤ä»¥å¤–ã¯ï¼£ï¼²ã¨ã¿ãªã—ã¾ã™ï¼
             Td = TxD & Chr(&HD)
     End Select
     
-    bdata() = StrConv(Td, vbFromUnicode)   'ANSI‚É•ÏŠ·
+    bdata() = StrConv(Td, vbFromUnicode)   'ANSIã«å¤‰æ›
     
     WriteBytes = UBound(bdata()) + 1
     
@@ -1503,15 +1503,15 @@ Public Property Let AsciiLine(TxD As String)
     If WriteBytes <> WrittenBytes Then ErrorFlag = True
     If ErrorFlag Then
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' •¶š—ñ‘—M‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' æ–‡å­—åˆ—é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10212, _
-                    Description:="AsciiLine - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚©‚ç‚Ì•¶š—ñ‘—M‚É¸”s‚µ‚Ü‚µ‚½D"
+                    Description:="AsciiLine - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã‹ã‚‰ã®æ–‡å­—åˆ—é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -1520,72 +1520,72 @@ End Property
 
 
 '-----------------------------------
-'   BinaryƒvƒƒpƒeƒB
+'   Binaryãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'‘‚«‚İ
+'æ›¸ãè¾¼ã¿
 Public Property Let Binary(ByteData As Variant)
-    Dim WriteBytes As Long          '‘—MƒoƒCƒg”
-    Dim WrittenBytes As Long        '“Ç‚İ‚ß‚½ƒoƒCƒg”
-    Dim bdata() As Byte             'ƒoƒCƒiƒŠ”z—ñ
+    Dim WriteBytes As Long          'é€ä¿¡ãƒã‚¤ãƒˆæ•°
+    Dim WrittenBytes As Long        'èª­ã¿è¾¼ã‚ãŸãƒã‚¤ãƒˆæ•°
+    Dim bdata() As Byte             'ãƒã‚¤ãƒŠãƒªé…åˆ—
     Dim Er As Long                  ' error value
-    Dim ErrorFlag As Boolean        'ƒGƒ‰[ƒtƒ‰ƒO
+    Dim ErrorFlag As Boolean        'ã‚¨ãƒ©ãƒ¼ãƒ•ãƒ©ã‚°
     Dim i As Long
     Dim j As Long
     Dim C As Long
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10169, _
-                    Description:="Binary - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="Binary - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
         
     End If
 
-    'ˆø”‚ÌŒ^‚É‚æ‚éˆ—‚Ì•ªŠò
+    'å¼•æ•°ã®å‹ã«ã‚ˆã‚‹å‡¦ç†ã®åˆ†å²
     Select Case TypeName(ByteData)
         Case "Byte"
             ReDim bdata(0)
             bdata(0) = ByteData
         Case "Integer", "Long", "Single", "Double"
             If ByteData < 0 Or ByteData > 255 Then
-                'ƒI[ƒo[ƒtƒ[ƒGƒ‰[
+                'ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã‚¨ãƒ©ãƒ¼
                 Select Case Xerror
-                    Case Is = 0 '-----•W€ƒGƒ‰[
-                        ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                        Stop            ' ˆø”‚Ì’l‚ª0`255‚Ì”ÍˆÍ‚É‚ ‚è‚Ü‚¹‚ñD
-                        End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                    Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                        ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                        Stop            ' å¼•æ•°ã®å€¤ãŒ0ï½255ã®ç¯„å›²ã«ã‚ã‚Šã¾ã›ã‚“ï¼
+                        End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
         
-                    Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                    Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                         err.Raise _
                             Number:=10162, _
-                            Description:="Binary - Write" & Chr$(&HA) & "ˆø”‚Ì’l‚ª0`255‚Ì”ÍˆÍ‚É‚ ‚è‚Ü‚¹‚ñ"
+                            Description:="Binary - Write" & Chr$(&HA) & "å¼•æ•°ã®å€¤ãŒ0ï½255ã®ç¯„å›²ã«ã‚ã‚Šã¾ã›ã‚“"
                         Exit Property
 
                 End Select
             End If
             If ByteData <> Int(ByteData) Then
-                ' ”ñ®”ƒGƒ‰[
+                ' éæ•´æ•°ã‚¨ãƒ©ãƒ¼
                 Select Case Xerror
-                    Case Is = 0 '-----•W€ƒGƒ‰[
-                        ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                        Stop            ' ˆø”‚Ì’l‚ª®”‚Å‚Í‚ ‚è‚Ü‚¹‚ñD
-                        End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                    Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                        ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                        Stop            ' å¼•æ•°ã®å€¤ãŒæ•´æ•°ã§ã¯ã‚ã‚Šã¾ã›ã‚“ï¼
+                        End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
         
-                    Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                    Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                         err.Raise _
                             Number:=10163, _
-                            Description:="Binary - Write" & Chr$(&HA) & "ˆø”‚ª®”‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"
+                            Description:="Binary - Write" & Chr$(&HA) & "å¼•æ•°ãŒæ•´æ•°ã§ã¯ã‚ã‚Šã¾ã›ã‚“"
                         Exit Property
                 
                 End Select
@@ -1594,7 +1594,7 @@ Public Property Let Binary(ByteData As Variant)
             bdata(0) = CByte(ByteData)
     
         Case "String"
-            '•¶š—ñ‚Íƒ†ƒjƒR[ƒh‚Ì‚Ü‚Ü‘—M
+            'æ–‡å­—åˆ—ã¯ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã®ã¾ã¾é€ä¿¡
             ReDim bdata(LenB(ByteData) - 1)
             For i = 0 To LenB(ByteData) - 1
                 bdata(i) = AscB(MidB(ByteData, i + 1, 1))
@@ -1604,48 +1604,48 @@ Public Property Let Binary(ByteData As Variant)
             bdata = ByteData
     
         Case "Integer()", "Long()", "Single()", "Double()", "Variant()"
-            ReDim bdata(UBound(ByteData))   ' ƒf[ƒ^”z—ñ‚ÌÄéŒ¾
-            ' ƒoƒCƒg”z—ñ‚Ö‚Ì‘ã“ü‚ÆƒI[ƒo[ƒtƒ[C®”‚Ìƒ`ƒFƒbƒN
+            ReDim bdata(UBound(ByteData))   ' ãƒ‡ãƒ¼ã‚¿é…åˆ—ã®å†å®£è¨€
+            ' ãƒã‚¤ãƒˆé…åˆ—ã¸ã®ä»£å…¥ã¨ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ï¼Œæ•´æ•°ã®ãƒã‚§ãƒƒã‚¯
             For i = 0 To UBound(ByteData)
                 If ByteData(i) < 0 Or ByteData(i) > 255 Then
-                'ƒI[ƒo[ƒtƒ[ƒGƒ‰[
+                'ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã‚¨ãƒ©ãƒ¼
                     Select Case Xerror
-                        Case Is = 0 '-----•W€ƒGƒ‰[
-                            ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                            Stop            ' ˆø”‚Ì’l‚ª0`255‚Ì”ÍˆÍ‚É‚ ‚è‚Ü‚¹‚ñD
-                            End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                        Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                            ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                            Stop            ' å¼•æ•°ã®å€¤ãŒ0ï½255ã®ç¯„å›²ã«ã‚ã‚Šã¾ã›ã‚“ï¼
+                            End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
             
-                        Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                        Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                             err.Raise _
                                 Number:=10162, _
-                                Description:="Binary - Write" & Chr$(&HA) & "ˆø”‚Ì’l‚ª0`255‚Ì”ÍˆÍ‚É‚ ‚è‚Ü‚¹‚ñ"
+                                Description:="Binary - Write" & Chr$(&HA) & "å¼•æ•°ã®å€¤ãŒ0ï½255ã®ç¯„å›²ã«ã‚ã‚Šã¾ã›ã‚“"
                             Exit Property
     
                     End Select
                 End If
                 If ByteData(i) <> Int(ByteData(i)) Then
-                    ' ”ñ®”ƒGƒ‰[
+                    ' éæ•´æ•°ã‚¨ãƒ©ãƒ¼
                     Select Case Xerror
-                        Case Is = 0 '-----•W€ƒGƒ‰[
-                            ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                            Stop            ' ˆø”‚Ì’l‚ª®”‚Å‚Í‚ ‚è‚Ü‚¹‚ñD
-                            End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                        Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                            ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                            Stop            ' å¼•æ•°ã®å€¤ãŒæ•´æ•°ã§ã¯ã‚ã‚Šã¾ã›ã‚“ï¼
+                            End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
             
-                        Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                        Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                             err.Raise _
                                 Number:=10163, _
-                                Description:="Binary - Write" & Chr$(&HA) & "ˆø”‚ª®”‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"
+                                Description:="Binary - Write" & Chr$(&HA) & "å¼•æ•°ãŒæ•´æ•°ã§ã¯ã‚ã‚Šã¾ã›ã‚“"
                             Exit Property
                     
                     End Select
                 End If
-                ' ƒf[ƒ^‚ÌƒZƒbƒg
+                ' ãƒ‡ãƒ¼ã‚¿ã®ã‚»ãƒƒãƒˆ
                 bdata(i) = ByteData(i)
             Next i
         
         Case "String()"
-            '•¶š”z—ñ‚Íƒ†ƒjƒR[ƒh‚Ì‚Ü‚Ü‘—M
-            C = 0   ' Œ»İ‚Ìƒg[ƒ^ƒ‹•¶š”
+            'æ–‡å­—é…åˆ—ã¯ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰ã®ã¾ã¾é€ä¿¡
+            C = 0   ' ç¾åœ¨ã®ãƒˆãƒ¼ã‚¿ãƒ«æ–‡å­—æ•°
             For j = 0 To UBound(ByteData)
                 If LenB(ByteData(j)) > 0 Then
                     ReDim Preserve bdata(C + LenB(ByteData(j)) - 1)
@@ -1657,17 +1657,17 @@ Public Property Let Binary(ByteData As Variant)
             Next j
 
         Case Else
-            ' ”ñ‘Î‰Œ^
+            ' éå¯¾å¿œå‹
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' w’è‚³‚ê‚½Œ^‚É‚Í‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñD
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' æŒ‡å®šã•ã‚ŒãŸå‹ã«ã¯å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ï¼
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
     
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10164, _
-                        Description:="Binary - Write" & Chr$(&HA) & "w’è‚³‚ê‚½Œ^‚É‚Í‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñ"
+                        Description:="Binary - Write" & Chr$(&HA) & "æŒ‡å®šã•ã‚ŒãŸå‹ã«ã¯å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“"
                     Exit Property
             
             End Select
@@ -1681,90 +1681,90 @@ Public Property Let Binary(ByteData As Variant)
     If WriteFile(ecH(Cn).Handle, bdata(0), WriteBytes, WrittenBytes, 0&) = False Then ErrorFlag = True
     If WriteBytes <> WrittenBytes Then ErrorFlag = True
     If ErrorFlag Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ƒoƒCƒiƒŠ[ƒf[ƒ^‚Ì‘—M‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ãƒã‚¤ãƒŠãƒªãƒ¼ãƒ‡ãƒ¼ã‚¿ã®é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10160, _
-                    Description:="Binary - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚©‚ç‚ÌƒoƒCƒiƒŠ[ƒf[ƒ^‚Ì‘—M‚É¸”s‚µ‚Ü‚µ‚½D"
+                    Description:="Binary - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã‹ã‚‰ã®ãƒã‚¤ãƒŠãƒªãƒ¼ãƒ‡ãƒ¼ã‚¿ã®é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                 Exit Property
         
         End Select
     End If
 End Property
 
-'“Ç‚İo‚µ
-'Version1.70‚æ‚èCBinaryBytesƒvƒƒpƒeƒB‚ÅóMƒoƒbƒtƒ@‚©‚ç“Ç‚İo‚·ƒoƒCƒg”‚ªw’è‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½D
-'‚½‚¾‚µCBytesƒvƒƒpƒeƒB‚ªƒ[ƒˆÈ‰º‚Ì‚ÍC‚·‚×‚Ä‚Ìƒf[ƒ^‚ğæ“¾‚µ‚Ü‚·(‹Œƒo[ƒWƒ‡ƒ“ŒİŠ·)
+'èª­ã¿å‡ºã—
+'Version1.70ã‚ˆã‚Šï¼ŒBinaryBytesãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰èª­ã¿å‡ºã™ãƒã‚¤ãƒˆæ•°ãŒæŒ‡å®šã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸï¼
+'ãŸã ã—ï¼ŒBytesãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒã‚¼ãƒ­ä»¥ä¸‹ã®æ™‚ã¯ï¼Œã™ã¹ã¦ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã—ã¾ã™(æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³äº’æ›)
 Public Property Get Binary() As Variant
-    Dim ReadBytes As Long       'óMƒoƒCƒg”
-    Dim ReadedBytes As Long     '“Ç‚İ‚ß‚½ƒoƒCƒg”
-    Dim bdata() As Byte         'ƒoƒCƒiƒŠ”z—ñ
+    Dim ReadBytes As Long       'å—ä¿¡ãƒã‚¤ãƒˆæ•°
+    Dim ReadedBytes As Long     'èª­ã¿è¾¼ã‚ãŸãƒã‚¤ãƒˆæ•°
+    Dim bdata() As Byte         'ãƒã‚¤ãƒŠãƒªé…åˆ—
     Dim Er As Long              ' error value
-    Dim ErrorFlag As Boolean    'ƒGƒ‰[ƒtƒ‰ƒO
+    Dim ErrorFlag As Boolean    'ã‚¨ãƒ©ãƒ¼ãƒ•ãƒ©ã‚°
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10179, _
-                    Description:="Binary - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="Binary - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
         
     End If
     
-    ' ƒ|[ƒg‚Ìó‘Ô‚ğæ“¾
+    ' ãƒãƒ¼ãƒˆã®çŠ¶æ…‹ã‚’å–å¾—
     If ClearCommError(ecH(Cn).Handle, Er, fCOMSTAT) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' óMƒoƒbƒtƒ@‚Ìó‘Ô‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®çŠ¶æ…‹ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10172, _
-                    Description:="Binary - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌóMƒoƒbƒtƒ@‚Ìó‘Ô‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="Binary - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®çŠ¶æ…‹ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸï¼"
                 Exit Property
         
         End Select
         
     End If
 
-    '--------- Version1.70‚Å•ÏX
-'    ReadBytes = fCOMSTAT.cbInQue       'óMƒoƒCƒg”‚Ìæ“¾
+    '--------- Version1.70ã§å¤‰æ›´
+'    ReadBytes = fCOMSTAT.cbInQue       'å—ä¿¡ãƒã‚¤ãƒˆæ•°ã®å–å¾—
     If ec.BinaryBytes <= 0 Then
-        ' ‹Œƒo[ƒWƒ‡ƒ“ŒİŠ·
-        ReadBytes = fCOMSTAT.cbInQue    'óMƒoƒCƒg”‚Ìæ“¾
+        ' æ—§ãƒãƒ¼ã‚¸ãƒ§ãƒ³äº’æ›
+        ReadBytes = fCOMSTAT.cbInQue    'å—ä¿¡ãƒã‚¤ãƒˆæ•°ã®å–å¾—
       Else
-        '--------- Version1.71‚ÅC³
+        '--------- Version1.71ã§ä¿®æ­£
 '        ReadBytes = ec.BinaryBytes
         If ec.AsciiBytes <= fCOMSTAT.cbInQue Then
             ReadBytes = ec.BinaryBytes
           Else
-            ReadBytes = fCOMSTAT.cbInQue    'óMƒoƒCƒg”‚Ìæ“¾
+            ReadBytes = fCOMSTAT.cbInQue    'å—ä¿¡ãƒã‚¤ãƒˆæ•°ã®å–å¾—
         End If
-        '--------- ‚±‚±‚Ü‚Å
+        '--------- ã“ã“ã¾ã§
     End If
-    '--------- ‚±‚±‚Ü‚Å
+    '--------- ã“ã“ã¾ã§
     
-    If ReadBytes = 0 Then           'ƒf[ƒ^ƒoƒbƒtƒ@‚ª‹ó‚Ì‚Æ‚«
-        Binary = 0                  ' 0 ‚ğ•Ô‚·
+    If ReadBytes = 0 Then           'ãƒ‡ãƒ¼ã‚¿ãƒãƒƒãƒ•ã‚¡ãŒç©ºã®ã¨ã
+        Binary = 0                  ' 0 ã‚’è¿”ã™
         Exit Property
     End If
     
@@ -1775,17 +1775,17 @@ Public Property Get Binary() As Variant
     If ReadFile(ecH(Cn).Handle, bdata(0), ReadBytes, ReadedBytes, 0&) = False Then ErrorFlag = True
     If ReadBytes <> ReadedBytes Then ErrorFlag = True
     If ErrorFlag Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ƒoƒCƒiƒŠ[ƒf[ƒ^‚ÌóM‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ãƒã‚¤ãƒŠãƒªãƒ¼ãƒ‡ãƒ¼ã‚¿ã®å—ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10171, _
-                    Description:="Binary - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚©‚ç‚ÌƒoƒCƒiƒŠ[ƒf[ƒ^‚ÌóM‚É¸”s‚µ‚Ü‚µ‚½D"
+                    Description:="Binary - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã‹ã‚‰ã®ãƒã‚¤ãƒŠãƒªãƒ¼ãƒ‡ãƒ¼ã‚¿ã®å—ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -1794,23 +1794,23 @@ Public Property Get Binary() As Variant
 End Property
 
 '-----------------------------------
-'   WAITmS ƒvƒƒpƒeƒB
+'   WAITmS ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'w’è‚µ‚½ŠÔŒã‚É–ß‚è‚Ü‚·D
-'’·®”Œ^(Long)CmS’PˆÊ‚Åw’è‚µ‚Ü‚·D
-'Å‘å49.7“ú‚Ü‚Åw’è‚Å‚«‚Ü‚·D
+'æŒ‡å®šã—ãŸæ™‚é–“å¾Œã«æˆ»ã‚Šã¾ã™ï¼
+'é•·æ•´æ•°å‹(Long)ï¼ŒmSå˜ä½ã§æŒ‡å®šã—ã¾ã™ï¼
+'æœ€å¤§49.7æ—¥ã¾ã§æŒ‡å®šã§ãã¾ã™ï¼
 Public Property Let WAITmS(WaitTime As Long)
-    'mS’PˆÊ‚ÌƒfƒBƒŒƒC
-    Dim STARTmS As Double   ' ŠJnŠÔ(mS)
-    Dim NOWmS As Double     ' Œ»İ‚ÌŠÔ(mS)
+    'mSå˜ä½ã®ãƒ‡ã‚£ãƒ¬ã‚¤
+    Dim STARTmS As Double   ' é–‹å§‹æ™‚é–“(mS)
+    Dim NOWmS As Double     ' ç¾åœ¨ã®æ™‚é–“(mS)
 
-    'ŠJn‚ÌŠÔ‚ğæ“¾
+    'é–‹å§‹æ™‚ã®æ™‚é–“ã‚’å–å¾—
     STARTmS = GetTickCount
     If STARTmS < 0 Then
         STARTmS = STARTmS + 4294967296#
     End If
 
-    'ŠÔ‘Ò‚¿
+    'æ™‚é–“å¾…ã¡
     Do
         DoEvents
         NOWmS = GetTickCount
@@ -1825,15 +1825,15 @@ Public Property Let WAITmS(WaitTime As Long)
 End Property
 
 '-----------------------------------
-'   DozeSeconds ƒvƒƒpƒeƒB
+'   DozeSeconds ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-' w’è‚µ‚½ŠÔ(Sec)Cˆ—‚ğ’â~‚µ‚Ü‚·D
-' ’â~‚·‚éŠÔ‚Í•b’PˆÊ‚Å‘ã“ü‚µ‚Ü‚·D
-' Doze‚Æ‚Íu‚¤‚½‚½Qv‚Æ‚¢‚¤ˆÓ–¡‚ÅC0.1•b‚²‚Æ‚ÉDoEvents‚ªÀs‚³‚ê‚é‚±‚Æ‚©‚ç–½–¼‚µ‚Ü‚µ‚½D
-' Excel2000ˆÈ~‚Å‚Í—LŒø‚Å‚·‚ª‚»‚êˆÈ‘O‚Ìƒo[ƒWƒ‡ƒ“‚Å‚Í‚Ù‚Æ‚ñ‚ÇˆÓ–¡‚ª‚ ‚è‚Ü‚¹‚ñD
+' æŒ‡å®šã—ãŸæ™‚é–“(Sec)ï¼Œå‡¦ç†ã‚’åœæ­¢ã—ã¾ã™ï¼
+' åœæ­¢ã™ã‚‹æ™‚é–“ã¯ç§’å˜ä½ã§ä»£å…¥ã—ã¾ã™ï¼
+' Dozeã¨ã¯ã€Œã†ãŸãŸå¯ã€ã¨ã„ã†æ„å‘³ã§ï¼Œ0.1ç§’ã”ã¨ã«DoEventsãŒå®Ÿè¡Œã•ã‚Œã‚‹ã“ã¨ã‹ã‚‰å‘½åã—ã¾ã—ãŸï¼
+' Excel2000ä»¥é™ã§ã¯æœ‰åŠ¹ã§ã™ãŒãã‚Œä»¥å‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã¯ã»ã¨ã‚“ã©æ„å‘³ãŒã‚ã‚Šã¾ã›ã‚“ï¼
 Public Property Let DozeSeconds(Seconds As Integer)
-    Dim WakeUp As Date                  ' –ÚŠo‚ß‚Ì
-    If Seconds < 1 Then Exit Property   ' 1•bˆÈã‚Ì‚İ—LŒø
+    Dim WakeUp As Date                  ' ç›®è¦šã‚ã®æ™‚åˆ»
+    If Seconds < 1 Then Exit Property   ' 1ç§’ä»¥ä¸Šã®ã¿æœ‰åŠ¹
     WakeUp = Now + TimeSerial(0, 0, Seconds)
     Do
         DoEvents
@@ -1843,27 +1843,27 @@ Public Property Let DozeSeconds(Seconds As Integer)
 End Property
 
 '-----------------------------------
-'   RTSCTSƒvƒƒpƒeƒB
+'   RTSCTSãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-' RTS‚Ì‹­§§Œä‚ÆCTS‚Ìó‘Ô“Ç‚İæ‚è
+' RTSã®å¼·åˆ¶åˆ¶å¾¡ã¨CTSã®çŠ¶æ…‹èª­ã¿å–ã‚Š
 
-'“Ç‚İo‚µ(CTS‚Ìó‘Ô)
+'èª­ã¿å‡ºã—(CTSã®çŠ¶æ…‹)
 Public Property Get RTSCTS() As Boolean
     Dim Stat As Long    ' Status
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10198, _
-                    Description:="RTSCTS - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="RTSCTS - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
@@ -1871,17 +1871,17 @@ Public Property Get RTSCTS() As Boolean
     End If
 
     If GetCommModemStatus(ecH(Cn).Handle, Stat) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' CTS‚Ìó‘Ô‚ª“Ç‚İæ‚ê‚Ü‚¹‚ñ‚Å‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' CTSã®çŠ¶æ…‹ãŒèª­ã¿å–ã‚Œã¾ã›ã‚“ã§ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10190, _
-                    Description:="RTSCTS - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌCTS‚Ìó‘Ô‚ª“Ç‚İæ‚ê‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="RTSCTS - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®CTSã®çŠ¶æ…‹ãŒèª­ã¿å–ã‚Œã¾ã›ã‚“ã§ã—ãŸï¼"
                 RTSCTS = False
                 Exit Property
         
@@ -1898,23 +1898,23 @@ Public Property Get RTSCTS() As Boolean
     End If
 End Property
 
-'‘‚«‚İ
+'æ›¸ãè¾¼ã¿
 Public Property Let RTSCTS(Status As Boolean)
     Dim Stat As Long    ' Status
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10199, _
-                    Description:="RTSCTS - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="RTSCTS - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
@@ -1928,17 +1928,17 @@ Public Property Let RTSCTS(Status As Boolean)
     End If
 
     If EscapeCommFunction(ecH(Cn).Handle, Stat) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' RTS‚Ìİ’è‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' RTSã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10191, _
-                    Description:="RTSCTS - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌRTS‚Ìİ’è‚É¸”s‚µ‚Ü‚µ‚½D"
+                    Description:="RTSCTS - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®RTSã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -1946,27 +1946,27 @@ Public Property Let RTSCTS(Status As Boolean)
 End Property
 
 '-----------------------------------
-'   DTRDSRƒvƒƒpƒeƒB
+'   DTRDSRãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-' DTR‚Ì‹­§§Œä‚ÆDSR‚Ìó‘Ô“Ç‚İæ‚è
+' DTRã®å¼·åˆ¶åˆ¶å¾¡ã¨DSRã®çŠ¶æ…‹èª­ã¿å–ã‚Š
 
-'“Ç‚İo‚µ(DSR‚Ìó‘Ô)
+'èª­ã¿å‡ºã—(DSRã®çŠ¶æ…‹)
 Public Property Get DTRDSR() As Boolean
     Dim Stat As Long    ' Status
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10208, _
-                    Description:="DTRDSR - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="DTRDSR - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
@@ -1974,17 +1974,17 @@ Public Property Get DTRDSR() As Boolean
     End If
     
     If GetCommModemStatus(ecH(Cn).Handle, Stat) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' DSR‚Ìó‘Ô‚ª“Ç‚İæ‚ê‚Ü‚¹‚ñ‚Å‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' DSRã®çŠ¶æ…‹ãŒèª­ã¿å–ã‚Œã¾ã›ã‚“ã§ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10200, _
-                    Description:="DTRDSR - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌDSR‚Ìó‘Ô‚ª“Ç‚İæ‚ê‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="DTRDSR - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®DSRã®çŠ¶æ…‹ãŒèª­ã¿å–ã‚Œã¾ã›ã‚“ã§ã—ãŸï¼"
                 DTRDSR = False
                 Exit Property
         
@@ -2000,23 +2000,23 @@ Public Property Get DTRDSR() As Boolean
     End If
 End Property
 
-'‘‚«‚İ
+'æ›¸ãè¾¼ã¿
 Public Property Let DTRDSR(Status As Boolean)
     Dim Stat As Long    ' Status
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10209, _
-                    Description:="DTRDSR - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="DTRDSR - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
 
         End Select
@@ -2030,17 +2030,17 @@ Public Property Let DTRDSR(Status As Boolean)
     End If
 
     If EscapeCommFunction(ecH(Cn).Handle, Stat) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' DTR‚Ìİ’è‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' DTRã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10201, _
-                    Description:="DTRDSR - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌDTR‚Ìİ’è‚É¸”s‚µ‚Ü‚µ‚½D"
+                    Description:="DTRDSR - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®DTRã®è¨­å®šã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                 Exit Property
         
         End Select
@@ -2050,30 +2050,30 @@ End Property
 
 
 '-----------------------------------
-'   DelimiterƒvƒƒpƒeƒB
+'   Delimiterãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'AsciiLineƒvƒƒpƒeƒB‚Åg—p‚·‚éƒfƒŠƒ~ƒ^‚Ìİ’èC“Ç‚İo‚µ‚ğs‚¤ƒvƒƒpƒeƒB‚Å‚·D
-'‘‚«‚İ
+'AsciiLineãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒªãƒŸã‚¿ã®è¨­å®šï¼Œèª­ã¿å‡ºã—ã‚’è¡Œã†ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã™ï¼
+'æ›¸ãè¾¼ã¿
 Public Property Let Delimiter(DelimiterType As String)
     Dim DelimStr As String
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                Stop        ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                Stop        ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10248, _
-                    Description:="Delimiter - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                    Description:="Delimiter - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
         
         End Select
 
     End If
 
-    ' ˆø”‚Ì³‹K‰»
+    ' å¼•æ•°ã®æ­£è¦åŒ–
     DelimStr = Trim(UCase(StrConv(DelimiterType, vbNarrow)))
     Select Case DelimStr
         Case Is = "CR"
@@ -2085,34 +2085,34 @@ Public Property Let Delimiter(DelimiterType As String)
         Case Is = "LFCR"
             ecH(Cn).Delimiter = "LFCR"
         Case Else
-            ecH(Cn).Delimiter = "CR"    ' ‹K’è’lˆÈŠO‚Í‚b‚q‚Æ‚İ‚È‚µ‚Ü‚·D
+            ecH(Cn).Delimiter = "CR"    ' è¦å®šå€¤ä»¥å¤–ã¯ï¼£ï¼²ã¨ã¿ãªã—ã¾ã™ï¼
     End Select
 
 End Property
 
-'“Ç‚İo‚µ
+'èª­ã¿å‡ºã—
 Public Property Get Delimiter() As String
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10249, _
-                    Description:="Delimiter - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="Delimiter - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
 
     End If
 
-    ' İ’è’l‚Ì“Ç‚İæ‚è
+    ' è¨­å®šå€¤ã®èª­ã¿å–ã‚Š
     Select Case ecH(Cn).Delimiter
         Case Is = ""
             Delimiter = "CR"
@@ -2125,30 +2125,30 @@ Public Property Get Delimiter() As String
         Case Is = "LFCR"
             Delimiter = "LFCR"
         Case Else
-            Delimiter = "CR"                ' ‹K’è’lˆÈŠO‚Í‚b‚q‚Æ‚İ‚È‚µ‚Ü‚·D
-            ecH(Cn).Delimiter = "CR"        ' CR ‚É•â³‚µ‚Ü‚·
+            Delimiter = "CR"                ' è¦å®šå€¤ä»¥å¤–ã¯ï¼£ï¼²ã¨ã¿ãªã—ã¾ã™ï¼
+            ecH(Cn).Delimiter = "CR"        ' CR ã«è£œæ­£ã—ã¾ã™
     End Select
 
 End Property
 
 '-----------------------------------
-'   BreakƒvƒƒpƒeƒB
+'   Breakãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'ƒuƒŒ[ƒNM†‚ğ‘—MC‚Ü‚½‚ÍƒuƒŒ[ƒNM†‚Ì‘—M‚ğ’â~‚·‚é‘‚«‚İê—p‚ÌƒvƒƒpƒeƒB‚Å‚·D
+'ãƒ–ãƒ¬ãƒ¼ã‚¯ä¿¡å·ã‚’é€ä¿¡ï¼Œã¾ãŸã¯ãƒ–ãƒ¬ãƒ¼ã‚¯ä¿¡å·ã®é€ä¿¡ã‚’åœæ­¢ã™ã‚‹æ›¸ãè¾¼ã¿å°‚ç”¨ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã™ï¼
 Public Property Let Break(BreakOn As Boolean)
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10259, _
-                    Description:="Break - Write" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="Break - Write" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
 
         End Select
@@ -2156,37 +2156,37 @@ Public Property Let Break(BreakOn As Boolean)
     End If
     
     If BreakOn = True Then
-        ' Break‚Ì‘—M
+        ' Breakã®é€ä¿¡
         If SetCommBreak(ecH(Cn).Handle) = False Then
-            'ƒGƒ‰[ˆ—
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' Break‚Ì‘—M‚É¸”s‚µ‚Ü‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' Breakã®é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10251, _
-                        Description:="Break - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌƒuƒŒ[ƒN‘—M‚É¸”s‚µ‚Ü‚µ‚½D"
+                        Description:="Break - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®ãƒ–ãƒ¬ãƒ¼ã‚¯é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                     Exit Property
             
             End Select
         End If
       Else
-        ' Break‘—M‚Ì’â~
+        ' Breaké€ä¿¡ã®åœæ­¢
         If ClearCommBreak(ecH(Cn).Handle) = False Then
-            'ƒGƒ‰[ˆ—
+            'ã‚¨ãƒ©ãƒ¼å‡¦ç†
             Select Case Xerror
-                Case Is = 0 '-----•W€ƒGƒ‰[
-                    ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                    Stop            ' Break‘—M‚Ì’â~‚É¸”s‚µ‚Ü‚µ‚½
-                    End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+                Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                    ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                    Stop            ' Breaké€ä¿¡ã®åœæ­¢ã«å¤±æ•—ã—ã¾ã—ãŸ
+                    End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-                Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+                Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                     err.Raise _
                         Number:=10252, _
-                        Description:="Break - Write" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌƒuƒŒ[ƒN‘—M‚Ì’â~‚É¸”s‚µ‚Ü‚µ‚½D"
+                        Description:="Break - Write" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®ãƒ–ãƒ¬ãƒ¼ã‚¯é€ä¿¡ã®åœæ­¢ã«å¤±æ•—ã—ã¾ã—ãŸï¼"
                     Exit Property
             
             End Select
@@ -2197,25 +2197,25 @@ Public Property Let Break(BreakOn As Boolean)
 End Property
 
 '-----------------------------------
-'   RIƒvƒƒpƒeƒB(“Çæê—p)
+'   RIãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(èª­å–å°‚ç”¨)
 '-----------------------------------
-' RI‚Ìó‘Ô“Ç‚İæ‚è
+' RIã®çŠ¶æ…‹èª­ã¿å–ã‚Š
 Public Property Get RI() As Boolean
     Dim Stat As Long    ' Status
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10268, _
-                    Description:="RI - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="RI - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
@@ -2223,17 +2223,17 @@ Public Property Get RI() As Boolean
     End If
     
     If GetCommModemStatus(ecH(Cn).Handle, Stat) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' RI‚Ìó‘Ô‚ª“Ç‚İæ‚ê‚Ü‚¹‚ñ‚Å‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' RIã®çŠ¶æ…‹ãŒèª­ã¿å–ã‚Œã¾ã›ã‚“ã§ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10261, _
-                    Description:="RI - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌRI‚Ìó‘Ô‚ª“Ç‚İæ‚ê‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="RI - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®RIã®çŠ¶æ…‹ãŒèª­ã¿å–ã‚Œã¾ã›ã‚“ã§ã—ãŸï¼"
                 DTRDSR = False
                 Exit Property
         
@@ -2250,25 +2250,25 @@ Public Property Get RI() As Boolean
 End Property
 
 '-----------------------------------
-'   DCDƒvƒƒpƒeƒB(“Çæê—p)
+'   DCDãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(èª­å–å°‚ç”¨)
 '-----------------------------------
-' DCD‚Ìó‘Ô“Ç‚İæ‚è
+' DCDã®çŠ¶æ…‹èª­ã¿å–ã‚Š
 Public Property Get DCD() As Boolean
     Dim Stat As Long    ' Status
     
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10278, _
-                    Description:="DCD - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="DCD - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
@@ -2276,17 +2276,17 @@ Public Property Get DCD() As Boolean
     End If
     
     If GetCommModemStatus(ecH(Cn).Handle, Stat) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' DCD‚Ìó‘Ô‚ª“Ç‚İæ‚ê‚Ü‚¹‚ñ‚Å‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' DCDã®çŠ¶æ…‹ãŒèª­ã¿å–ã‚Œã¾ã›ã‚“ã§ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10271, _
-                    Description:="DCD - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚ÌDCD‚Ìó‘Ô‚ª“Ç‚İæ‚ê‚Ü‚¹‚ñ‚Å‚µ‚½D"
+                    Description:="DCD - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®DCDã®çŠ¶æ…‹ãŒèª­ã¿å–ã‚Œã¾ã›ã‚“ã§ã—ãŸï¼"
                 DTRDSR = False
                 Exit Property
         
@@ -2304,9 +2304,9 @@ End Property
 
 
 '-----------------------------------
-'   SpecƒvƒƒpƒeƒB
+'   Specãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'ƒ|[ƒgƒnƒ“ƒhƒ‹ ecH(Cn).Handle ‚Ìî•ñ‚ğ•¶š—ñ‚Å•Ô‚µ‚Ü‚·D
+'ãƒãƒ¼ãƒˆãƒãƒ³ãƒ‰ãƒ« ecH(Cn).Handle ã®æƒ…å ±ã‚’æ–‡å­—åˆ—ã§è¿”ã—ã¾ã™ï¼
 Public Property Get Spec() As String
     Dim Er As Long
     Dim Mes As String
@@ -2315,18 +2315,18 @@ Public Property Get Spec() As String
     CrLf = Chr$(&HA)
 
     If Cn = 0 Then
-        'ƒ|[ƒg”Ô†–¢w’è
-        'ƒGƒ‰[ˆ—
+        'ãƒãƒ¼ãƒˆç•ªå·æœªæŒ‡å®š
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=10238, _
-                    Description:="InBuffer - Read" & Chr$(&HA) & "‘ÎÛ‚Æ‚È‚éƒ|[ƒg”Ô†‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+                    Description:="InBuffer - Read" & Chr$(&HA) & "å¯¾è±¡ã¨ãªã‚‹ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“"
                 Exit Property
         
         End Select
@@ -2334,42 +2334,42 @@ Public Property Get Spec() As String
     End If
 
     If GetCommProperties(ecH(Cn).Handle, fCOMMPROP) = False Then
-        'ƒGƒ‰[ˆ—
+        'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         Select Case Xerror
-            Case Is = 0 '-----•W€ƒGƒ‰[
-                ec.CloseAll     ' ‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚Ü‚·D
-                Stop            ' ƒ|[ƒg‚Ìî•ñ‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½
-                End             ' ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D
+            Case Is = 0 '-----æ¨™æº–ã‚¨ãƒ©ãƒ¼
+                ec.CloseAll     ' ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã¾ã™ï¼
+                Stop            ' ãƒãƒ¼ãƒˆã®æƒ…å ±ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸ
+                End             ' ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼
 
-            Case Is = 1 '-----ƒgƒ‰ƒbƒv‰Â”\ƒGƒ‰[
+            Case Is = 1 '-----ãƒˆãƒ©ãƒƒãƒ—å¯èƒ½ã‚¨ãƒ©ãƒ¼
                 err.Raise _
                     Number:=12300, _
-                    Description:="InCount - Read" & Chr$(&HA) & "ƒ|[ƒg(" & Cn & ")‚Ìî•ñ‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½"
+                    Description:="InCount - Read" & Chr$(&HA) & "ãƒãƒ¼ãƒˆ(" & Cn & ")ã®æƒ…å ±ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸ"
                 Exit Property
         
         End Select
 
     End If
 
-    'ƒƒ“ƒo‚ÌŠm”F
+    'ãƒ¡ãƒ³ãƒã®ç¢ºèª
     With fCOMMPROP
-        Mes = "\‘¢‘Ì‚ÌƒoƒCƒgƒTƒCƒY" & CrLf
-        Mes = Mes & "@" & .wPacketLength & CrLf
-        Mes = Mes & "ƒo[ƒWƒ‡ƒ“" & CrLf
-        Mes = Mes & "@" & .wPacketVersion & CrLf
-        Mes = Mes & "‘—Mƒoƒbƒtƒ@‚ÌÅ‘åƒoƒCƒg”" & CrLf
+        Mes = "æ§‹é€ ä½“ã®ãƒã‚¤ãƒˆã‚µã‚¤ã‚º" & CrLf
+        Mes = Mes & "ã€€" & .wPacketLength & CrLf
+        Mes = Mes & "ãƒãƒ¼ã‚¸ãƒ§ãƒ³" & CrLf
+        Mes = Mes & "ã€€" & .wPacketVersion & CrLf
+        Mes = Mes & "é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã®æœ€å¤§ãƒã‚¤ãƒˆæ•°" & CrLf
         If .dwMaxTxQueue = 0 Then
-            Mes = Mes & "@§ŒÀ–³‚µ" & CrLf
+            Mes = Mes & "ã€€åˆ¶é™ç„¡ã—" & CrLf
           Else
-            Mes = Mes & "@" & .dwMaxTxQueue & CrLf
+            Mes = Mes & "ã€€" & .dwMaxTxQueue & CrLf
         End If
-        Mes = Mes & "óMƒoƒbƒtƒ@‚ÌÅ‘åƒoƒCƒg”" & CrLf
+        Mes = Mes & "å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®æœ€å¤§ãƒã‚¤ãƒˆæ•°" & CrLf
         If .dwMaxRxQueue = 0 Then
-            Mes = Mes & "@§ŒÀ–³‚µ" & CrLf
+            Mes = Mes & "ã€€åˆ¶é™ç„¡ã—" & CrLf
           Else
-            Mes = Mes & "@" & .dwMaxRxQueue & CrLf
+            Mes = Mes & "ã€€" & .dwMaxRxQueue & CrLf
         End If
-        Mes = Mes & "Å‘åƒf[ƒ^“]‘—‘¬“x" & CrLf & "@"
+        Mes = Mes & "æœ€å¤§ãƒ‡ãƒ¼ã‚¿è»¢é€é€Ÿåº¦" & CrLf & "ã€€"
         Select Case .dwMaxBaud
             Case Is = BAUD_075
                 Mes = Mes & "75 bps"
@@ -2410,397 +2410,397 @@ Public Property Get Spec() As String
             Case Is = BAUD_128K
                 Mes = Mes & "128 K bps"
             Case Is = BAUD_USER
-                Mes = Mes & "ƒvƒƒOƒ‰ƒ}ƒuƒ‹"
+                Mes = Mes & "ãƒ—ãƒ­ã‚°ãƒ©ãƒãƒ–ãƒ«"
         End Select
         Mes = Mes & CrLf
 
-        Mes = Mes & "ƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚é‹@”\" & CrLf
+        Mes = Mes & "ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ã‚‹æ©Ÿèƒ½" & CrLf
         
         If .dwProvCapabilities & PCF_DTRDSR <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FDTR/DSR" & CrLf
+        Mes = Mes & "ï¼šDTR/DSR" & CrLf
         
         If .dwProvCapabilities & PCF_RTSCTS <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FRTS/CTS" & CrLf
+        Mes = Mes & "ï¼šRTS/CTS" & CrLf
         
         If .dwProvCapabilities & PCF_RLSD <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FCD(RLSD)" & CrLf
+        Mes = Mes & "ï¼šCD(RLSD)" & CrLf
         
         If .dwProvCapabilities & PCF_PARITY_CHECK <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒpƒŠƒeƒBƒ`ƒFƒbƒN" & CrLf
+        Mes = Mes & "ï¼šãƒ‘ãƒªãƒ†ã‚£ãƒã‚§ãƒƒã‚¯" & CrLf
         
         If .dwProvCapabilities & PCF_XONXOFF <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FXON/XOFF‚É‚æ‚éƒtƒ[§Œä" & CrLf
+        Mes = Mes & "ï¼šXON/XOFFã«ã‚ˆã‚‹ãƒ•ãƒ­ãƒ¼åˆ¶å¾¡" & CrLf
         
         If .dwProvCapabilities & PCF_SETXCHAR <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FXON/XOFF‚Ì•¶šw’è" & CrLf
+        Mes = Mes & "ï¼šXON/XOFFã®æ–‡å­—æŒ‡å®š" & CrLf
         
         If .dwProvCapabilities & PCF_TOTALTIMEOUTS <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "Fƒg[ƒ^ƒ‹ƒ^ƒCƒ€ƒAƒEƒg‚Ìİ’è" & CrLf
+        Mes = Mes & "ï¼šãƒˆãƒ¼ã‚¿ãƒ«ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®è¨­å®š" & CrLf
         
         If .dwProvCapabilities & PCF_INTTIMEOUTS <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒCƒ“ƒ^[ƒoƒ‹ƒ^ƒCƒ€ƒAƒEƒg‚Ìİ’è" & CrLf
+        Mes = Mes & "ï¼šã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®è¨­å®š" & CrLf
         
         If .dwProvCapabilities & PCF_SPECIALCHARS <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F“Áê•¶š‚Ìg—p" & CrLf
+        Mes = Mes & "ï¼šç‰¹æ®Šæ–‡å­—ã®ä½¿ç”¨" & CrLf
        
         If .dwProvCapabilities & PCF_16BITMODE <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F“Áê‚È16ƒrƒbƒgƒ‚[ƒh" & CrLf
+        Mes = Mes & "ï¼šç‰¹æ®Šãª16ãƒ“ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰" & CrLf
 
-        Mes = Mes & "Šeí‹@”\‚Ìİ’è‚Ì‰Â”Û" & CrLf
+        Mes = Mes & "å„ç¨®æ©Ÿèƒ½ã®è¨­å®šã®å¯å¦" & CrLf
         
         If .dwSettableParams & SP_PARITY <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒpƒŠƒeƒB‚Ìƒ‚[ƒh" & CrLf
+        Mes = Mes & "ï¼šãƒ‘ãƒªãƒ†ã‚£ã®ãƒ¢ãƒ¼ãƒ‰" & CrLf
         
         If .dwSettableParams & SP_BAUD <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "Fƒ{[ƒŒ[ƒg" & CrLf
+        Mes = Mes & "ï¼šãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆ" & CrLf
 
         If .dwSettableParams & SP_DATABITS <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "Fƒf[ƒ^ƒrƒbƒg”" & CrLf
+        Mes = Mes & "ï¼šãƒ‡ãƒ¼ã‚¿ãƒ“ãƒƒãƒˆæ•°" & CrLf
 
         If .dwSettableParams & SP_STOPBITS <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒXƒgƒbƒvƒrƒbƒg”" & CrLf
+        Mes = Mes & "ï¼šã‚¹ãƒˆãƒƒãƒ—ãƒ“ãƒƒãƒˆæ•°" & CrLf
 
         If .dwSettableParams & SP_HANDSHAKING <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "Fƒtƒ[§Œäiƒnƒ“ƒhƒVƒF[ƒNj" & CrLf
+        Mes = Mes & "ï¼šãƒ•ãƒ­ãƒ¼åˆ¶å¾¡ï¼ˆãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯ï¼‰" & CrLf
 
         If .dwSettableParams & SP_PARITY_CHECK <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒpƒŠƒeƒBƒ`ƒFƒbƒN‚ÌON/OFF" & CrLf
+        Mes = Mes & "ï¼šãƒ‘ãƒªãƒ†ã‚£ãƒã‚§ãƒƒã‚¯ã®ON/OFF" & CrLf
 
         If .dwSettableParams & SP_RLSD <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FCD(RLSD)" & CrLf
+        Mes = Mes & "ï¼šCD(RLSD)" & CrLf
 
         If .dwSettableParams & SP_PARITY <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒpƒŠƒeƒBƒ‚[ƒh" & CrLf
+        Mes = Mes & "ï¼šãƒ‘ãƒªãƒ†ã‚£ãƒ¢ãƒ¼ãƒ‰" & CrLf
 
-        Mes = Mes & "İ’è‰Â”\‚Èƒ{[ƒŒ[ƒg" & CrLf
+        Mes = Mes & "è¨­å®šå¯èƒ½ãªãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆ" & CrLf
         
         If .dwSettableBaud And BAUD_075 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F75 bps" & CrLf
+        Mes = Mes & "ï¼š75 bps" & CrLf
         
         If .dwSettableBaud And BAUD_110 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F110 bps" & CrLf
+        Mes = Mes & "ï¼š110 bps" & CrLf
         
         If .dwSettableBaud And BAUD_134_5 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F134.5 bps" & CrLf
+        Mes = Mes & "ï¼š134.5 bps" & CrLf
         
         If .dwSettableBaud And BAUD_150 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F150 bps" & CrLf
+        Mes = Mes & "ï¼š150 bps" & CrLf
             
         If .dwSettableBaud And BAUD_300 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F300 bps" & CrLf
+        Mes = Mes & "ï¼š300 bps" & CrLf
             
         If .dwSettableBaud And BAUD_600 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F600 bps" & CrLf
+        Mes = Mes & "ï¼š600 bps" & CrLf
             
         If .dwSettableBaud And BAUD_1200 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F1200 bps" & CrLf
+        Mes = Mes & "ï¼š1200 bps" & CrLf
             
         If .dwSettableBaud And BAUD_1800 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F1800 bps" & CrLf
+        Mes = Mes & "ï¼š1800 bps" & CrLf
             
         If .dwSettableBaud And BAUD_2400 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F2400 bps" & CrLf
+        Mes = Mes & "ï¼š2400 bps" & CrLf
             
         If .dwSettableBaud And BAUD_4800 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F4800 bps" & CrLf
+        Mes = Mes & "ï¼š4800 bps" & CrLf
             
         If .dwSettableBaud And BAUD_7200 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F7200 bps" & CrLf
+        Mes = Mes & "ï¼š7200 bps" & CrLf
             
         If .dwSettableBaud And BAUD_9600 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F9600 bps" & CrLf
+        Mes = Mes & "ï¼š9600 bps" & CrLf
             
         If .dwSettableBaud And BAUD_14400 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F14400 bps" & CrLf
+        Mes = Mes & "ï¼š14400 bps" & CrLf
             
         If .dwSettableBaud And BAUD_19200 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F19200 bps" & CrLf
+        Mes = Mes & "ï¼š19200 bps" & CrLf
             
         If .dwSettableBaud And BAUD_38400 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F38400 bps" & CrLf
+        Mes = Mes & "ï¼š38400 bps" & CrLf
             
         If .dwSettableBaud And BAUD_56K <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F56 K bps" & CrLf
+        Mes = Mes & "ï¼š56 K bps" & CrLf
             
         If .dwSettableBaud And BAUD_57600 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F57600 bps" & CrLf
+        Mes = Mes & "ï¼š57600 bps" & CrLf
             
         If .dwSettableBaud And BAUD_115200 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F115200 bps" & CrLf
+        Mes = Mes & "ï¼š115200 bps" & CrLf
             
         If .dwSettableBaud And BAUD_128K <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F128 K bps" & CrLf
+        Mes = Mes & "ï¼š128 K bps" & CrLf
             
         If .dwSettableBaud And BAUD_USER <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒvƒƒOƒ‰ƒ€" & CrLf
+        Mes = Mes & "ï¼šãƒ—ãƒ­ã‚°ãƒ©ãƒ " & CrLf
 
-        Mes = Mes & "İ’è‰Â”\‚Èƒf[ƒ^ƒrƒbƒg”" & CrLf
+        Mes = Mes & "è¨­å®šå¯èƒ½ãªãƒ‡ãƒ¼ã‚¿ãƒ“ãƒƒãƒˆæ•°" & CrLf
         
         If .wSettableData And DATABITS_5 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F5 ƒrƒbƒg" & CrLf
+        Mes = Mes & "ï¼š5 ãƒ“ãƒƒãƒˆ" & CrLf
 
         If .wSettableData And DATABITS_6 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F6 ƒrƒbƒg" & CrLf
+        Mes = Mes & "ï¼š6 ãƒ“ãƒƒãƒˆ" & CrLf
         
         If .wSettableData And DATABITS_7 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F7 ƒrƒbƒg" & CrLf
+        Mes = Mes & "ï¼š7 ãƒ“ãƒƒãƒˆ" & CrLf
         
         If .wSettableData And DATABITS_8 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F8 ƒrƒbƒg" & CrLf
+        Mes = Mes & "ï¼š8 ãƒ“ãƒƒãƒˆ" & CrLf
         
         If .wSettableData And DATABITS_16 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F16 ƒrƒbƒg" & CrLf
+        Mes = Mes & "ï¼š16 ãƒ“ãƒƒãƒˆ" & CrLf
         
         If .wSettableData And DATABITS_16X <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F“Áê‚ÈƒƒCƒhƒpƒX" & CrLf
+        Mes = Mes & "ï¼šç‰¹æ®Šãªãƒ¯ã‚¤ãƒ‰ãƒ‘ã‚¹" & CrLf
 
-        Mes = Mes & "İ’è‰Â”\‚ÈƒXƒgƒbƒvƒrƒbƒg”" & CrLf
+        Mes = Mes & "è¨­å®šå¯èƒ½ãªã‚¹ãƒˆãƒƒãƒ—ãƒ“ãƒƒãƒˆæ•°" & CrLf
         
         If .wSettableStopParity And STOPBITS_10 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F1 ƒrƒbƒg" & CrLf
+        Mes = Mes & "ï¼š1 ãƒ“ãƒƒãƒˆ" & CrLf
         
         If .wSettableStopParity And STOPBITS_15 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F1.5 ƒrƒbƒg" & CrLf
+        Mes = Mes & "ï¼š1.5 ãƒ“ãƒƒãƒˆ" & CrLf
         
         If .wSettableStopParity And STOPBITS_20 <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F2 ƒrƒbƒg" & CrLf
+        Mes = Mes & "ï¼š2 ãƒ“ãƒƒãƒˆ" & CrLf
 
-        Mes = Mes & "İ’è‰Â”\‚ÈƒpƒŠƒeƒBƒ`ƒFƒbƒN" & CrLf
+        Mes = Mes & "è¨­å®šå¯èƒ½ãªãƒ‘ãƒªãƒ†ã‚£ãƒã‚§ãƒƒã‚¯" & CrLf
         
         If .wSettableStopParity And PARITY_NONE <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒpƒŠƒeƒB‚È‚µ" & CrLf
+        Mes = Mes & "ï¼šãƒ‘ãƒªãƒ†ã‚£ãªã—" & CrLf
 
         If .wSettableStopParity And PARITY_ODD <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FŠï”ƒpƒŠƒeƒB" & CrLf
+        Mes = Mes & "ï¼šå¥‡æ•°ãƒ‘ãƒªãƒ†ã‚£" & CrLf
 
         If .wSettableStopParity And PARITY_EVEN <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "F‹ô”ƒpƒŠƒeƒB" & CrLf
+        Mes = Mes & "ï¼šå¶æ•°ãƒ‘ãƒªãƒ†ã‚£" & CrLf
 
         If .wSettableStopParity And PARITY_MARK <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "Fƒ}[ƒNƒpƒŠƒeƒB" & CrLf
+        Mes = Mes & "ï¼šãƒãƒ¼ã‚¯ãƒ‘ãƒªãƒ†ã‚£" & CrLf
 
         If .wSettableStopParity And PARITY_SPACE <> 0 Then
-            Mes = Mes & "@›"
+            Mes = Mes & "ã€€â—‹"
           Else
-            Mes = Mes & "@~"
+            Mes = Mes & "ã€€Ã—"
         End If
-        Mes = Mes & "FƒXƒy[ƒXƒpƒŠƒeƒB" & CrLf
+        Mes = Mes & "ï¼šã‚¹ãƒšãƒ¼ã‚¹ãƒ‘ãƒªãƒ†ã‚£" & CrLf
 
     End With
     Spec = Mes
     
 End Property
 '-----------------------------------
-'   CloseAllƒƒ\ƒbƒh
+'   CloseAllãƒ¡ã‚½ãƒƒãƒ‰
 '-----------------------------------
 Private Sub CloseAll()
-'‚·‚×‚Ä‚Ìƒ|[ƒg‚ğ•Â‚¶‚éC“à•”ˆ——p‚Ìƒƒ\ƒbƒh‚Å‚·D
-'ecPorts.tmp‚É•Û‘¶‚³‚ê‚Ä‚¢‚éƒnƒ“ƒhƒ‹‚àƒNƒ[ƒY‚µCƒtƒ@ƒCƒ‹‚ğíœ‚µ‚Ü‚·D
-'ƒGƒ‰[‚ğ•Ô‚µ‚Ü‚¹‚ñ
+'ã™ã¹ã¦ã®ãƒãƒ¼ãƒˆã‚’é–‰ã˜ã‚‹ï¼Œå†…éƒ¨å‡¦ç†ç”¨ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ã™ï¼
+'ecPorts.tmpã«ä¿å­˜ã•ã‚Œã¦ã„ã‚‹ãƒãƒ³ãƒ‰ãƒ«ã‚‚ã‚¯ãƒ­ãƒ¼ã‚ºã—ï¼Œãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã—ã¾ã™ï¼
+'ã‚¨ãƒ©ãƒ¼ã‚’è¿”ã—ã¾ã›ã‚“
     Dim i As Long
     Dim rv As Long
     Dim Handle As Long
@@ -2812,32 +2812,32 @@ Private Sub CloseAll()
     Open Left(Fpath, InStr(Fpath, vbNullChar) - 1) & "ecPort.tmp" For Random Access Read Write As #FileNumber Len = Len(Handle)
 
     For i = 1 To ecMaxPort
-        ecH(i).Delimiter = "CR"         ' ƒfƒŠƒ~ƒ^‚ğƒŠƒZƒbƒg‚µ‚Ü‚·
-        ecH(i).LineInTimeOut = 0        ' ƒ^ƒCƒ€ƒAƒEƒg‚ÌƒŠƒZƒbƒg
-        Get #FileNumber, i, Handle      ' ‹L˜^‚³‚ê‚Ä‚¢‚éƒnƒ“ƒhƒ‹‚ğæ“¾‚µ‚Ü‚·
+        ecH(i).Delimiter = "CR"         ' ãƒ‡ãƒªãƒŸã‚¿ã‚’ãƒªã‚»ãƒƒãƒˆã—ã¾ã™
+        ecH(i).LineInTimeOut = 0        ' ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã®ãƒªã‚»ãƒƒãƒˆ
+        Get #FileNumber, i, Handle      ' è¨˜éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—ã—ã¾ã™
         If Handle > 0 Then
-            CloseHandle Handle          ' ƒNƒ[ƒY
+            CloseHandle Handle          ' ã‚¯ãƒ­ãƒ¼ã‚º
             rv = 0&
             Put #FileNumber, i, rv
         End If
         ecH(i).Handle = 0
     Next i
-    Cn = 0      ' ˆ—‘ÎÛ‚Ìƒ|[ƒg”Ô†‚ğƒŠƒZƒbƒg
+    Cn = 0      ' å‡¦ç†å¯¾è±¡ã®ãƒãƒ¼ãƒˆç•ªå·ã‚’ãƒªã‚»ãƒƒãƒˆ
     Close #FileNumber
 End Sub
 
 '-----------------------------------
-'‰B‚µƒRƒ}ƒ“ƒh
+'éš ã—ã‚³ãƒãƒ³ãƒ‰
 
 '-----------------------------------
-'   OutBufferSizeƒvƒƒpƒeƒB
+'   OutBufferSizeãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'“Ç‚İo‚µê—p
-'Œ»İˆ—‚Ì‘ÎÛ‚Æ‚È‚Á‚Ä‚¢‚éƒ|[ƒg‚Ì‘—Mƒoƒbƒtƒ@‚ÌƒTƒCƒY‚ğ•Ô‚µ‚Ü‚·
-'ƒGƒ‰[‚Í-1‚ğ•Ô‚µ‚Ü‚·
+'èª­ã¿å‡ºã—å°‚ç”¨
+'ç¾åœ¨å‡¦ç†ã®å¯¾è±¡ã¨ãªã£ã¦ã„ã‚‹ãƒãƒ¼ãƒˆã®é€ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚ºã‚’è¿”ã—ã¾ã™
+'ã‚¨ãƒ©ãƒ¼æ™‚ã¯-1ã‚’è¿”ã—ã¾ã™
 Private Property Get OutBufferSize() As Long
     If GetCommProperties(ecH(Cn).Handle, fCOMMPROP) = False Then
-        'ó‘Ô‚Ìæ“¾‚É¸”s
+        'çŠ¶æ…‹ã®å–å¾—ã«å¤±æ•—
         OutBufferSize = -1
         Exit Property
     End If
@@ -2845,14 +2845,14 @@ Private Property Get OutBufferSize() As Long
 End Property
 
 '-----------------------------------
-'   InBufferSizeƒvƒƒpƒeƒB
+'   InBufferSizeãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'“Ç‚İo‚µê—p
-'Œ»İˆ—‚Ì‘ÎÛ‚Æ‚È‚Á‚Ä‚¢‚éƒ|[ƒg‚ÌóMƒoƒbƒtƒ@‚ÌƒTƒCƒY‚ğ•Ô‚µ‚Ü‚·
-'ƒGƒ‰[‚Í-1‚ğ•Ô‚µ‚Ü‚·
+'èª­ã¿å‡ºã—å°‚ç”¨
+'ç¾åœ¨å‡¦ç†ã®å¯¾è±¡ã¨ãªã£ã¦ã„ã‚‹ãƒãƒ¼ãƒˆã®å—ä¿¡ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚ºã‚’è¿”ã—ã¾ã™
+'ã‚¨ãƒ©ãƒ¼æ™‚ã¯-1ã‚’è¿”ã—ã¾ã™
 Private Property Get InBufferSize() As Long
     If GetCommProperties(ecH(Cn).Handle, fCOMMPROP) = False Then
-        'ó‘Ô‚Ìæ“¾‚É¸”s
+        'çŠ¶æ…‹ã®å–å¾—ã«å¤±æ•—
         InBufferSize = -1
         Exit Property
     End If
@@ -2860,22 +2860,22 @@ Private Property Get InBufferSize() As Long
 End Property
 
 '-----------------------------------
-'   DELIMsƒvƒƒpƒeƒB
+'   DELIMsãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
 'DELIMs
-'ƒfƒŠƒ~ƒ^—pİ’è•¶š—ñæ“¾ƒvƒƒpƒeƒB(“Ç‚İo‚µê—p)
-'   DelimiterƒvƒƒpƒeƒB‚Åg—p‚·‚éƒfƒŠƒ~ƒ^‚Ìİ’è—p•¶š—ñ‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒpƒeƒBD
-'   Ÿ‚Ì—á‚ÍC•¶š—ñ‚Åw’è‚·‚é‚à‚Ì‚ÆHANDSHAKINGsƒvƒƒpƒeƒB‚ğg‚Á‚½‚à‚Ì‚Æ‚Ì”äŠr‚Å‚·D
-'—á
-' œƒfƒŠƒ~ƒ^‚ğCr‚Éİ’è‚µ‚Ü‚·D
+'ãƒ‡ãƒªãƒŸã‚¿ç”¨è¨­å®šæ–‡å­—åˆ—å–å¾—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(èª­ã¿å‡ºã—å°‚ç”¨)
+'   Delimiterãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒªãƒŸã‚¿ã®è¨­å®šç”¨æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼
+'   æ¬¡ã®ä¾‹ã¯ï¼Œæ–‡å­—åˆ—ã§æŒ‡å®šã™ã‚‹ã‚‚ã®ã¨HANDSHAKINGsãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ä½¿ã£ãŸã‚‚ã®ã¨ã®æ¯”è¼ƒã§ã™ï¼
+'ä¾‹
+' â—ãƒ‡ãƒªãƒŸã‚¿ã‚’Crã«è¨­å®šã—ã¾ã™ï¼
 '   ec.Delimiter = ec.DELIMs.Cr
 '   ec.Delimiter = "Cr"
-' œƒfƒŠƒ~ƒ^‚ğCr+Lf‚Éİ’è‚µ‚Ü‚·D
+' â—ãƒ‡ãƒªãƒŸã‚¿ã‚’Cr+Lfã«è¨­å®šã—ã¾ã™ï¼
 '   ec.Delimiter = ec.DELIMs.CrLf
 '   ec.Delimiter = "CRLF"
 
 Public Property Get DELIMs() As DelimType
-    ' ƒfƒŠƒ~ƒ^w’è•¶š—ñ’è”
+    ' ãƒ‡ãƒªãƒŸã‚¿æŒ‡å®šæ–‡å­—åˆ—å®šæ•°
     DELIMs.Cr = "CR"            ' CR
     DELIMs.Lf = "LF"            ' LF
     DELIMs.CrLf = "CRLF"        ' CR + LF
@@ -2883,22 +2883,22 @@ Public Property Get DELIMs() As DelimType
 End Property
 
 '-----------------------------------
-'   HANDSHAKEsƒvƒƒpƒeƒB
+'   HANDSHAKEsãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 '-----------------------------------
-'ƒnƒ“ƒhƒVƒF[ƒLƒ“ƒOİ’è•¶š—ñæ“¾ƒvƒƒpƒeƒB(“Ç‚İo‚µê—p)
-'   HandHsakingƒvƒƒpƒeƒB‚Åg—p‚·‚éİ’è—p•¶š—ñ‚ğæ“¾‚·‚é‚½‚ß‚ÌƒvƒƒpƒeƒBD
-'   Ÿ‚Ì—á‚ÍC•¶š—ñ‚Åw’è‚·‚é‚à‚Ì‚ÆHANDSHAKINGsƒvƒƒpƒeƒB‚ğg‚Á‚½‚à‚Ì‚Æ‚Ì”äŠr‚Å‚·D
-'—á
-' œƒnƒ“ƒhƒVƒF[ƒN‚ğ‚È‚µ‚Éİ’è‚µ‚Ü‚·D
+'ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚­ãƒ³ã‚°è¨­å®šæ–‡å­—åˆ—å–å¾—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£(èª­ã¿å‡ºã—å°‚ç”¨)
+'   HandHsakingãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ä½¿ç”¨ã™ã‚‹è¨­å®šç”¨æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼
+'   æ¬¡ã®ä¾‹ã¯ï¼Œæ–‡å­—åˆ—ã§æŒ‡å®šã™ã‚‹ã‚‚ã®ã¨HANDSHAKINGsãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ä½¿ã£ãŸã‚‚ã®ã¨ã®æ¯”è¼ƒã§ã™ï¼
+'ä¾‹
+' â—ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯ã‚’ãªã—ã«è¨­å®šã—ã¾ã™ï¼
 '   ec.HandShaking = ec.HANDSHAKEs.No
 '   ec.HandShaking = "N"
-' œƒnƒ“ƒhƒVƒF[ƒN‚ğRTS/CTS‚Éİ’è‚µ‚Ü‚·D
+' â—ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯ã‚’RTS/CTSã«è¨­å®šã—ã¾ã™ï¼
 '   ec.HandShaking = ec.HANDSHAKEs.RTSCTS
 '   ec.HandShaking = "R"
 '
 Public Property Get HANDSHAKEs() As HandShakingType
-    ' ƒnƒ“ƒhƒVƒF[ƒNw’è•¶š—ñ’è”
-    HANDSHAKEs.No = "N"         ' ‚È‚µ
+    ' ãƒãƒ³ãƒ‰ã‚·ã‚§ãƒ¼ã‚¯æŒ‡å®šæ–‡å­—åˆ—å®šæ•°
+    HANDSHAKEs.No = "N"         ' ãªã—
     HANDSHAKEs.XonXoff = "X"    ' Xon/Off
     HANDSHAKEs.RTSCTS = "R"     ' RTS/CTS
     HANDSHAKEs.DTRDSR = "D"     ' DTR/DSR

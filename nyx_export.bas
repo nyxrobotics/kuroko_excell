@@ -1,15 +1,15 @@
 Attribute VB_Name = "nyx_export"
 '--------------------------------------------------------------
-'ƒtƒ@ƒCƒ‹–¼‚©‚çŠg’£q‚ğœ‚­–¼‘O‚ğæ‚èo‚·ŠÖ”
+'ãƒ•ã‚¡ã‚¤ãƒ«åã‹ã‚‰æ‹¡å¼µå­ã‚’é™¤ãåå‰ã‚’å–ã‚Šå‡ºã™é–¢æ•°
 Function GetFNameFromFStr(sFileName As String) As String
     Dim sFileStr As String
     Dim lFindPoint As Long
     Dim lStrLen As Long
     
-    '•¶š—ñ‚Ì‰E’[‚©‚ç"."‚ğŒŸõ‚µA¶’[‚©‚ç‚ÌˆÊ’u‚ğæ“¾‚·‚é
+    'æ–‡å­—åˆ—ã®å³ç«¯ã‹ã‚‰"."ã‚’æ¤œç´¢ã—ã€å·¦ç«¯ã‹ã‚‰ã®ä½ç½®ã‚’å–å¾—ã™ã‚‹
     lFindPoint = InStrRev(sFileName, ".")
     
-    'Šg’£q‚ğœ‚¢‚½ƒtƒ@ƒCƒ‹–¼‚Ìæ“¾
+    'æ‹¡å¼µå­ã‚’é™¤ã„ãŸãƒ•ã‚¡ã‚¤ãƒ«åã®å–å¾—
     sFileStr = Left(sFileName, lFindPoint - 1)
 
     GetFNameFromFStr = sFileStr
@@ -18,7 +18,7 @@ End Function
 
 Sub MotionExport_Move()
     '----------------------------------
-    'motion_exportƒtƒHƒ‹ƒ_‚ª‚È‚¯‚ê‚Îì¬‚·‚é
+    'motion_exportãƒ•ã‚©ãƒ«ãƒ€ãŒãªã‘ã‚Œã°ä½œæˆã™ã‚‹
     
     Dim MotionExportDirectry As String
     MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
@@ -27,7 +27,7 @@ Sub MotionExport_Move()
     End If
     
     '----------------------------------
-    'o—Íƒtƒ@ƒCƒ‹–¼‚ğŒˆ’è
+    'å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æ±ºå®š
     Dim Filename As String
     Filename = GetFNameFromFStr(ActiveWorkbook.Name) & "_" & ActiveSheet.Name
     Dim OutputFile As String
@@ -53,7 +53,7 @@ Sub MotionExport_Move()
     LoopStart = 0
     LoopEnd = 0
     '-------------
-    'ŠJnˆÊ’u‚ğ’²‚×‚é
+    'é–‹å§‹ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 1 Then
             StartFrame = k - 8
@@ -63,7 +63,7 @@ Sub MotionExport_Move()
     Next
    
     '-------------
-    'I—¹ˆÊ’u‚ğ’²‚×‚é
+    'çµ‚äº†ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = StartFrame + 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 2 Then
             EndFrame = k - 8
@@ -72,7 +72,7 @@ Sub MotionExport_Move()
     Next
     
     '-------------
-    'ƒ‹[ƒvˆÊ’u‚ğ’²‚×‚é
+    'ãƒ«ãƒ¼ãƒ—ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = (StartFrame + 8) To (EndFrame + 8)
         If Not Sheets(Shtname).Cells(1, k) = "" Then
             LoopStart = Sheets(Shtname).Cells(1, k).Value
@@ -87,7 +87,7 @@ Sub MotionExport_Move()
     
     Dim TotalFrame As Integer
     '----------------------------------
-    'ƒXƒ^[ƒeƒBƒ“ƒOƒ‚[ƒVƒ‡ƒ“
+    'ã‚¹ã‚¿ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
     If LoopStart <> 0 Then
     TotalFrame = LoopStart - StartFrame
     Else
@@ -145,12 +145,12 @@ Sub MotionExport_Move()
     
      'Print #IntFlNo, StartFrame & EndFrame & LoopStart & LoopEnd & ""
     
-    If TotalFrame > 0 Then '‚±‚Á‚¿‚É‚·‚é‚Æ‰½‚à‚È‚¢‚Æo—Í‚µ‚È‚­‚È‚é
+    If TotalFrame > 0 Then 'ã“ã£ã¡ã«ã™ã‚‹ã¨ä½•ã‚‚ãªã„ã¨å‡ºåŠ›ã—ãªããªã‚‹
     Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_Start[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(ˆêŒÂ–Úƒ‚[ƒVƒ‡ƒ“‚Ì‘ƒtƒŒ[ƒ€”A“ñŒÂ–ÚƒT[ƒ{‚Ì‘”AOŒÂ–ÚˆÈ~‚ªw’è‚µ‚½ID)"
-    Print #IntFlNo, "{" & A(2) & "},//‰Šúp¨(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+    Print #IntFlNo, "{" & A(1) & "},//(ä¸€å€‹ç›®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ç·ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã€äºŒå€‹ç›®ã‚µãƒ¼ãƒœã®ç·æ•°ã€ä¸‰å€‹ç›®ä»¥é™ãŒæŒ‡å®šã—ãŸID)"
+    Print #IntFlNo, "{" & A(2) & "},//åˆæœŸå§¿å‹¢(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "},//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
             If TotalFrame > 2 Then
             For i = 4 To (TotalFrame + 1)
             Print #IntFlNo, "{" & A(i) & "},"
@@ -158,7 +158,7 @@ Sub MotionExport_Move()
             End If
         Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
         Else
-        Print #IntFlNo, "{" & A(3) & "}//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "}//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         End If
     Print #IntFlNo, "};"
     Print #IntFlNo, ""
@@ -166,7 +166,7 @@ Sub MotionExport_Move()
     
 
     '----------------------------------------
-    'ƒ‹[ƒvƒ‚[ƒVƒ‡ƒ“
+    'ãƒ«ãƒ¼ãƒ—ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
     If LoopStart = 0 Then
     TotalFrame = 0
     Else
@@ -219,12 +219,12 @@ Sub MotionExport_Move()
     End If
     
     
-    If TotalFrame > 0 Then '‚±‚Á‚¿‚É‚·‚é‚Æ‰½‚à‚È‚¢‚Æo—Í‚µ‚È‚­‚È‚é
+    If TotalFrame > 0 Then 'ã“ã£ã¡ã«ã™ã‚‹ã¨ä½•ã‚‚ãªã„ã¨å‡ºåŠ›ã—ãªããªã‚‹
     Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_Loop[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(ˆêŒÂ–Úƒ‚[ƒVƒ‡ƒ“‚Ì‘ƒtƒŒ[ƒ€”A“ñŒÂ–ÚƒT[ƒ{‚Ì‘”AOŒÂ–ÚˆÈ~‚ªw’è‚µ‚½ID)"
-    Print #IntFlNo, "{" & A(2) & "},//‰Šúp¨(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+    Print #IntFlNo, "{" & A(1) & "},//(ä¸€å€‹ç›®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ç·ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã€äºŒå€‹ç›®ã‚µãƒ¼ãƒœã®ç·æ•°ã€ä¸‰å€‹ç›®ä»¥é™ãŒæŒ‡å®šã—ãŸID)"
+    Print #IntFlNo, "{" & A(2) & "},//åˆæœŸå§¿å‹¢(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "},//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
             If TotalFrame > 2 Then
             For i = 4 To (TotalFrame + 1)
             Print #IntFlNo, "{" & A(i) & "},"
@@ -232,13 +232,13 @@ Sub MotionExport_Move()
             End If
         Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
         Else
-        Print #IntFlNo, "{" & A(3) & "}//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "}//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         End If
     Print #IntFlNo, "};"
     Print #IntFlNo, ""
     End If
     '----------------------------------------
-    'ƒGƒ“ƒhƒ‚[ƒVƒ‡ƒ“
+    'ã‚¨ãƒ³ãƒ‰ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
     If LoopEnd = 0 Then
     TotalFrame = 0
     Else
@@ -289,12 +289,12 @@ Sub MotionExport_Move()
     End If
     
     
-    If TotalFrame > 0 Then '‚±‚Á‚¿‚É‚·‚é‚Æ‰½‚à‚È‚¢‚Æo—Í‚µ‚È‚­‚È‚é
+    If TotalFrame > 0 Then 'ã“ã£ã¡ã«ã™ã‚‹ã¨ä½•ã‚‚ãªã„ã¨å‡ºåŠ›ã—ãªããªã‚‹
     Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_End[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(ˆêŒÂ–Úƒ‚[ƒVƒ‡ƒ“‚Ì‘ƒtƒŒ[ƒ€”A“ñŒÂ–ÚƒT[ƒ{‚Ì‘”AOŒÂ–ÚˆÈ~‚ªw’è‚µ‚½ID)"
-    Print #IntFlNo, "{" & A(2) & "},//‰Šúp¨(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+    Print #IntFlNo, "{" & A(1) & "},//(ä¸€å€‹ç›®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ç·ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã€äºŒå€‹ç›®ã‚µãƒ¼ãƒœã®ç·æ•°ã€ä¸‰å€‹ç›®ä»¥é™ãŒæŒ‡å®šã—ãŸID)"
+    Print #IntFlNo, "{" & A(2) & "},//åˆæœŸå§¿å‹¢(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "},//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
             If TotalFrame > 2 Then
             For i = 4 To (TotalFrame + 1)
             Print #IntFlNo, "{" & A(i) & "},"
@@ -302,7 +302,7 @@ Sub MotionExport_Move()
             End If
         Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
         Else
-        Print #IntFlNo, "{" & A(3) & "}//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "}//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         End If
     Print #IntFlNo, "};"
     Print #IntFlNo, ""
@@ -320,14 +320,14 @@ End Sub
 
 Sub MotionExport_Atk()
     '----------------------------------
-    'motion_exportƒtƒHƒ‹ƒ_‚ª‚È‚¯‚ê‚Îì¬‚·‚é
+    'motion_exportãƒ•ã‚©ãƒ«ãƒ€ãŒãªã‘ã‚Œã°ä½œæˆã™ã‚‹
     Dim MotionExportDirectry As String
     MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
     If Dir(MotionExportDirectry, vbDirectory) = "" Then
         MkDir MotionExportDirectry
     End If
     '----------------------------------
-    'o—Íƒtƒ@ƒCƒ‹–¼‚ğŒˆ’è
+    'å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æ±ºå®š
     Dim Filename As String
     Filename = GetFNameFromFStr(ActiveWorkbook.Name) & "_" & ActiveSheet.Name
     Dim OutputFile As String
@@ -346,7 +346,7 @@ Sub MotionExport_Atk()
     LoopStart = 0
     LoopEnd = 0
     '-------------
-    'ŠJnˆÊ’u‚ğ’²‚×‚é
+    'é–‹å§‹ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 1 Then
             StartFrame = k - 8
@@ -355,7 +355,7 @@ Sub MotionExport_Atk()
         End If
     Next
     '-------------
-    'I—¹ˆÊ’u‚ğ’²‚×‚é
+    'çµ‚äº†ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = StartFrame + 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 2 Then
             EndFrame = k - 8
@@ -363,7 +363,7 @@ Sub MotionExport_Atk()
         End If
     Next
     '-------------
-    '•ªŠ„ˆÊ’u‚ğ’²‚×‚é
+    'åˆ†å‰²ä½ç½®ã‚’èª¿ã¹ã‚‹
     Dim DotPoint(100) As Integer
     Dim Dots As Integer
     Dim l As Integer, m As Integer
@@ -428,12 +428,12 @@ Sub MotionExport_Atk()
                         Next j
                     Next i
                 'End If
-                'If TotalFrame > 0 Then '‚±‚Á‚¿‚É‚·‚é‚Æ‰½‚à‚È‚¢‚Æo—Í‚µ‚È‚­‚È‚é
+                'If TotalFrame > 0 Then 'ã“ã£ã¡ã«ã™ã‚‹ã¨ä½•ã‚‚ãªã„ã¨å‡ºåŠ›ã—ãªããªã‚‹
                     Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_" & l & "[" & TotalFrame + 1 & "][" & servosend + 2 & "]={"
-                    Print #IntFlNo, "{" & A(1) & "},//(ˆêŒÂ–Úƒ‚[ƒVƒ‡ƒ“‚Ì‘ƒtƒŒ[ƒ€”A“ñŒÂ–ÚƒT[ƒ{‚Ì‘”AOŒÂ–ÚˆÈ~‚ªw’è‚µ‚½ID)"
-                    Print #IntFlNo, "{" & A(2) & "},//‰Šúp¨(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+                    Print #IntFlNo, "{" & A(1) & "},//(ä¸€å€‹ç›®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ç·ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã€äºŒå€‹ç›®ã‚µãƒ¼ãƒœã®ç·æ•°ã€ä¸‰å€‹ç›®ä»¥é™ãŒæŒ‡å®šã—ãŸID)"
+                    Print #IntFlNo, "{" & A(2) & "},//åˆæœŸå§¿å‹¢(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
                         If TotalFrame > 2 Then
-                        Print #IntFlNo, "{" & A(3) & "},//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+                        Print #IntFlNo, "{" & A(3) & "},//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
                             If TotalFrame > 2 Then
                             For i = 4 To (DotPoint(l) - m) + 1
                             Print #IntFlNo, "{" & A(i) & "},"
@@ -441,7 +441,7 @@ Sub MotionExport_Atk()
                             End If
                         Print #IntFlNo, "{" & A((DotPoint(l) - m) + 2) & "}"
                         Else
-                        Print #IntFlNo, "{" & A(3) & "}//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+                        Print #IntFlNo, "{" & A(3) & "}//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
                         End If
                     Print #IntFlNo, "};"
                     Print #IntFlNo, ""
@@ -462,7 +462,7 @@ End Sub
 Sub MotionExport_Move_2()
 
     '----------------------------------
-    'motion_exportƒtƒHƒ‹ƒ_‚ª‚È‚¯‚ê‚Îì¬‚·‚é
+    'motion_exportãƒ•ã‚©ãƒ«ãƒ€ãŒãªã‘ã‚Œã°ä½œæˆã™ã‚‹
     
     Dim MotionExportDirectry As String
     MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
@@ -471,7 +471,7 @@ Sub MotionExport_Move_2()
     End If
     
     '----------------------------------
-    'o—Íƒtƒ@ƒCƒ‹–¼‚ğŒˆ’è
+    'å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æ±ºå®š
     Dim Filename As String
     Filename = GetFNameFromFStr(ActiveWorkbook.Name) & "_" & ActiveSheet.Name
     Dim OutputFile As String
@@ -493,7 +493,7 @@ Sub MotionExport_Move_2()
     LoopStart = 0
     LoopEnd = 0
     '-------------
-    'ŠJnˆÊ’u‚ğ’²‚×‚é
+    'é–‹å§‹ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 1 Then
             StartFrame = k - 8
@@ -503,7 +503,7 @@ Sub MotionExport_Move_2()
     Next
    
     '-------------
-    'I—¹ˆÊ’u‚ğ’²‚×‚é
+    'çµ‚äº†ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = StartFrame + 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 2 Then
             EndFrame = k - 8
@@ -512,7 +512,7 @@ Sub MotionExport_Move_2()
     Next
     
     '-------------
-    'ƒ‹[ƒvˆÊ’u‚ğ’²‚×‚é
+    'ãƒ«ãƒ¼ãƒ—ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = (StartFrame + 8) To (EndFrame + 8)
         If Not Sheets(Shtname).Cells(1, k) = "" Then
             LoopStart = Sheets(Shtname).Cells(1, k).Value
@@ -526,7 +526,7 @@ Sub MotionExport_Move_2()
     
     Dim TotalFrame As Integer
     '----------------------------------
-    'ƒXƒ^[ƒeƒBƒ“ƒOƒ‚[ƒVƒ‡ƒ“
+    'ã‚¹ã‚¿ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
     If LoopStart <> 0 Then
     TotalFrame = LoopStart - StartFrame
     Else
@@ -580,10 +580,10 @@ Sub MotionExport_Move_2()
     
     If TotalFrame > 0 Then
     Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_Start[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(ˆêŒÂ–Úƒ‚[ƒVƒ‡ƒ“‚Ì‘ƒtƒŒ[ƒ€”A“ñŒÂ–ÚƒT[ƒ{‚Ì‘”AOŒÂ–ÚˆÈ~‚ªw’è‚µ‚½ID)"
-    Print #IntFlNo, "{" & A(2) & "},//‰Šúp¨(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+    Print #IntFlNo, "{" & A(1) & "},//(ä¸€å€‹ç›®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ç·ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã€äºŒå€‹ç›®ã‚µãƒ¼ãƒœã®ç·æ•°ã€ä¸‰å€‹ç›®ä»¥é™ãŒæŒ‡å®šã—ãŸID)"
+    Print #IntFlNo, "{" & A(2) & "},//åˆæœŸå§¿å‹¢(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "},//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
             If TotalFrame > 2 Then
             For i = 4 To (TotalFrame + 1)
             Print #IntFlNo, "{" & A(i) & "},"
@@ -591,7 +591,7 @@ Sub MotionExport_Move_2()
             End If
         Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
         Else
-        Print #IntFlNo, "{" & A(3) & "}//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "}//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         End If
     Print #IntFlNo, "};"
     Print #IntFlNo, ""
@@ -599,7 +599,7 @@ Sub MotionExport_Move_2()
     
 
     '----------------------------------------
-    'ƒ‹[ƒvƒ‚[ƒVƒ‡ƒ“
+    'ãƒ«ãƒ¼ãƒ—ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
     If LoopStart = 0 Then
     TotalFrame = 0
     Else
@@ -657,10 +657,10 @@ Sub MotionExport_Move_2()
     
     If TotalFrame > 0 Then
     Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_Loop[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(ˆêŒÂ–Úƒ‚[ƒVƒ‡ƒ“‚Ì‘ƒtƒŒ[ƒ€”A“ñŒÂ–ÚƒT[ƒ{‚Ì‘”AOŒÂ–ÚˆÈ~‚ªw’è‚µ‚½ID)"
-    Print #IntFlNo, "{" & A(2) & "},//‰Šúp¨(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+    Print #IntFlNo, "{" & A(1) & "},//(ä¸€å€‹ç›®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ç·ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã€äºŒå€‹ç›®ã‚µãƒ¼ãƒœã®ç·æ•°ã€ä¸‰å€‹ç›®ä»¥é™ãŒæŒ‡å®šã—ãŸID)"
+    Print #IntFlNo, "{" & A(2) & "},//åˆæœŸå§¿å‹¢(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "},//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
             If TotalFrame > 2 Then
             For i = 4 To (TotalFrame + 1)
             Print #IntFlNo, "{" & A(i) & "},"
@@ -668,13 +668,13 @@ Sub MotionExport_Move_2()
             End If
         Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
         Else
-        Print #IntFlNo, "{" & A(3) & "}//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "}//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         End If
     Print #IntFlNo, "};"
     Print #IntFlNo, ""
     End If
     '----------------------------------------
-    'ƒGƒ“ƒhƒ‚[ƒVƒ‡ƒ“
+    'ã‚¨ãƒ³ãƒ‰ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
     If LoopEnd = 0 Then
     TotalFrame = 0
     Else
@@ -730,10 +730,10 @@ Sub MotionExport_Move_2()
     
     If TotalFrame > 0 Then
     Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_End[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(ˆêŒÂ–Úƒ‚[ƒVƒ‡ƒ“‚Ì‘ƒtƒŒ[ƒ€”A“ñŒÂ–ÚƒT[ƒ{‚Ì‘”AOŒÂ–ÚˆÈ~‚ªw’è‚µ‚½ID)"
-    Print #IntFlNo, "{" & A(2) & "},//‰Šúp¨(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+    Print #IntFlNo, "{" & A(1) & "},//(ä¸€å€‹ç›®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ç·ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã€äºŒå€‹ç›®ã‚µãƒ¼ãƒœã®ç·æ•°ã€ä¸‰å€‹ç›®ä»¥é™ãŒæŒ‡å®šã—ãŸID)"
+    Print #IntFlNo, "{" & A(2) & "},//åˆæœŸå§¿å‹¢(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "},//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
             If TotalFrame > 2 Then
             For i = 4 To (TotalFrame + 1)
             Print #IntFlNo, "{" & A(i) & "},"
@@ -741,7 +741,7 @@ Sub MotionExport_Move_2()
             End If
         Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
         Else
-        Print #IntFlNo, "{" & A(3) & "}//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+        Print #IntFlNo, "{" & A(3) & "}//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
         End If
     Print #IntFlNo, "};"
     Print #IntFlNo, ""
@@ -759,14 +759,14 @@ End Sub
 
 Sub MotionExport_Atk_2()
     '----------------------------------
-    'motion_exportƒtƒHƒ‹ƒ_‚ª‚È‚¯‚ê‚Îì¬‚·‚é
+    'motion_exportãƒ•ã‚©ãƒ«ãƒ€ãŒãªã‘ã‚Œã°ä½œæˆã™ã‚‹
     Dim MotionExportDirectry As String
     MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
     If Dir(MotionExportDirectry, vbDirectory) = "" Then
         MkDir MotionExportDirectry
     End If
     '----------------------------------
-    'o—Íƒtƒ@ƒCƒ‹–¼‚ğŒˆ’è
+    'å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æ±ºå®š
     Dim Filename As String
     Filename = GetFNameFromFStr(ActiveWorkbook.Name) & "_" & ActiveSheet.Name
     Dim OutputFile As String
@@ -785,7 +785,7 @@ Sub MotionExport_Atk_2()
     LoopStart = 0
     LoopEnd = 0
     '-------------
-    'ŠJnˆÊ’u‚ğ’²‚×‚é
+    'é–‹å§‹ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 1 Then
             StartFrame = k - 8
@@ -794,7 +794,7 @@ Sub MotionExport_Atk_2()
         End If
     Next
     '-------------
-    'I—¹ˆÊ’u‚ğ’²‚×‚é
+    'çµ‚äº†ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = StartFrame + 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 2 Then
             EndFrame = k - 8
@@ -802,7 +802,7 @@ Sub MotionExport_Atk_2()
         End If
     Next
     '-------------
-    '•ªŠ„ˆÊ’u‚ğ’²‚×‚é
+    'åˆ†å‰²ä½ç½®ã‚’èª¿ã¹ã‚‹
     Dim DotPoint(100) As Integer
     Dim Dots As Integer
     Dim l As Integer, m As Integer
@@ -873,10 +873,10 @@ Sub MotionExport_Atk_2()
                     
                     
                     Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_" & l & "[" & TotalFrame + 1 & "][" & servosend + 2 & "]={"
-                    Print #IntFlNo, "{" & A(1) & "},//(ˆêŒÂ–Úƒ‚[ƒVƒ‡ƒ“‚Ì‘ƒtƒŒ[ƒ€”A“ñŒÂ–ÚƒT[ƒ{‚Ì‘”AOŒÂ–ÚˆÈ~‚ªw’è‚µ‚½ID)"
-                    Print #IntFlNo, "{" & A(2) & "},//‰Šúp¨(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+                    Print #IntFlNo, "{" & A(1) & "},//(ä¸€å€‹ç›®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®ç·ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã€äºŒå€‹ç›®ã‚µãƒ¼ãƒœã®ç·æ•°ã€ä¸‰å€‹ç›®ä»¥é™ãŒæŒ‡å®šã—ãŸID)"
+                    Print #IntFlNo, "{" & A(2) & "},//åˆæœŸå§¿å‹¢(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
                         If TotalFrame > 2 Then
-                        Print #IntFlNo, "{" & A(3) & "},//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+                        Print #IntFlNo, "{" & A(3) & "},//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
                             If TotalFrame > 2 Then
                             For i = 4 To (DotPoint(l) - m) + 1
                             Print #IntFlNo, "{" & A(i) & "},"
@@ -884,7 +884,7 @@ Sub MotionExport_Atk_2()
                             End If
                         Print #IntFlNo, "{" & A((DotPoint(l) - m) + 2) & "}"
                         Else
-                        Print #IntFlNo, "{" & A(3) & "}//ˆÈ‰ºƒ‚[ƒVƒ‡ƒ“ƒf[ƒ^(ˆêŒÂ–ÚˆÚ“®ŠÔA“ñŒÂ–Ú‘Ò‹@ŠÔAOŒÂ–ÚˆÈ~Šp“x)"
+                        Print #IntFlNo, "{" & A(3) & "}//ä»¥ä¸‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿(ä¸€å€‹ç›®ç§»å‹•æ™‚é–“ã€äºŒå€‹ç›®å¾…æ©Ÿæ™‚é–“ã€ä¸‰å€‹ç›®ä»¥é™è§’åº¦)"
                         End If
                     Print #IntFlNo, "};"
                     Print #IntFlNo, ""
@@ -907,7 +907,7 @@ Sub Change_Right_Left()
     LoopStart = 0
     LoopEnd = 0
     '-------------
-    'ŠJnˆÊ’u‚ğ’²‚×‚é
+    'é–‹å§‹ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 1 Then
             StartFrame = k - 8
@@ -916,7 +916,7 @@ Sub Change_Right_Left()
         End If
     Next
     '-------------
-    'I—¹ˆÊ’u‚ğ’²‚×‚é
+    'çµ‚äº†ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = StartFrame + 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 2 Then
             EndFrame = k - 8
@@ -955,7 +955,7 @@ Sub Change_Start_End()
     LoopStart = 0
     LoopEnd = 0
     '-------------
-    'ŠJnˆÊ’u‚ğ’²‚×‚é
+    'é–‹å§‹ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 1 Then
             StartFrame = k - 8
@@ -964,7 +964,7 @@ Sub Change_Start_End()
         End If
     Next
     '-------------
-    'I—¹ˆÊ’u‚ğ’²‚×‚é
+    'çµ‚äº†ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = StartFrame + 8 To 68
         If Sheets(Shtname).Cells(7, k).Value = 2 Then
             EndFrame = k - 8
@@ -972,7 +972,7 @@ Sub Change_Start_End()
         End If
     Next
     '-------------
-    'ƒ‹[ƒvˆÊ’u‚ğ’²‚×‚é
+    'ãƒ«ãƒ¼ãƒ—ä½ç½®ã‚’èª¿ã¹ã‚‹
     For k = (StartFrame + 8) To (EndFrame + 8)
         If Not Sheets(Shtname).Cells(1, k) = "" Then
             LoopStart = Sheets(Shtname).Cells(1, k).Value

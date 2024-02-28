@@ -1,8 +1,8 @@
 Attribute VB_Name = "nyx_IsArrayEx"
 '***********************************************************
-' ‹@”\   : ˆø”‚ª”z—ñ‚©”»’è‚µA”z—ñ‚Ìê‡‚Í‹ó‚©‚Ç‚¤‚©‚à”»’è‚·‚é
-' ˆø”   : varArray  ”z—ñ
-' –ß‚è’l : ”»’èŒ‹‰Êi1:”z—ñ/0:‹ó‚Ì”z—ñ/-1:”z—ñ‚¶‚á‚È‚¢j
+' æ©Ÿèƒ½   : å¼•æ•°ãŒé…åˆ—ã‹åˆ¤å®šã—ã€é…åˆ—ã®å ´åˆã¯ç©ºã‹ã©ã†ã‹ã‚‚åˆ¤å®šã™ã‚‹
+' å¼•æ•°   : varArray  é…åˆ—
+' æˆ»ã‚Šå€¤ : åˆ¤å®šçµæœï¼ˆ1:é…åˆ—/0:ç©ºã®é…åˆ—/-1:é…åˆ—ã˜ã‚ƒãªã„ï¼‰
 '***********************************************************
 'http://www.openreference.org/articles/view/583
 
@@ -28,10 +28,10 @@ Public Sub sample()
     
     Select Case IsArrayEx(strArray)
         Case 1
-            Debug.Print "strArray‚Í”z—ñ‚Å‚·B"
+            Debug.Print "strArrayã¯é…åˆ—ã§ã™ã€‚"
         Case 0
-            Debug.Print "strArray‚Í‹ó‚Ì”z—ñ‚Å‚·B"
+            Debug.Print "strArrayã¯ç©ºã®é…åˆ—ã§ã™ã€‚"
         Case -1
-            Debug.Print "strArray‚Í”z—ñ‚Å‚Í‚ ‚è‚Ü‚¹‚ñB"
+            Debug.Print "strArrayã¯é…åˆ—ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚"
     End Select
 End Sub

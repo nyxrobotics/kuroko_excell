@@ -17,7 +17,7 @@ Sub oriental_test()
     baud_rate = Sheets("COM").Cells(2, 2).Value
     com_port = Sheets("COM").Cells(1, 2).Value
 
-    ec.COMn = com_port 'COM‚ğŠJ‚«‚Ü‚·
+    ec.COMn = com_port 'COMã‚’é–‹ãã¾ã™
     ec_set = SPrintF("%d,e,8,1", baud_rate)
     ec.Setting = ec_set '"500000,n,8,1"
 

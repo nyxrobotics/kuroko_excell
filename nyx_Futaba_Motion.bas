@@ -8,13 +8,13 @@ Attribute VB_Name = "nyx_Futaba_Motion"
 Public posnum, sdeg, deg, load, temp As Integer
 Public nyx(100) As Byte
 Public nyx_deg(100) As Byte
-Public Const servosend As Integer = 23   'ÀÛ‚É‘—M‚·‚éƒT[ƒ{‚Ì”
-Public Const sendbyte  As Integer = 6 + 5 * servosend + 1 'ÀÛ‚É‘—M‚·‚éƒT[ƒ{‚Ì”
-Public Const servonum  As Integer = 32   'ƒf[ƒ^‚Ì”
-Public Const getstart  As Integer = 8    'ƒf[ƒ^ƒQƒbƒgƒXƒ^[ƒgƒZƒ‹
-Public Const cellstart As Integer = 8    'ƒf[ƒ^ƒZƒ‹‚ÌŠJn
-Public Const cellend   As Integer = 39   'ƒf[ƒ^ƒZƒ‹‚ÌI‚í‚è
-Public Const comnum    As Integer = 8    'COMƒ|[ƒgƒiƒ“ƒo[
+Public Const servosend As Integer = 23   'å®Ÿéš›ã«é€ä¿¡ã™ã‚‹ã‚µãƒ¼ãƒœã®æ•°
+Public Const sendbyte  As Integer = 6 + 5 * servosend + 1 'å®Ÿéš›ã«é€ä¿¡ã™ã‚‹ã‚µãƒ¼ãƒœã®æ•°
+Public Const servonum  As Integer = 32   'ãƒ‡ãƒ¼ã‚¿ã®æ•°
+Public Const getstart  As Integer = 8    'ãƒ‡ãƒ¼ã‚¿ã‚²ãƒƒãƒˆã‚¹ã‚¿ãƒ¼ãƒˆã‚»ãƒ«
+Public Const cellstart As Integer = 8    'ãƒ‡ãƒ¼ã‚¿ã‚»ãƒ«ã®é–‹å§‹
+Public Const cellend   As Integer = 39   'ãƒ‡ãƒ¼ã‚¿ã‚»ãƒ«ã®çµ‚ã‚ã‚Š
+Public Const comnum    As Integer = 8    'COMãƒãƒ¼ãƒˆãƒŠãƒ³ãƒãƒ¼
 
 
 
@@ -44,7 +44,7 @@ Sub com_init()
     com_port = Sheets("COM").Cells(1, 2).Value
     ec_set = SPrintF("%d,n,8,1", baud_rate)
     
-    ec.COMn = com_port 'COM‚ğŠJ‚«‚Ü‚·
+    ec.COMn = com_port 'COMã‚’é–‹ãã¾ã™
     ec.Setting = ec_set
     QPC_wait_ms (20)
 End Sub
@@ -60,11 +60,11 @@ Sub servo_on()
     Call QPC_start_counting
     Dim sndbin(8) As Byte
 '-------------------------------------
-    ec.COMn = comnum                                     'COM‚ğŠJ‚«‚Ü‚·
+    ec.COMn = comnum                                     'COMã‚’é–‹ãã¾ã™
     ec.Setting = "115200,n,8,1"
     ec.HandShaking = ec.HANDSHAKEs.No
-    ec.AsciiLineTimeOut = 2000                          'ƒ^ƒCƒ€ƒAƒEƒg‚ğ2•b‚Éİ’è‚µ‚Ü‚·D
-    ec.Delimiter = ec.DELIMs.CrLf                       'ƒfƒŠƒ~ƒ^‚ğCrLf‚Éİ’è‚µ‚Ü‚·D
+    ec.AsciiLineTimeOut = 2000                          'ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’2ç§’ã«è¨­å®šã—ã¾ã™ï¼
+    ec.Delimiter = ec.DELIMs.CrLf                       'ãƒ‡ãƒªãƒŸã‚¿ã‚’CrLfã«è¨­å®šã—ã¾ã™ï¼
     ec.OutBuffer = 10& * 1024&
     ec.InBuffer = 10& * 1024&
 
@@ -104,17 +104,17 @@ Sub servo_on()
     QPC_wait_ms (10)
      
     ec.COMn = 0
-    'QPC_wait_ms (10)                                   '0.01•b‘Ò‚¿‚Ü‚·D
+    'QPC_wait_ms (10)                                   '0.01ç§’å¾…ã¡ã¾ã™ï¼
 End Sub
 Sub servo_off()
     Call QPC_start_counting
     Dim sndbin(8) As Byte
 '-------------------------------------
-    ec.COMn = comnum                                     'COM‚ğŠJ‚«‚Ü‚·
+    ec.COMn = comnum                                     'COMã‚’é–‹ãã¾ã™
     ec.Setting = "115200,n,8,1"
     ec.HandShaking = ec.HANDSHAKEs.No
-    ec.AsciiLineTimeOut = 2000                          'ƒ^ƒCƒ€ƒAƒEƒg‚ğ2•b‚Éİ’è‚µ‚Ü‚·D
-    ec.Delimiter = ec.DELIMs.CrLf                       'ƒfƒŠƒ~ƒ^‚ğCrLf‚Éİ’è‚µ‚Ü‚·D
+    ec.AsciiLineTimeOut = 2000                          'ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’2ç§’ã«è¨­å®šã—ã¾ã™ï¼
+    ec.Delimiter = ec.DELIMs.CrLf                       'ãƒ‡ãƒªãƒŸã‚¿ã‚’CrLfã«è¨­å®šã—ã¾ã™ï¼
     ec.OutBuffer = 10& * 1024&
     ec.InBuffer = 10& * 1024&
 '----- checksum ------
@@ -146,11 +146,11 @@ Sub servo_free()
     Call QPC_start_counting
     Dim sndbin(8) As Byte
 '-------------------------------------
-    ec.COMn = comnum                                     'COM‚ğŠJ‚«‚Ü‚·
+    ec.COMn = comnum                                     'COMã‚’é–‹ãã¾ã™
     ec.Setting = "115200,n,8,1"
     ec.HandShaking = ec.HANDSHAKEs.No
-    ec.AsciiLineTimeOut = 2000                          'ƒ^ƒCƒ€ƒAƒEƒg‚ğ2•b‚Éİ’è‚µ‚Ü‚·D
-    ec.Delimiter = ec.DELIMs.CrLf                       'ƒfƒŠƒ~ƒ^‚ğCrLf‚Éİ’è‚µ‚Ü‚·D
+    ec.AsciiLineTimeOut = 2000                          'ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’2ç§’ã«è¨­å®šã—ã¾ã™ï¼
+    ec.Delimiter = ec.DELIMs.CrLf                       'ãƒ‡ãƒªãƒŸã‚¿ã‚’CrLfã«è¨­å®šã—ã¾ã™ï¼
     ec.OutBuffer = 10& * 1024&
     ec.InBuffer = 10& * 1024&
 '----- checksum ------
@@ -173,7 +173,7 @@ Sub servo_free()
      
     ec.COMn = 0
 
-    QPC_wait_ms (200)                                '0.01•b‘Ò‚¿‚Ü‚·D
+    QPC_wait_ms (200)                                '0.01ç§’å¾…ã¡ã¾ã™ï¼
     
 End Sub
      
@@ -206,7 +206,7 @@ Sub get_single_buf(SID)
     QPC_wait_ms (5)
     Recbin() = ec.Binary
     Dim start_point As Integer
-    start_point = UBound(Recbin()) 'ƒGƒ‰[ˆ——p‚Ì‰Šú’l
+    start_point = UBound(Recbin()) 'ã‚¨ãƒ©ãƒ¼å‡¦ç†ç”¨ã®åˆæœŸå€¤
     For i = 0 To UBound(Recbin()) - 2
         If (Recbin(i) = &HFD) And (Recbin(i + 1) = &HDF) And (Recbin(i + 2) = ("&H" + Hex(SID))) Then
             start_point = i
@@ -215,7 +215,7 @@ Sub get_single_buf(SID)
     Next
     
     'Set Values
-    If UBound(Recbin()) > start_point + 17 Then 'ƒGƒ‰[ˆ—
+    If UBound(Recbin()) > start_point + 17 Then 'ã‚¨ãƒ©ãƒ¼å‡¦ç†
         If Recbin(start_point + 8) < 128 Then
             return_single_buf(0) = CDec(Recbin(start_point + 8)) * 256 + CDec(Recbin(start_point + 7))
         Else
@@ -282,7 +282,7 @@ Sub get_return(samples)
                 vol(i) = vol(i) + (return_single_buf(3) / samples)
             Else
                 err_0(i) = err_0(i) + 1
-                If (err_0(i) < 5) Then '‰½‰ñ‚Ü‚ÅƒŠƒgƒ‰ƒC‚·‚é‚©
+                If (err_0(i) < 5) Then 'ä½•å›ã¾ã§ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹ã‹
                     i = i - 1
                 Else
                     err(i) = 1
@@ -303,7 +303,7 @@ Sub get_return(samples)
             return_tor(i) = CInt(tor(i))
             return_tem(i) = CInt(tem(i))
             return_vol(i) = CInt(vol(i))
-            MsgBox "ID = " & id(i) & " ‚©‚ç³‚µ‚¢ƒŠƒ^[ƒ“‚ğ“¾‚ç‚ê‚È‚¢‚æ‚¤‚Å‚·D", vbInformation
+            MsgBox "ID = " & id(i) & " ã‹ã‚‰æ­£ã—ã„ãƒªã‚¿ãƒ¼ãƒ³ã‚’å¾—ã‚‰ã‚Œãªã„ã‚ˆã†ã§ã™ï¼", vbInformation
         End If
         return_err(i) = err(i)
     Next
@@ -369,13 +369,13 @@ End Sub
 
 
 Sub Play_nyx_1(frame)
-    Dim sndbin(sendbyte) As Byte                         '‘—MƒoƒCƒgƒZƒbƒg@6 + 5*26 +1 = 137
+    Dim sndbin(sendbyte) As Byte                         'é€ä¿¡ãƒã‚¤ãƒˆã‚»ãƒƒãƒˆã€€6 + 5*26 +1 = 137
     Dim shtnum As String
     Dim wtim As Integer
     Shtname = ActiveSheet.Name
     posnum = frame + 8
 '-------------------------------------
-    'ec.COMn = comnum                                     'COM‚ğŠJ‚«‚Ü‚·
+    'ec.COMn = comnum                                     'COMã‚’é–‹ãã¾ã™
     'ec.Setting = "115200,n,8,1"
 '-----------------------
     sndbin(0) = &HFA
@@ -456,13 +456,13 @@ Sub ButtonPlayTest_2()
     Call QPC_start_counting
     Call servo_on
 
-    Dim sndbin(sendbyte) As Byte                         '‘—MƒoƒCƒgƒZƒbƒg@6 + 5*26 +1 = 137
+    Dim sndbin(sendbyte) As Byte                         'é€ä¿¡ãƒã‚¤ãƒˆã‚»ãƒƒãƒˆã€€6 + 5*26 +1 = 137
     Dim a1_pl, a2_pl, a3_pl, b_pl, c_pl, Lop As Integer
     Dim Shtname As String
     Shtname = ActiveSheet.Name
     Lop = Sheets(Shtname).Cells(2, 1).Value
 
-    ec.COMn = comnum                                     'COM‚ğŠJ‚«‚Ü‚·
+    ec.COMn = comnum                                     'COMã‚’é–‹ãã¾ã™
     ec.Setting = "115200,n,8,1"
     QPC_wait_ms (10)
 

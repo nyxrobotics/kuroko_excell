@@ -8,61 +8,61 @@ Option Explicit
 '   Copyright(c) 2002 T.Kinoshita
 '   Copyright(c) 2003 T.Kinoshita
 
-'   2001.10.23 ReadFile,WriteFile�̏C��
+'   2001.10.23 ReadFile,WriteFileの修正
 
 '----------------------
-'   �ϐ��E�萔�̒�`
+'   変数・定数の定義
 '----------------------
 Private Const Version As String = "1.71"
 
 Type PortSetting
-    Handle As Long          ' �t�@�C���n���h��
-    Delimiter As String     ' �f���~�^
-            ' .Delimiter = ""           : CR    �i�f�t�H���g�j
+    Handle As Long          ' ファイルハンドル
+    Delimiter As String     ' デリミタ
+            ' .Delimiter = ""           : CR    （デフォルト）
             ' .Delimiter = "CR"         : CR
             ' .Delimiter = "LF"         : LF
             ' .Delimiter = "CRLF"       : CRLF
             ' .Delimiter = "LFCR"       : LFCR
-    ' Version 1.51�Œǉ�
-    LineInTimeOut As Long   ' AsciiLine�v���p�e�B�̓ǂݏo���^�C���A�E�g(mS)
-    ' �����܂�
+    ' Version 1.51で追加
+    LineInTimeOut As Long   ' AsciiLineプロパティの読み出しタイムアウト(mS)
+    ' ここまで
 End Type
 
-Public Const ecMaxPort As Long = 50&                ' �ő�|�[�g�ԍ�
-Public ecH(0 To ecMaxPort) As PortSetting           ' �|�[�g�̃n���h���C�f���~�^
-Public Const ecMinimumInBuffer As Long = 2048&      ' �ŏ���M�o�b�t�@�T�C�Y
-Public Const ecMinimumOutBuffer As Long = 2048&     ' �ŏ����M�o�b�t�@�T�C�Y
-Public Cn As Long                                   ' �����Ώۂ̃|�[�g�ԍ�
+Public Const ecMaxPort As Long = 50&                ' 最大ポート番号
+Public ecH(0 To ecMaxPort) As PortSetting           ' ポートのハンドル，デリミタ
+Public Const ecMinimumInBuffer As Long = 2048&      ' 最小受信バッファサイズ
+Public Const ecMinimumOutBuffer As Long = 2048&     ' 最小送信バッファサイズ
+Public Cn As Long                                   ' 処理対象のポート番号
 
 
-'�W���ݒ�
-Public Const ecSetting As String = "9600,n,8,1"     '�W���ʐM����
-Public Const ecReadIntervalTimeout = 1000&          '���̕������͂܂łP�b�Ń^�C���A�E�g
+'標準設定
+Public Const ecSetting As String = "9600,n,8,1"     '標準通信条件
+Public Const ecReadIntervalTimeout = 1000&          '次の文字入力まで１秒でタイムアウト
 Public Const ecReadTotalTimeoutConstant = 0&
 Public Const ecReadTotalTimeoutMultiplier = 0&
 Public Const ecWriteTotalTimeoutConstant = 0&
-Public Const ecWriteTotalTimeoutMultiplier = 1000&  '�P�������M����̂ɂP�b�Ń^�C���A�E�g
+Public Const ecWriteTotalTimeoutMultiplier = 1000&  '１文字送信するのに１秒でタイムアウト
 
 Public Const ecInBufferSize As Long = 2048&
-    '���̓o�b�t�@�ɐ���������Ƃ��͂��̒l��W���ݒ�l�Ƃ��邪�C�������̎���ecInBufferSize��W���ɂ���D
-Public Const ecXonLim As Long = 256&                '�o�b�t�@�������l
-Public Const ecXoffLim As Long = 256&               '�o�b�t�@�ŏ��󂫗e��
+    '入力バッファに制限があるときはその値を標準設定値とするが，無制限の時はecInBufferSizeを標準にする．
+Public Const ecXonLim As Long = 256&                'バッファしきい値
+Public Const ecXoffLim As Long = 256&               'バッファ最小空き容量
 Public Const ecOutBufferSize As Long = 2048&
-    '�o�̓o�b�t�@�ɐ���������Ƃ��͂��̒l��W���ݒ�l�Ƃ��邪�C�������̎���ecOutBufferSize��W���ɂ���D
+    '出力バッファに制限があるときはその値を標準設定値とするが，無制限の時はecOutBufferSizeを標準にする．
 
 
 
 '----------------------
-'   API�̐錾
+'   APIの宣言
 '----------------------
 
 '======================
 'CreateFile
 '======================
-'   �t�@�C���I�[�v��api
-'   ������ = �n���h���C���s�� = INVALID_HANDLE_VALUE
-'   lpSecurityAttributes �� SECURITY_ATTRIBUTES�ւ̃|�C���^
-'   �g��Ȃ��̂� long �Œ�`���� Null(&0)��n���B�iByVal�ɕύX�j
+'   ファイルオープンapi
+'   成功時 = ハンドル，失敗時 = INVALID_HANDLE_VALUE
+'   lpSecurityAttributes は SECURITY_ATTRIBUTESへのポインタ
+'   使わないので long で定義して Null(&0)を渡す。（ByValに変更）
 Public Declare PtrSafe Function _
     CreateFile Lib "kernel32" Alias "CreateFileA" ( _
         ByVal lpFileName As String, _
@@ -73,36 +73,36 @@ Public Declare PtrSafe Function _
         ByVal dwFlagsAndAttributes As Long, _
         ByVal hTemplateFile As Long) _
 As Long
-'�p�����[�^�̈Ӗ�
-'   lpFileName             �|�[�g�̘_����
+'パラメータの意味
+'   lpFileName             ポートの論理名
 '       "COM1","COM2",...
-'   dwDesiredAccess        �A�N�Z�X���[�h
-'      �ǂݏo����p GENERIC_READ
-'      �������ݐ�p GENERIC_WRITE
-'      �o����      GENERIC_READ Or GENERIC_WRITE
-'      �ʏ�̃V���A���|�[�g�ł͑o�������w��
-'   dwShareMode            ���L�t���O�B
-'       �V���A���|�[�g�͋��L�ł��Ȃ��̂� &0 ��n���B
-'   lpSecurityAttributes   �Z�L�����e�B�����Ɏw��B
-'       �q�v���Z�X�Ɍp�����Ȃ��̂ŁC�f�t�H���g�̑������w�肷��悤�� &0 ��n���B
-'   dwCreationDisposition  �t�@�C�����J�����@���w�肷��B
-'       �|�[�g�͐V�K�쐬����̂ł͂Ȃ��C�����Ȃ̂�OPEN_EXISTING��n���B
-'   dwFlagsAndAttributes   �t�@�C�������̎w��B
-'       �V���A���|�[�g�ł� &0�C�܂���FILE_FLAG_OVERLAPPED��n���B
-'       FILE_FLAG_OVERLAPPED�̏ꍇ�C�|�[�g�͔񓯊�I/O���[�h�ŊJ�����B
+'   dwDesiredAccess        アクセスモード
+'      読み出し専用 GENERIC_READ
+'      書き込み専用 GENERIC_WRITE
+'      双方向      GENERIC_READ Or GENERIC_WRITE
+'      通常のシリアルポートでは双方向を指定
+'   dwShareMode            共有フラグ。
+'       シリアルポートは共有できないので &0 を渡す。
+'   lpSecurityAttributes   セキュリティ属性に指定。
+'       子プロセスに継承しないので，デフォルトの属性を指定するように &0 を渡す。
+'   dwCreationDisposition  ファイルを開く方法を指定する。
+'       ポートは新規作成するのではなく，既存なのでOPEN_EXISTINGを渡す。
+'   dwFlagsAndAttributes   ファイル属性の指定。
+'       シリアルポートでは &0，またはFILE_FLAG_OVERLAPPEDを渡す。
+'       FILE_FLAG_OVERLAPPEDの場合，ポートは非同期I/Oモードで開かれる。
 '   hTemplateFile
-'       �|�[�g�̃I�[�v���ɂ͊֌W�Ȃ��̂� &0��n���B
-'�⑫����
-'   �f�o�b�O���̓v���O�����̒��f�ɂ��|�[�g���J���ꂽ�܂܂ɂȂ��Ă��܂����Ƃ�����B
-'   �J���ꂽ�|�[�g�̃n���h�����킩��Ȃ��ƕ��邱�Ƃ��ł��Ȃ����߁C�|�[�g�̃n���h
-'   �����V�[�g�ɏ������ނ悤�ȃ}�N���������Ă����Ƃ悢�B
+'       ポートのオープンには関係ないので &0を渡す。
+'補足説明
+'   デバッグ中はプログラムの中断によりポートが開かれたままになってしまうことがある。
+'   開かれたポートのハンドルがわからないと閉じることができないため，ポートのハンド
+'   ルをシートに書き込むようなマクロを加えておくとよい。
 
 
 '======================
 'CloseHandle
 '======================
-'   �t�@�C���̃N���[�Y
-'   ������ <>0�C���s�� = 0
+'   ファイルのクローズ
+'   成功時 <>0，失敗時 = 0
 Public Declare PtrSafe Function _
     CloseHandle Lib "kernel32" ( _
         ByVal hObject As Long) _
@@ -112,8 +112,8 @@ As Long
 '======================
 'GetCommState
 '======================
-'   �|�[�g�̐ݒ�l��DCB�ɓǂݏo��
-'   ������ <>0�C���s�� = 0
+'   ポートの設定値をDCBに読み出す
+'   成功時 <>0，失敗時 = 0
 Public Declare PtrSafe Function _
     GetCommState Lib "kernel32" ( _
         ByVal nCid As Long, _
@@ -123,8 +123,8 @@ As Long
 '======================
 'SetCommState
 '======================
-'   DCB�̓��e��ݒ肷��
-'   ������ <>0�C���s�� = 0
+'   DCBの内容を設定する
+'   成功時 <>0，失敗時 = 0
 Public Declare PtrSafe Function _
     SetCommState Lib "kernel32" ( _
         ByVal hCommDev As Long, _
@@ -135,7 +135,7 @@ As Long
 '======================
 'BuildCommDCB
 '======================
-'������ɂ��|�[�g�̐ݒ�
+'文字列によるポートの設定
 Public Declare PtrSafe Function _
     BuildCommDCB Lib "kernel32" Alias "BuildCommDCBA" ( _
     ByVal lpDef As String, _
@@ -145,7 +145,7 @@ As Long
 '======================
 'GetCommTimeouts
 '======================
-'�^�C���A�E�g�̓ǂݏo��
+'タイムアウトの読み出し
 Public Declare PtrSafe Function _
     GetCommTimeouts Lib "kernel32" ( _
         ByVal hFile As Long, _
@@ -155,7 +155,7 @@ As Long
 '======================
 'SetCommTimeouts
 '======================
-'�^�C���A�E�g�̐ݒ�
+'タイムアウトの設定
 Public Declare PtrSafe Function _
     SetCommTimeouts Lib "kernel32" ( _
         ByVal hFile As Long, _
@@ -165,7 +165,7 @@ As Long
 '======================
 'PurgeComm
 '======================
-'�o�b�t�@�̃N���A
+'バッファのクリア
 Public Declare PtrSafe Function _
     PurgeComm Lib "kernel32" ( _
         ByVal hFile As Long, _
@@ -175,7 +175,7 @@ As Long
 '======================
 'ClearCommError
 '======================
-'�o�b�t�@�̏�Ԃ��擾
+'バッファの状態を取得
 Public Declare PtrSafe Function _
     ClearCommError Lib "kernel32" ( _
         ByVal hFile As Long, _
@@ -186,7 +186,7 @@ As Long
 '======================
 'SetupComm
 '======================
-'�o�b�t�@�T�C�Y�̎w��
+'バッファサイズの指定
 Public Declare PtrSafe Function _
     SetupComm Lib "kernel32" ( _
         ByVal hFile As Long, _
@@ -197,7 +197,7 @@ As Long
 '======================
 'GetCommProperties
 '======================
-'�|�[�g�̎d�l�̎擾
+'ポートの仕様の取得
 Public Declare PtrSafe Function _
     GetCommProperties Lib "kernel32" ( _
         ByVal hFile As Long, _
@@ -207,9 +207,9 @@ As Long
 '======================
 'WriteFile
 '======================
-'�|�[�g�o��API
-'lpBuffer�́C�o�C�i���R�[�h���������Ƃ�����̂�String�ł͂Ȃ�Any�Ő錾����
-'lpOverlapped�͎g��Ȃ��Ƃ���Null��n���̂�Long�܂���Any
+'ポート出力API
+'lpBufferは，バイナリコードを扱うことがあるのでStringではなくAnyで宣言する
+'lpOverlappedは使わないときにNullを渡すのでLongまたはAny
 '---Vers 1.00
 'Public Declare PtrSafe Function WriteFile Lib "kernel32" ( _
 '    ByVal hFile As Long, _
@@ -228,8 +228,8 @@ As Long
 '    ByRef lpOverlapped As Long) _
 'As Long
 
-'win32api.txt�ł�lpOverlapped��ByRef�Œ�`����Ă��邪ByVal�̌��
-'��`���e
+'win32api.txtではlpOverlappedがByRefで定義されているがByValの誤り
+'定義内容
 'Declare PtrSafe Function WriteFile Lib "kernel32" ( _
 '    ByVal hFile As Long, _
 '    lpBuffer As Any, _
@@ -248,9 +248,9 @@ As Long
 '======================
 'ReadFile
 '======================
-'�|�[�g����API
-'lpBuffer�́C�o�C�i���R�[�h���������Ƃ�����̂�String�ł͂Ȃ�Any�Ő錾����
-'lpOverlapped�͎g��Ȃ��Ƃ���Null��n���̂�Long�܂���Any
+'ポート入力API
+'lpBufferは，バイナリコードを扱うことがあるのでStringではなくAnyで宣言する
+'lpOverlappedは使わないときにNullを渡すのでLongまたはAny
 '---Vers1.00
 'Public Declare PtrSafe Function ReadFile Lib "kernel32" ( _
 '    ByVal hFile As Long, _
@@ -261,8 +261,8 @@ As Long
 'As Long
 '---Vers1.01
 
-'win32api.txt�ł�lpOverlapped��ByRef�Œ�`����Ă��邪ByVal�̌��
-'��`���e
+'win32api.txtではlpOverlappedがByRefで定義されているがByValの誤り
+'定義内容
 'Declare PtrSafe Function ReadFile Lib "kernel32" ( _
 '    ByVal hFile As Long, _
 '    lpBuffer As Any, _
@@ -289,21 +289,21 @@ Public Const GENERIC_WRITE = &H40000000
 Public Const OPEN_EXISTING = 3
 
 '  PURGE function flags.
-Public Const PURGE_TXCLEAR = &H4     '  ���M�o�b�t�@�N���A
-Public Const PURGE_RXCLEAR = &H8     '  ��M�o�b�t�@�N���A
+Public Const PURGE_TXCLEAR = &H4     '  送信バッファクリア
+Public Const PURGE_RXCLEAR = &H8     '  受信バッファクリア
 
 '======================
 'Sleep
 '======================
-'��~�^�C�}�[�֐�
-'�w�莞�ԁi�~���b�j�C���s�𒆒f����D
+'停止タイマー関数
+'指定時間（ミリ秒），実行を中断する．
 Public Declare PtrSafe Sub Sleep Lib "kernel32" ( _
     ByVal dwMilliseconds As Long)
 
 '======================
 'EscapeCommFunction
 '======================
-'RTS,DTR�̋�������
+'RTS,DTRの強制制御
 Public Declare PtrSafe Function _
     EscapeCommFunction Lib "kernel32" ( _
         ByVal nCid As Long, _
@@ -320,7 +320,7 @@ Public Const CLRDTR = 6 '  Set DTR low
 '======================
 'GetCommModemStatus
 '======================
-'RTS,DTR�̏�Ԃ̓ǂݎ��
+'RTS,DTRの状態の読み取り
 Public Declare PtrSafe Function _
     GetCommModemStatus Lib "kernel32" ( _
         ByVal hFile As Long, _
@@ -336,7 +336,7 @@ Public Const MS_RLSD_ON = &H80&
 '======================
 'SetCommBreak
 '======================
-'Break�M���̑��M
+'Break信号の送信
 Public Declare PtrSafe Function SetCommBreak Lib "kernel32" ( _
     ByVal nCid As Long) _
 As Long
@@ -344,7 +344,7 @@ As Long
 '======================
 'ClearCommBreak
 '======================
-'Break�M���̑��M���~
+'Break信号の送信中止
 Public Declare PtrSafe Function ClearCommBreak Lib "kernel32" ( _
     ByVal nCid As Long) _
 As Long
@@ -352,15 +352,15 @@ As Long
 '======================
 'GetTickCount
 '======================
-'Windows �N������̌o�ߎ��Ԃ��~���b�P�ʂŎ擾���܂��D
-'API���ł́C�o�ߎ��Ԃ͕����Ȃ��̒����� DWORD �^�ŕۑ�����Ă��܂��D
+'Windows 起動からの経過時間をミリ秒単位で取得します．
+'API内では，経過時間は符号なしの長整数 DWORD 型で保存されています．
 Public Declare PtrSafe Function GetTickCount Lib "kernel32" () _
 As Long
 
 '======================
 'GetLocalTime
 '======================
-'���݂̃��[�J�����Ԃ�mS�P�ʂ܂Ŏ擾���܂��D
+'現在のローカル時間をmS単位まで取得します．
 Public Declare PtrSafe Sub GetLocalTime Lib "kernel32" ( _
     lpSystemTime As SYSTEMTIME)
 
@@ -374,10 +374,10 @@ As Long
 
 
 '----------------------
-'   �\���̂̒�`
+'   構造体の定義
 '----------------------
 
-'DCB�\����
+'DCB構造体
 Type DCB
     DCBlength As Long
     BaudRate As Long
@@ -396,92 +396,92 @@ Type DCB
     wReserved1 As Integer 'Reserved; Do Not Use
 End Type
 
-'DCB�^�ϐ��̒�`
+'DCB型変数の定義
 Public fDCB As DCB
 
-'   �����o�̈Ӗ�
+'   メンバの意味
 'DCBlength
-'   DCB�\���̂̃o�C�g�T�C�Y
+'   DCB構造体のバイトサイズ
 'BaudRate
-'   �{�[���[�g
+'   ボーレート
 'fBitFields
-'   �e�r�b�g�ŋ@�\���w�肷��
-'   �e�r�b�g��1�̂Ƃ��̈Ӗ��͎��̒ʂ�
+'   各ビットで機能を指定する
+'   各ビットが1のときの意味は次の通り
 ' bit1   fBinary
-'   �o�C�i�����[�h���g�p�\
-'   Win32 API�͔�o�C�i�����[�h�]�����T�|�[�g���Ȃ��̂ł��̃����o�[�͏�ɂP
+'   バイナリモードが使用可能
+'   Win32 APIは非バイナリモード転送をサポートしないのでこのメンバーは常に１
 ' bit2   fParity
-'   �p���e�B�`�F�b�N���g�p
+'   パリティチェックを使用
 ' bit3   fOutxCtsFlow
-'   CTS���o�̓t���[����ŊĎ������
+'   CTSが出力フロー制御で監視される
 ' bit4   fOutxDsrFlow
-'   DSR���o�̓t���[����ŊĎ������
+'   DSRが出力フロー制御で監視される
 ' bit5,6 fDtrControl
-'   DTR�ɂ��t���[�����2�r�b�g�Ŏw��
-Public Const DTR_CONTROL_DISABLE = &H0      'DTR���C����OFF
-Public Const DTR_CONTROL_ENABLE = &H1       'DTR���C����ON
-Public Const DTR_CONTROL_HANDSHAKE = &H2    'DTR�ɂ��n���h�V�F�[�N
+'   DTRによるフロー制御を2ビットで指定
+Public Const DTR_CONTROL_DISABLE = &H0      'DTRラインをOFF
+Public Const DTR_CONTROL_ENABLE = &H1       'DTRラインをON
+Public Const DTR_CONTROL_HANDSHAKE = &H2    'DTRによるハンドシェーク
 ' bit7   fDsrSensitivity
-'   DSR��OFF�̊ԂɎ�M�����f�[�^�𖳎�
+'   DSRがOFFの間に受信したデータを無視
 ' bit8   fTXContinueOnXoff
-'   ��M�o�b�t�@���t���ɂȂ�XoffChar�����𑗐M������ɑ��M���~�߂�
+'   受信バッファがフルになりXoffChar文字を送信した後に送信を止める
 ' bit9   fOutX
-'   ���M����XON/XOFF�t���[��L���ɂ���
+'   送信時にXON/XOFFフローを有効にする
 ' bit10  fInX
-'   ���M����XON/XOFF�t���[��L���ɂ���
+'   送信時にXON/XOFFフローを有効にする
 ' bit11  fErrorChar
-'   �p���e�B�G���[�����������Ƃ��ɁC������ErrorChar�ɒu��������
+'   パリティエラーが発生したときに，文字をErrorCharに置き換える
 ' bit12  fNull
-'   �k�������i�l�O�̃f�[�^�j��j������
+'   ヌル文字（値０のデータ）を破棄する
 ' bit13,14  fRtsControl
-'   2�r�b�g��RTS�̃t���[������w��
-Public Const RTS_CONTROL_DISABLE = &H0      'RTS��OFF
-Public Const RTS_CONTROL_ENABLE = &H1       'RTS��ON
-Public Const RTS_CONTROL_HANDSHAKE = &H2    'RTS�ɂ��n���h�V�F�[�N*1
-Public Const RTS_CONTROL_TOGGLE = &H3       'RTS�ɂ��n���h�V�F�[�N*2
-'       *1 ��M�o�b�t�@�� 3/4�ȏ㖄�܂��RTS��ON�C1/2�ȉ��ɂȂ��OFF
-'       *2 ��M�o�b�t�@�Ƀf�[�^���c���Ă����RTS��ON�C�[���Ȃ��OFF
+'   2ビットでRTSのフロー制御を指定
+Public Const RTS_CONTROL_DISABLE = &H0      'RTSをOFF
+Public Const RTS_CONTROL_ENABLE = &H1       'RTSをON
+Public Const RTS_CONTROL_HANDSHAKE = &H2    'RTSによるハンドシェーク*1
+Public Const RTS_CONTROL_TOGGLE = &H3       'RTSによるハンドシェーク*2
+'       *1 受信バッファが 3/4以上埋まるとRTSがON，1/2以下になるとOFF
+'       *2 受信バッファにデータが残っていればRTSがON，ゼロならばOFF
 ' bit15  fAbortOnError
-'   �G���[���N�������Ƃ��ɂ͓ǂݏ������I��
+'   エラーが起こったときには読み書きを終了
 ' bit16  fDummy2
-'   ���g�p
+'   未使用
 
 'wReserved
-'   ���g�p�B�[�����Z�b�g���Ȃ���΂Ȃ�Ȃ�
+'   未使用。ゼロをセットしなければならない
 'XonLim
-'   ��M�o�b�t�@�̃f�[�^�����o�C�g�ȏ�ɂȂ�����XON�𑗂邩���w��
+'   受信バッファのデータが何バイト以上になったらXONを送るかを指定
 'XoffLim
-'   ��M�o�b�t�@�̃f�[�^�����o�C�g�����ɂȂ�����XON�𑗂邩���w��
+'   受信バッファのデータが何バイト未満になったらXONを送るかを指定
 'ByteSize
-'   �f�[�^�̃r�b�g��
+'   データのビット数
 'Parity
-'   �p���e�B�̕���
-Public Const NOPARITY = 0       '�p���e�B�Ȃ�
-Public Const ODDPARITY = 1      '��p���e�B
-Public Const EVENPARITY = 2     '�����p���e�B
-Public Const MARKPARITY = 3     '��Ƀ}�[�N
-Public Const SPACEPARITY = 4    '��ɃX�y�[�X
+'   パリティの方式
+Public Const NOPARITY = 0       'パリティなし
+Public Const ODDPARITY = 1      '奇数パリティ
+Public Const EVENPARITY = 2     '偶数パリティ
+Public Const MARKPARITY = 3     '常にマーク
+Public Const SPACEPARITY = 4    '常にスペース
 'StopBits
-'   �X�g�b�v�r�b�g�̐�
+'   ストップビットの数
 Public Const ONESTOPBIT = 0     '1 bit
 Public Const ONE5STOPBITS = 1   '1.5 bit
 Public Const TWOSTOPBITS = 2    '2 bit
 'XonChar
-'   XON�̑��M����
+'   XONの送信文字
 'XoffChar
-'   XOFF�̑��M����
+'   XOFFの送信文字
 'ErrorChar
-'   �p���e�B�G���[�������ɒu�������镶��
+'   パリティエラー発生時に置き換える文字
 'EofChar
-'   ��o�C�i�����[�h�̂Ƃ��ɂ��̕�������M����ƃf�[�^�I�����݂Ȃ�
-'   ������Win32 API�ł͔�o�C�i�����[�h���T�|�[�g���Ȃ��̂Ŗ��Ӗ�
+'   非バイナリモードのときにこの文字を受信するとデータ終了をみなす
+'   ただしWin32 APIでは非バイナリモードをサポートしないので無意味
 'EvtChar
-'   ���̕�������M����ƃC�x���g������
+'   この文字を受信するとイベントが発生
 'wReserved1
-'   ���g�p
+'   未使用
 
 
-'COMMTIMEOUT�\����
+'COMMTIMEOUT構造体
 Type COMMTIMEOUTS
     ReadIntervalTimeout As Long
     ReadTotalTimeoutMultiplier As Long
@@ -490,11 +490,11 @@ Type COMMTIMEOUTS
     WriteTotalTimeoutConstant As Long
 End Type
 
-'COMMTIMEOUTS�^�ϐ��̒�`
+'COMMTIMEOUTS型変数の定義
 Public fCOMMTIMEOUTS As COMMTIMEOUTS
 
 
-'COMSTAT�\���̂̒�`
+'COMSTAT構造体の定義
 Type COMSTAT
     fBitFields As Long 'See Comment in Win32API.Txt
     cbInQue As Long
@@ -512,10 +512,10 @@ End Type
 ' fTxim           7       character waiting for Tx
 ' fReserved       8       reserved (25 bits)
 
-'COMSTAT�^�ϐ��̒�`
+'COMSTAT型変数の定義
 Public fCOMSTAT As COMSTAT
 
-'COMMPROP�\���̂̒�`
+'COMMPROP構造体の定義
 Type COMMPROP
     wPacketLength As Integer
     wPacketVersion As Integer
@@ -537,10 +537,10 @@ Type COMMPROP
     wcProvChar(1) As Integer
 End Type
 
-'COMMPROP�^�ϐ��̒�`
+'COMMPROP型変数の定義
 Public fCOMMPROP As COMMPROP
 
-'���[�J���^�C���\����
+'ローカルタイム構造体
 Type SYSTEMTIME
     wYear As Integer
     wMonth As Integer
@@ -552,7 +552,7 @@ Type SYSTEMTIME
     wMilliseconds As Integer
 End Type
 
-'���[�J���^�C���^�ϐ��̒�`
+'ローカルタイム型変数の定義
 Public fSYSTEMTIME As SYSTEMTIME
 
 '  Settable baud rates in the provider.

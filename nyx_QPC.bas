@@ -1,5 +1,5 @@
 Attribute VB_Name = "nyx_QPC"
-'•W€ƒ‚ƒWƒ…[ƒ‹‚Ì(General)(Declarations)‚Ö‹Lq‚µ‚Ü‚·
+'æ¨™æº–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®(General)(Declarations)ã¸è¨˜è¿°ã—ã¾ã™
 
 #If VBA7 Then
 Declare PtrSafe Function QueryPerformanceCounter Lib "kernel32" (lpPerformanceCount As Currency) As Boolean
@@ -9,7 +9,7 @@ Declare Function QueryPerformanceCounter Lib "kernel32" (lpPerformanceCount As C
 Declare Function QueryPerformanceFrequency Lib "kernel32" (lpFrequency As Currency) As Boolean
 #End If
 
-'CPU‚ÌÀs‘¬“x
+'CPUã®å®Ÿè¡Œé€Ÿåº¦
 Dim gQPC_frequency As Currency
 Dim gQPC_time_start As Currency
 Dim gQPC_time_now As Currency
@@ -20,10 +20,10 @@ Dim gQPC_time_stop As Currency
 
 
 Sub QPC_start_counting()
-    'ü”g”Š“¾(ˆê•b“–‚½‚è‚ÌƒJƒEƒ“ƒg’l‚ğŠ“¾)
+    'å‘¨æ³¢æ•°æ‰€å¾—(ä¸€ç§’å½“ãŸã‚Šã®ã‚«ã‚¦ãƒ³ãƒˆå€¤ã‚’æ‰€å¾—)
     Call QueryPerformanceFrequency(gQPC_frequency)
     
-    'ƒJƒEƒ“ƒ^[‚Ìæ“¾,1ms’PˆÊ
+    'ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã®å–å¾—,1mså˜ä½
     Dim count As Currency
     Call QueryPerformanceCounter(count)
     gQPC_time_start = count / (gQPC_frequency / 1000)
@@ -34,12 +34,12 @@ End Sub
 
 Sub QPC_wait_ms(interval As Currency)
     Dim count As Currency
-    'ƒJƒEƒ“ƒ^[‚Ìæ“¾,1ms’PˆÊ
+    'ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã®å–å¾—,1mså˜ä½
     Call QueryPerformanceCounter(count)
     gQPC_time_now = count / (gQPC_frequency / 1000)
 
     Do While (gQPC_time_now - gQPC_time_prev < interval)
-        'ƒJƒEƒ“ƒ^[‚Ìæ“¾,1ms’PˆÊ
+        'ã‚«ã‚¦ãƒ³ã‚¿ãƒ¼ã®å–å¾—,1mså˜ä½
         Call QueryPerformanceCounter(count)
         gQPC_time_now = count / (gQPC_frequency / 1000)
     Loop
