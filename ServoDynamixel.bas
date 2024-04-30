@@ -13,6 +13,13 @@ Public TARGET_POS() As Currency 'unit&: [rad]
 Public TARGET_VEL() As Currency 'unit&: [rad/sec]
 Public MEASURED_POS() As Currency 'unit&: [rad]
 
+'Received packet buffer
+Public Const RX_RING_BUFFER_SIZE As Integer = 1000
+Public RX_RING_BUFFER(RX_RING_BUFFER_SIZE - 1) As Byte
+Public RX_READ_POINT As Long
+Public RX_WRITE_POINT As Long
+
+
 Sub dynamixelSetMotorNum(ByVal input_num As Integer)
     MOTOR_NUM = input_num
     ReDim TARGET_ID(MOTOR_NUM)
@@ -67,6 +74,32 @@ Function dynamixelTorqueOffPacket() As Byte()
     dynamixelTorqueOffPacket = send_packet()
 End Function
 
+Sub dynamixelClearRxBuffer()
+    RX_READ_POINT = 0
+    RX_WRITE_POINT = 0
+End Sub
+
+Sub dynamixelUpdateRxBuffer()
+    Dim received() As Byte
+    received() = ec.Binary
+    Dim received_size As Long
+    received_size = UBound(received)
+    For i = 0 To received_size
+        RX_RING_BUFFER(RX_WRITE_POINT) = received(i)
+        RX_WRITE_POINT = RX_WRITE_POINT + 1
+        If RX_WRITE_POINT = RX_READ_POINT Then
+            RX_READ_POINT = RX_READ_POINT + 1
+        End If
+        If RX_WRITE_POINT > RX_RING_BUFFER_SIZE - 1 Then
+            RX_WRITE_POINT = RX_WRITE_POINT - RX_RING_BUFFER_SIZE
+        End If
+        If RX_READ_POINT > RX_RING_BUFFER_SIZE - 1 Then
+            RX_READ_POINT = RX_READ_POINT - RX_RING_BUFFER_SIZE
+        End If
+    Next i
+End Sub
+
+
 Function dynamixelChecksum(ByRef data_in() As Byte) As Long
     Dim crc As Long
     Dim crc_accum As Long
@@ -112,13 +145,11 @@ Function update_crc(crc_accum As Long, data_blk_ptr() As Byte, data_blk_size As 
     crc_table(232) = &H270&: crc_table(233) = &H8275&: crc_table(234) = &H827F&: crc_table(235) = &H27A: crc_table(236) = &H826B&: crc_table(237) = &H26E&: crc_table(238) = &H264&: crc_table(239) = &H8261&
     crc_table(240) = &H220&: crc_table(241) = &H8225&: crc_table(242) = &H822F&: crc_table(243) = &H22A: crc_table(244) = &H823B&: crc_table(245) = &H23E&: crc_table(246) = &H234&: crc_table(247) = &H8231&
     crc_table(248) = &H8213&: crc_table(249) = &H216&: crc_table(250) = &H21C&: crc_table(251) = &H8219: crc_table(252) = &H208&: crc_table(253) = &H820D&: crc_table(254) = &H8207&: crc_table(255) = &H202&
-
     For j = 0 To data_blk_size - 1
         i = ((crc_accum \ &H100&) Xor data_blk_ptr(j)) And &HFF&
         crc_accum = ((crc_accum And &HFF&) * &H100&) Xor crc_table(i)
         crc_accum = crc_accum And &HFFFF&
     Next j
-
     update_crc = crc_accum
 End Function
 
