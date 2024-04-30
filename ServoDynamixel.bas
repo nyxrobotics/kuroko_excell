@@ -1,17 +1,17 @@
 Attribute VB_Name = "ServoDynamixel"
 'Reference
-'Protocom 2.0&: https://emanual.robotis.com/docs/en/dxl/protocol2/
-'Control Table&: https://www.besttechnology.co.jp/modules/knowledge/?X%20Series%20Control%20table
-'CRC&: https://emanual.robotis.com/docs/en/dxl/crc/
+'Protocom 2.0: https://emanual.robotis.com/docs/en/dxl/protocol2/
+'Control Table: https://www.besttechnology.co.jp/modules/knowledge/?X%20Series%20Control%20table
+'CRC: https://emanual.robotis.com/docs/en/dxl/crc/
 
 'Parameters
 Public MOTOR_NUM As Integer
 
 'Internal variables
 Public TARGET_ID() As Integer
-Public TARGET_POS() As Currency 'unit&: [rad]
-Public TARGET_VEL() As Currency 'unit&: [rad/sec]
-Public MEASURED_POS() As Currency 'unit&: [rad]
+Public TARGET_POS() As Currency 'unit: [rad]
+Public TARGET_VEL() As Currency 'unit: [rad/sec]
+Public MEASURED_POS() As Currency 'unit: [rad]
 
 'Received packet buffer
 Public Const RX_RING_BUFFER_SIZE As Integer = 1000
@@ -40,11 +40,11 @@ Function dynamixelTorqueOnPacket() As Byte()
     send_packet(1) = &HFF 'Header
     send_packet(2) = &HFD 'Header
     send_packet(3) = &H0  'Reserved
-    send_packet(4) = &H1 'ID (&HFE: Broadcast)
+    send_packet(4) = &H1 'ID (0xFE: Broadcast)
     send_packet(5) = &H6  'Length Low (Length = the number of Parameters + 3)
     send_packet(6) = &H0  'Length High
     send_packet(7) = &H3  'Instruction (3: Write)
-    send_packet(8) = &H40 'Address Low (&H18: Torque Enable)
+    send_packet(8) = &H40 'Address Low (0x40: Torque Enable)
     send_packet(9) = &H0  'Address High
     send_packet(10) = &H1 'Parameters (1: ON)
     Dim crc As Long
@@ -60,11 +60,11 @@ Function dynamixelTorqueOffPacket() As Byte()
     send_packet(1) = &HFF 'Header
     send_packet(2) = &HFD 'Header
     send_packet(3) = &H0  'Header
-    send_packet(4) = &HFE 'ID (&HFE: Broadcast)
+    send_packet(4) = &HFE 'ID (0xFE: Broadcast)
     send_packet(5) = &H6  'Length Low
     send_packet(6) = &H0  'Length High
     send_packet(7) = &H3  'Instruction
-    send_packet(8) = &H40 'Address Low (&H18: Torque Enable)
+    send_packet(8) = &H40 'Address Low (0x40: Torque Enable)
     send_packet(9) = &H0  'Address High
     send_packet(10) = &H0 'Parameters (0: OFF)
     Dim crc As Long
