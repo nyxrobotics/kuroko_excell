@@ -1,8 +1,8 @@
 Attribute VB_Name = "nyx_orientalmotor"
 Sub oriental_test()
 
-    Dim baud_rate As Long
-    Dim com_port As Integer
+    Dim BAUD_RATE As Long
+    Dim COM_PORT As Integer
     Dim sending_packet_2(15) As Byte
     Dim Shtname As String
     Dim tmp As Integer
@@ -11,14 +11,14 @@ Sub oriental_test()
     Dim ec_set As String
     
     Application.ScreenUpdating = False
-    Call QPC_start_counting
+    Call qpcInit
             
     Shtname = ActiveSheet.Name
-    baud_rate = Sheets("COM").Cells(2, 2).Value
-    com_port = Sheets("COM").Cells(1, 2).Value
+    BAUD_RATE = Sheets("COM").Cells(2, 2).Value
+    COM_PORT = Sheets("COM").Cells(1, 2).Value
 
-    ec.COMn = com_port 'COMを開きます
-    ec_set = SPrintF("%d,e,8,1", baud_rate)
+    ec.COMn = COM_PORT 'COMを開きます
+    ec_set = SPrintF("%d,e,8,1", BAUD_RATE)
     ec.Setting = ec_set '"500000,n,8,1"
 
     Dim k As Integer
@@ -53,7 +53,7 @@ Sub oriental_test()
             sending_packet_2(12) = &HAC   'data 2
         End If
         ec.Binary = sending_packet_2()
-        QPC_wait_ms (5)
+        qpcWaitMs (5)
     Next
 
     

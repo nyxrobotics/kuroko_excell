@@ -31,33 +31,33 @@ Public return_single_buf(5) As Currency 'pose,load,temp,volt,error
 
 Sub com_init()
     Application.ScreenUpdating = False
-    Dim com_port As Integer
-    Dim com_baud As Long
-    Dim com_parity As String
-    Dim com_length As String
-    Dim com_stop As Integer
+    Dim COM_PORT As Integer
+    Dim COM_BAUD As Long
+    Dim COM_PARITY As String
+    Dim COM_LENGTH As String
+    Dim COM_STOP As Integer
     
     Dim ec_set As String
     
-    Call QPC_start_counting
-    baud_rate = Sheets("COM").Cells(2, 2).Value
-    com_port = Sheets("COM").Cells(1, 2).Value
-    ec_set = SPrintF("%d,n,8,1", baud_rate)
+    Call qpcInit
+    BAUD_RATE = Sheets("COM").Cells(2, 2).Value
+    COM_PORT = Sheets("COM").Cells(1, 2).Value
+    ec_set = SPrintF("%d,n,8,1", BAUD_RATE)
     
-    ec.COMn = com_port 'COMを開きます
+    ec.COMn = COM_PORT 'COMを開きます
     ec.Setting = ec_set
-    QPC_wait_ms (20)
+    qpcWaitMs (20)
 End Sub
 
 Sub com_init2()
     Application.ScreenUpdating = False
-    Call QPC_start_counting
+    Call qpcInit
     Call com_init
-    QPC_wait_ms (20)
+    qpcWaitMs (20)
 End Sub
 
 Sub servo_on()
-    Call QPC_start_counting
+    Call qpcInit
     Dim sndbin(8) As Byte
 '-------------------------------------
     ec.COMn = comnum                                     'COMを開きます
@@ -84,7 +84,7 @@ Sub servo_on()
         sndbin(8) = sndbin(8) Xor sndbin(i)
     Next
     ec.Binary = sndbin()
-    QPC_wait_ms (10)
+    qpcWaitMs (10)
     
     
     sndbin(0) = &HFA 'Header1
@@ -101,13 +101,13 @@ Sub servo_on()
         sndbin(8) = sndbin(8) Xor sndbin(i)
     Next
     ec.Binary = sndbin()
-    QPC_wait_ms (10)
+    qpcWaitMs (10)
      
     ec.COMn = 0
-    'QPC_wait_ms (10)                                   '0.01秒待ちます．
+    'qpcWaitMs (10)                                   '0.01秒待ちます．
 End Sub
 Sub servo_off()
-    Call QPC_start_counting
+    Call qpcInit
     Dim sndbin(8) As Byte
 '-------------------------------------
     ec.COMn = comnum                                     'COMを開きます
@@ -137,13 +137,13 @@ Sub servo_off()
          
     ec.COMn = 0
     
-    QPC_wait_ms (10)
+    qpcWaitMs (10)
 
 End Sub
 
 
 Sub servo_free()
-    Call QPC_start_counting
+    Call qpcInit
     Dim sndbin(8) As Byte
 '-------------------------------------
     ec.COMn = comnum                                     'COMを開きます
@@ -173,7 +173,7 @@ Sub servo_free()
      
     ec.COMn = 0
 
-    QPC_wait_ms (200)                                '0.01秒待ちます．
+    qpcWaitMs (200)                                '0.01秒待ちます．
     
 End Sub
      
@@ -203,7 +203,7 @@ Sub get_single_buf(SID)
     ec.Binary = sndbin_2()
     
     'Receive
-    QPC_wait_ms (5)
+    qpcWaitMs (5)
     Recbin() = ec.Binary
     Dim start_point As Integer
     start_point = UBound(Recbin()) 'エラー処理用の初期値
@@ -267,7 +267,7 @@ Sub get_return(samples)
     Dim vol(servosend) As Currency
     Dim err(servosend) As Byte
     Dim err_0(servosend) As Byte
-    QPC_wait_ms (50)
+    qpcWaitMs (50)
     For j = 0 To samples - 1
         For i = 0 To servosend - 1
             err_0(i) = 0
@@ -441,7 +441,7 @@ Sub Play_nyx_1(frame)
     
 '-----------------------------------
 
-    QPC_wait_ms (wtim)
+    qpcWaitMs (wtim)
 
     
 '-----------------------------------
@@ -453,7 +453,7 @@ End Sub
 
 Sub ButtonPlayTest_2()
     Application.ScreenUpdating = False
-    Call QPC_start_counting
+    Call qpcInit
     Call servo_on
 
     Dim sndbin(sendbyte) As Byte                         '送信バイトセット　6 + 5*26 +1 = 137
@@ -464,7 +464,7 @@ Sub ButtonPlayTest_2()
 
     ec.COMn = comnum                                     'COMを開きます
     ec.Setting = "115200,n,8,1"
-    QPC_wait_ms (10)
+    qpcWaitMs (10)
 
     For k = 9 To 28
         If Sheets(Shtname).Cells(7, k).Value = 1 Then
@@ -494,7 +494,7 @@ Sub ButtonPlayTest_2()
     Next
     
    Play_nyx_1 (0)
-    QPC_wait_ms (10)
+    qpcWaitMs (10)
    Application.ScreenUpdating = True
    ec.COMn = 0
 End Sub
