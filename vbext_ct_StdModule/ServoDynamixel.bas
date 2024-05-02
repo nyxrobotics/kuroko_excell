@@ -99,7 +99,6 @@ Sub dynamixelUpdateRxBuffer()
     Next i
 End Sub
 
-
 Function dynamixelChecksum(ByRef data_in() As Byte) As Long
     Dim crc As Long
     Dim crc_accum As Long
@@ -110,6 +109,9 @@ Function dynamixelChecksum(ByRef data_in() As Byte) As Long
     dynamixelChecksum = crc
 End Function
 
+'&H8000 is an Integer Constant, so the Sign bit is set making it -32768 and that Integer is copied to the Long value
+'&H8000& is a Long Constant, so bit 15 of the Long is set making it 32768 and that Long is copied to the Long value
+'Reference:  https://www.vbforums.com/showthread.php?847437-amp-H-values-and-Long-variable-type-in-Excel-VBA&p=5170541&viewfull=1#post5170541
 Function update_crc(crc_accum As Long, data_blk_ptr() As Byte, data_blk_size As Long) As Long
     Dim i As Long, j As Long
     Dim crc_table(0 To 255) As Long
