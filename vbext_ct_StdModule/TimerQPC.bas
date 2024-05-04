@@ -21,7 +21,6 @@ Sub qpcInit()
 End Sub
 
 Sub qpcRestart()
-    'カウンターの取得
     Call QueryPerformanceCounter(TIME_START)
 End Sub
 
@@ -40,3 +39,15 @@ Sub qpcWaitMs(interval As Currency)
     TIME_START = time_now
 End Sub
 
+
+Sub qpcWait(interval As Currency)
+    Dim time_now As Currency
+    Call QueryPerformanceCounter(time_now)
+    Dim time_passed As Currency
+    time_passed = (time_now - TIME_START) / QPC_FEAQ
+    Do While (time_passed_ms < interval)
+        Call QueryPerformanceCounter(time_now)
+        time_passed = (time_now - TIME_START) / QPC_FEAQ
+    Loop
+    TIME_START = time_now
+End Sub
