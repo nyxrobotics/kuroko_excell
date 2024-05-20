@@ -1,4 +1,4 @@
-Attribute VB_Name = "nyx_Futaba_Motion"
+Attribute VB_Name = "FutabaMotionPlayer"
 '************************************************
 '
 '   RUPUTEN-Editor32
