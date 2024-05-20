@@ -5,6 +5,10 @@ Sub dynamixelTorqueOn()
     Dim send_packet() As Byte
     send_packet() = dynamixelTorqueOnPacket()
     ec.Binary = send_packet()
+    'Test to read return packet
+    qpcWaitMs (50)
+    Call dynamixelUpdateRxBuffer
+    Call dynamixelDecodeRxBuffer
 End Sub
 
 Sub dynamixelTorqueOff()

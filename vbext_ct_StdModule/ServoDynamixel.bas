@@ -80,11 +80,13 @@ Sub dynamixelClearRxBuffer()
 End Sub
 
 Sub dynamixelUpdateRxBuffer()
+    Dim i As Long
     Dim received() As Byte
     received() = ec.Binary
     Dim received_size As Long
     received_size = UBound(received)
-    For i = 0 To received_size
+    
+    For i = 0 To received_size - 1
         RX_RING_BUFFER(RX_WRITE_POINT) = received(i)
         RX_WRITE_POINT = RX_WRITE_POINT + 1
         If RX_WRITE_POINT = RX_READ_POINT Then
@@ -97,6 +99,107 @@ Sub dynamixelUpdateRxBuffer()
             RX_READ_POINT = RX_READ_POINT - RX_RING_BUFFER_SIZE
         End If
     Next i
+End Sub
+
+Function dynamixelGetRxDataSize() As Long
+    Dim rx_data_size As Long
+    rx_data_size = RX_WRITE_POINT - RX_READ_POINT
+    If rx_data_size < 0 Then
+        rx_data_size = rx_data_size + RX_RING_BUFFER_SIZE
+    End If
+    dynamixelGetRxDaraSize = rx_data_size
+End Function
+
+Function dynamixelGetRxSingleByte(point As Long) As Byte
+    Dim target_point As Long
+    target_point = point
+    If target_point > RX_RING_BUFFER_SIZE - 1 Then
+        target_point = target_point - RX_RING_BUFFER_SIZE
+    End If
+    dynamixelGetRxDaraSize = RX_RING_BUFFER(target_point)
+End Function
+
+Function dynamixelRxSingleByteAvailable(point As Long) As Boolean
+    Dim available As Boolean
+    Dim target_point As Long
+    available = False
+    If RX_READ_POINT = RX_WRITE_POINT Then
+        dynamixelRxSingleByteAvailable() = False
+        Exit Function
+    End If
+    target_point = point
+    If target_point > RX_RING_BUFFER_SIZE - 1 Then
+        target_point = target_point - RX_RING_BUFFER_SIZE
+    End If
+    If RX_READ_POINT < RX_WRITE_POINT Then
+        If target_point < RX_WRITE_POINT Then
+            available = True
+        End If
+    Else
+        If target_point > RX_READ_POINT Or target_point < RX_WRITE_POINT Then
+            available = True
+        End If
+    End If
+    dynamixelRxSingleByteAvailable() = available
+End Function
+
+Sub dynamixelDecodeRxBuffer()
+    'Only read Position packet
+    Dim i As Long
+    Dim j As Long
+    Dim k As Long
+    Dim rx_data_size As Long
+    Dim header_addr_candidate As Long
+    Dim length_candidate As Long
+    Dim footer_addr_candidate As Long
+    Dim checksum_candidate As Long
+    Dim single_status_packet() As Byte
+    Dim status_id As Long
+    Dim status_addr As Long
+    Dim status_pose As Long
+    Dim status_radian As Currency
+    rx_data_size = dynamixelGetRxDataSize()
+    If rx_data_size < 10 Then
+        Exit Sub
+    End If
+    For i = 2 To rx_data_size - 1
+        'Only if there are more than 10 bytes including headers, go to the next process
+        If rx_data_size - i < 10 Then
+            Exit For
+        End If
+        'Find the 0xFF 0xFF 0xFD data and make it the header_candidate of the status packet
+        If dynamixelGetRxSingleByte(i - 2) = &HFF And dynamixelGetRxSingleByte(i - 1) = &HFF& And dynamixelGetRxSingleByte(i) = &HFD& Then
+            'Check the length of the packet
+            header_addr_candidate = i - 2
+            length_candidate = dynamixelGetRxSingleByte(header_addr_candidate + 5) + dynamixelGetRxSingleByte(header_addr_candidate + 6) * &H100
+            footer_addr_candidate = header_addr_candidate + 6 + length_candidate + 1
+            If dynamixelRxSingleByteAvailable(footer_addr_candidate) Then
+                ReDim single_status_packet(6 + length_candidate)
+                For j = 0 To 6 + length_candidate
+                    single_status_packet(j) = dynamixelGetRxSingleByte(header_addr_candidate + j)
+                Next
+                checksum_candidate = dynamixelGetRxSingleByte(footer_addr_candidate) * &H100& + dynamixelGetRxSingleByte(footer_addr_candidate)
+                If checksum_candidate = dynamixelChecksum(single_status_packet) Then
+                    ' Received status packet
+                    status_id = single_status_packet(4)
+                    If status_id <> &HFD& And length_candidate = 8 Then
+                        status_pose = dynamixelGetRxSingleByte(header_addr_candidate + 9) + dynamixelGetRxSingleByte(header_addr_candidate + 10) * &H100& + dynamixelGetRxSingleByte(header_addr_candidate + 11) * &H10000 + dynamixelGetRxSingleByte(header_addr_candidate + 12) * &H1000000
+                        status_radian = status_pose * WorksheetFunction.Pi() / 2048
+                        If status_radian > WorksheetFunction.Pi() Then
+                            status_radian = status_radian - 2 * WorksheetFunction.Pi()
+                            For k = 0 To MOTOR_TOTAL - 1
+                                If TARGET_ID(k) = status_id Then
+                                    MEASURED_POS(k) = status_radian
+                                    Exit For
+                                End If
+                            Next
+                        End If
+                    End If
+                    RX_READ_POINT = RX_READ_POINT + UBound(single_status_packet)
+                End If
+            End If
+        End If
+    Next
 End Sub
 
 Function dynamixelChecksum(ByRef data_in() As Byte) As Long
