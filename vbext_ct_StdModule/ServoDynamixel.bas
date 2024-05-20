@@ -5,7 +5,7 @@ Attribute VB_Name = "ServoDynamixel"
 'CRC: https://emanual.robotis.com/docs/en/dxl/crc/
 
 'Parameters
-Public MOTOR_NUM As Integer
+Public MOTOR_TOTAL As Integer
 
 'Internal variables
 Public TARGET_ID() As Integer
@@ -21,12 +21,12 @@ Public RX_WRITE_POINT As Long
 
 
 Sub dynamixelSetMotorNum(ByVal input_num As Integer)
-    MOTOR_NUM = input_num
-    ReDim TARGET_ID(MOTOR_NUM)
-    ReDim TARGET_POS(MOTOR_NUM)
-    ReDim TARGET_VEL(MOTOR_NUM)
-    ReDim MEASURED_POS(MOTOR_NUM)
-    For i = 0 To MOTOR_NUM - 1
+    MOTOR_TOTAL = input_num
+    ReDim TARGET_ID(MOTOR_TOTAL)
+    ReDim TARGET_POS(MOTOR_TOTAL)
+    ReDim TARGET_VEL(MOTOR_TOTAL)
+    ReDim MEASURED_POS(MOTOR_TOTAL)
+    For i = 0 To MOTOR_TOTAL - 1
         TARGET_ID(i) = 255
         TARGET_POS(i) = 0
         TARGET_VEL(i) = 0

@@ -14,4 +14,3 @@ Sub dynamixelTorqueOff()
     Call comClose
 End Sub
 
-
