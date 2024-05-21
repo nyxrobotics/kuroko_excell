@@ -1,6 +1,6 @@
 Attribute VB_Name = "ServoDynamixel"
 'Reference
-'Protocom 2.0: https://emanual.robotis.com/docs/en/dxl/protocol2/
+'Protocol 2.0: https://emanual.robotis.com/docs/en/dxl/protocol2/
 'Control Table: https://www.besttechnology.co.jp/modules/knowledge/?X%20Series%20Control%20table
 'CRC: https://emanual.robotis.com/docs/en/dxl/crc/
 
@@ -19,13 +19,12 @@ Public RX_RING_BUFFER(RX_RING_BUFFER_SIZE - 1) As Byte
 Public RX_READ_POINT As Long
 Public RX_WRITE_POINT As Long
 
-
 Sub dynamixelSetMotorNum(ByVal input_num As Integer)
     MOTOR_TOTAL = input_num
-    ReDim TARGET_ID(MOTOR_TOTAL)
-    ReDim TARGET_POS(MOTOR_TOTAL)
-    ReDim TARGET_VEL(MOTOR_TOTAL)
-    ReDim MEASURED_POS(MOTOR_TOTAL)
+    ReDim TARGET_ID(MOTOR_TOTAL - 1)
+    ReDim TARGET_POS(MOTOR_TOTAL - 1)
+    ReDim TARGET_VEL(MOTOR_TOTAL - 1)
+    ReDim MEASURED_POS(MOTOR_TOTAL - 1)
     For i = 0 To MOTOR_TOTAL - 1
         TARGET_ID(i) = 255
         TARGET_POS(i) = 0
@@ -40,7 +39,7 @@ Function dynamixelTorqueOnPacket() As Byte()
     send_packet(1) = &HFF 'Header
     send_packet(2) = &HFD 'Header
     send_packet(3) = &H0  'Reserved
-    send_packet(4) = &H1 'ID (0xFE: Broadcast)
+    send_packet(4) = &HFE 'ID (0xFE: Broadcast)
     send_packet(5) = &H6  'Length Low (Length = the number of Parameters + 3)
     send_packet(6) = &H0  'Length High
     send_packet(7) = &H3  'Instruction (3: Write)
@@ -51,7 +50,7 @@ Function dynamixelTorqueOnPacket() As Byte()
     crc = dynamixelChecksum(send_packet)
     send_packet(11) = crc And &HFF           'CRC Low
     send_packet(12) = crc \ 256 And &HFF 'CRC High
-    dynamixelTorqueOnPacket = send_packet()
+    dynamixelTorqueOnPacket = send_packet
 End Function
 
 Function dynamixelTorqueOffPacket() As Byte()
@@ -59,7 +58,7 @@ Function dynamixelTorqueOffPacket() As Byte()
     send_packet(0) = &HFF 'Header
     send_packet(1) = &HFF 'Header
     send_packet(2) = &HFD 'Header
-    send_packet(3) = &H0  'Header
+    send_packet(3) = &H0  'Reserved
     send_packet(4) = &HFE 'ID (0xFE: Broadcast)
     send_packet(5) = &H6  'Length Low
     send_packet(6) = &H0  'Length High
@@ -71,7 +70,7 @@ Function dynamixelTorqueOffPacket() As Byte()
     crc = dynamixelChecksum(send_packet)
     send_packet(11) = crc And &HFF           'CRC Low
     send_packet(12) = crc \ 256 And &HFF 'CRC High
-    dynamixelTorqueOffPacket = send_packet()
+    dynamixelTorqueOffPacket = send_packet
 End Function
 
 Sub dynamixelClearRxBuffer()
@@ -82,21 +81,15 @@ End Sub
 Sub dynamixelUpdateRxBuffer()
     Dim i As Long
     Dim received() As Byte
-    received() = ec.Binary
+    received = ec.Binary
     Dim received_size As Long
-    received_size = UBound(received)
+    received_size = UBound(received) + 1
     
     For i = 0 To received_size - 1
         RX_RING_BUFFER(RX_WRITE_POINT) = received(i)
-        RX_WRITE_POINT = RX_WRITE_POINT + 1
+        RX_WRITE_POINT = (RX_WRITE_POINT + 1) Mod RX_RING_BUFFER_SIZE
         If RX_WRITE_POINT = RX_READ_POINT Then
-            RX_READ_POINT = RX_READ_POINT + 1
-        End If
-        If RX_WRITE_POINT > RX_RING_BUFFER_SIZE - 1 Then
-            RX_WRITE_POINT = RX_WRITE_POINT - RX_RING_BUFFER_SIZE
-        End If
-        If RX_READ_POINT > RX_RING_BUFFER_SIZE - 1 Then
-            RX_READ_POINT = RX_READ_POINT - RX_RING_BUFFER_SIZE
+            RX_READ_POINT = (RX_READ_POINT + 1) Mod RX_RING_BUFFER_SIZE
         End If
     Next i
 End Sub
@@ -107,16 +100,13 @@ Function dynamixelGetRxDataSize() As Long
     If rx_data_size < 0 Then
         rx_data_size = rx_data_size + RX_RING_BUFFER_SIZE
     End If
-    dynamixelGetRxDaraSize = rx_data_size
+    dynamixelGetRxDataSize = rx_data_size
 End Function
 
 Function dynamixelGetRxSingleByte(point As Long) As Byte
     Dim target_point As Long
-    target_point = point
-    If target_point > RX_RING_BUFFER_SIZE - 1 Then
-        target_point = target_point - RX_RING_BUFFER_SIZE
-    End If
-    dynamixelGetRxDaraSize = RX_RING_BUFFER(target_point)
+    target_point = point Mod RX_RING_BUFFER_SIZE
+    dynamixelGetRxSingleByte = RX_RING_BUFFER(target_point)
 End Function
 
 Function dynamixelRxSingleByteAvailable(point As Long) As Boolean
@@ -124,30 +114,25 @@ Function dynamixelRxSingleByteAvailable(point As Long) As Boolean
     Dim target_point As Long
     available = False
     If RX_READ_POINT = RX_WRITE_POINT Then
-        dynamixelRxSingleByteAvailable() = False
+        dynamixelRxSingleByteAvailable = False
         Exit Function
     End If
-    target_point = point
-    If target_point > RX_RING_BUFFER_SIZE - 1 Then
-        target_point = target_point - RX_RING_BUFFER_SIZE
-    End If
+    target_point = point Mod RX_RING_BUFFER_SIZE
     If RX_READ_POINT < RX_WRITE_POINT Then
         If target_point < RX_WRITE_POINT Then
             available = True
         End If
     Else
-        If target_point > RX_READ_POINT Or target_point < RX_WRITE_POINT Then
+        If target_point >= RX_READ_POINT Or target_point < RX_WRITE_POINT Then
             available = True
         End If
     End If
-    dynamixelRxSingleByteAvailable() = available
+    dynamixelRxSingleByteAvailable = available
 End Function
 
 Sub dynamixelDecodeRxBuffer()
-    'Only read Position packet
-    Dim i As Long
-    Dim j As Long
-    Dim k As Long
+    ' Only read Position packet
+    Dim i As Long, j As Long, k As Long
     Dim rx_data_size As Long
     Dim header_addr_candidate As Long
     Dim length_candidate As Long
@@ -155,51 +140,55 @@ Sub dynamixelDecodeRxBuffer()
     Dim checksum_candidate As Long
     Dim single_status_packet() As Byte
     Dim status_id As Long
-    Dim status_addr As Long
     Dim status_pose As Long
     Dim status_radian As Currency
+    
     rx_data_size = dynamixelGetRxDataSize()
-    If rx_data_size < 10 Then
-        Exit Sub
-    End If
+    If rx_data_size < 10 Then Exit Sub
+    
     For i = 2 To rx_data_size - 1
-        'Only if there are more than 10 bytes including headers, go to the next process
-        If rx_data_size - i < 10 Then
-            Exit For
-        End If
-        'Find the 0xFF 0xFF 0xFD data and make it the header_candidate of the status packet
-        If dynamixelGetRxSingleByte(i - 2) = &HFF And dynamixelGetRxSingleByte(i - 1) = &HFF& And dynamixelGetRxSingleByte(i) = &HFD& Then
-            'Check the length of the packet
-            header_addr_candidate = i - 2
-            length_candidate = dynamixelGetRxSingleByte(header_addr_candidate + 5) + dynamixelGetRxSingleByte(header_addr_candidate + 6) * &H100
-            footer_addr_candidate = header_addr_candidate + 6 + length_candidate + 1
+        ' Only if there are more than 10 bytes including headers, go to the next process
+        If rx_data_size - i < 10 Then Exit For
+        ' Find the 0xFF 0xFF 0xFD data and make it the header_candidate of the status packet
+        If dynamixelGetRxSingleByte((RX_READ_POINT + i - 2) Mod RX_RING_BUFFER_SIZE) = &HFF And _
+           dynamixelGetRxSingleByte((RX_READ_POINT + i - 1) Mod RX_RING_BUFFER_SIZE) = &HFF And _
+           dynamixelGetRxSingleByte((RX_READ_POINT + i) Mod RX_RING_BUFFER_SIZE) = &HFD Then
+            ' Check the length of the packet
+            header_addr_candidate = (RX_READ_POINT + i - 2) Mod RX_RING_BUFFER_SIZE
+            length_candidate = dynamixelGetRxSingleByte((header_addr_candidate + 5) Mod RX_RING_BUFFER_SIZE) + _
+                               dynamixelGetRxSingleByte((header_addr_candidate + 6) Mod RX_RING_BUFFER_SIZE) * &H100
+            footer_addr_candidate = (header_addr_candidate + 6 + length_candidate + 1) Mod RX_RING_BUFFER_SIZE
             If dynamixelRxSingleByteAvailable(footer_addr_candidate) Then
                 ReDim single_status_packet(6 + length_candidate)
                 For j = 0 To 6 + length_candidate
-                    single_status_packet(j) = dynamixelGetRxSingleByte(header_addr_candidate + j)
-                Next
-                checksum_candidate = dynamixelGetRxSingleByte(footer_addr_candidate) * &H100& + dynamixelGetRxSingleByte(footer_addr_candidate)
+                    single_status_packet(j) = dynamixelGetRxSingleByte((header_addr_candidate + j) Mod RX_RING_BUFFER_SIZE)
+                Next j
+                checksum_candidate = dynamixelGetRxSingleByte(footer_addr_candidate) * &H100 + _
+                                     dynamixelGetRxSingleByte((footer_addr_candidate - 1 + RX_RING_BUFFER_SIZE) Mod RX_RING_BUFFER_SIZE)
                 If checksum_candidate = dynamixelChecksum(single_status_packet) Then
                     ' Received status packet
                     status_id = single_status_packet(4)
-                    If status_id <> &HFD& And length_candidate = 8 Then
-                        status_pose = dynamixelGetRxSingleByte(header_addr_candidate + 9) + dynamixelGetRxSingleByte(header_addr_candidate + 10) * &H100& + dynamixelGetRxSingleByte(header_addr_candidate + 11) * &H10000 + dynamixelGetRxSingleByte(header_addr_candidate + 12) * &H1000000
+                    If status_id <> &HFD And length_candidate = 8 Then
+                        status_pose = dynamixelGetRxSingleByte((header_addr_candidate + 9) Mod RX_RING_BUFFER_SIZE) + _
+                                      dynamixelGetRxSingleByte((header_addr_candidate + 10) Mod RX_RING_BUFFER_SIZE) * &H100 + _
+                                      dynamixelGetRxSingleByte((header_addr_candidate + 11) Mod RX_RING_BUFFER_SIZE) * &H10000 + _
+                                      dynamixelGetRxSingleByte((header_addr_candidate + 12) Mod RX_RING_BUFFER_SIZE) * &H1000000
                         status_radian = status_pose * WorksheetFunction.Pi() / 2048
                         If status_radian > WorksheetFunction.Pi() Then
                             status_radian = status_radian - 2 * WorksheetFunction.Pi()
-                            For k = 0 To MOTOR_TOTAL - 1
-                                If TARGET_ID(k) = status_id Then
-                                    MEASURED_POS(k) = status_radian
-                                    Exit For
-                                End If
-                            Next
                         End If
+                        For k = 0 To MOTOR_TOTAL - 1
+                            If TARGET_ID(k) = status_id Then
+                                MEASURED_POS(k) = status_radian
+                                Exit For
+                            End If
+                        Next k
                     End If
-                    RX_READ_POINT = RX_READ_POINT + UBound(single_status_packet)
+                    RX_READ_POINT = (RX_READ_POINT + UBound(single_status_packet)) Mod RX_RING_BUFFER_SIZE
                 End If
             End If
         End If
-    Next
+    Next i
 End Sub
 
 Function dynamixelChecksum(ByRef data_in() As Byte) As Long
@@ -211,7 +200,6 @@ Function dynamixelChecksum(ByRef data_in() As Byte) As Long
     crc = update_crc(crc_accum, data_in, data_blk_size)
     dynamixelChecksum = crc
 End Function
-
 '&H8000 is an Integer Constant, so the Sign bit is set making it -32768 and that Integer is copied to the Long value
 '&H8000& is a Long Constant, so bit 15 of the Long is set making it 32768 and that Long is copied to the Long value
 'Reference:  https://www.vbforums.com/showthread.php?847437-amp-H-values-and-Long-variable-type-in-Excel-VBA&p=5170541&viewfull=1#post5170541
