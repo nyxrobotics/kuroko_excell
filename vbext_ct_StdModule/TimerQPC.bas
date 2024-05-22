@@ -45,7 +45,7 @@ Sub qpcWait(interval As Currency)
     Call QueryPerformanceCounter(time_now)
     Dim time_passed As Currency
     time_passed = (time_now - TIME_START) / QPC_FEAQ
-    Do While (time_passed_ms < interval)
+    Do While (time_passed < interval)
         Call QueryPerformanceCounter(time_now)
         time_passed = (time_now - TIME_START) / QPC_FEAQ
     Loop

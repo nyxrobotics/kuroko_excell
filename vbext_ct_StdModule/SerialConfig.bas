@@ -19,7 +19,7 @@ Sub comOpen()
     ec_config = SPrintF("%d,%s,%d,%d", COM_BAUD, COM_PARITY, COM_LENGTH, COM_STOP)
     ec.COMn = COM_NUM 'COMを開きます
     ec.Setting = ec_config
-    qpcWaitMs (20)
+    Call qpcWaitMs(20)
 End Sub
 
 Sub comClose()
@@ -29,7 +29,6 @@ End Sub
 
 Sub sendFreePacket(ByRef data_in() As Byte)
     Dim parity_bit As Currency
-    Dim one_byte_time As Currency
     Dim send_time As Currency
     Call comClose
     Call comOpen
@@ -40,10 +39,27 @@ Sub sendFreePacket(ByRef data_in() As Byte)
     one_byte_time = (1 + CCur(COM_LENGTH) + parity_bit + CCur(COM_STOP)) / CCur(COM_BAUD)
     send_time = one_byte_time * CCur(UBound(data_in))
     ec.Binary = data_in()
-    qpcWait (send_time)
-    qpcWaitMs (20)
+    Call qpcWait(send_time)
+    Call qpcWaitMs(10)
     Dim received() As Byte
     received() = ec.Binary
     Dim received_size As Long
     received_size = UBound(received)
+End Sub
+
+Sub sleepSend(ByRef data_in() As Byte)
+    Dim one_byte_time As Currency
+    Dim send_time As Currency
+    one_byte_time = (1 + CCur(COM_LENGTH) + parity_bit + CCur(COM_STOP)) / CCur(COM_BAUD)
+    send_time = one_byte_time * CCur(UBound(data_in))
+    Call qpcWait(send_time)
+End Sub
+
+
+Sub sleepReceive(receive_data_length As Integer)
+    Dim one_byte_time As Currency
+    Dim send_time As Currency
+    one_byte_time = (1 + CCur(COM_LENGTH) + parity_bit + CCur(COM_STOP)) / CCur(COM_BAUD)
+    send_time = one_byte_time * receive_data_length
+    Call qpcWait(send_time)
 End Sub

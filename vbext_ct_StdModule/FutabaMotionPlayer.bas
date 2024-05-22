@@ -187,7 +187,7 @@ Sub get_single_buf(SID)
     Dim sndbin_2(8) As Byte
     Dim Recbin() As Byte
     Dim string_1() As Byte
-      Dim test(1) As Long
+    Dim test(1) As Long
     'Request
     sndbin_2(0) = &HFA
     sndbin_2(1) = &HAF
