@@ -39,7 +39,7 @@ Sub MotionExport_Move()
     Dim IntFlNo As Integer
     
     'Worksheets("Sheet1").Activate
-    LngLoop = Range("a65536").End(xlUp).Row
+    LngLoop = Range("a65536").End(xlUp).row
     'LngLoop = Range("a100").End(xlUp).Row
     
     IntFlNo = FreeFile
@@ -335,7 +335,7 @@ Sub MotionExport_Atk()
     '-----------------------------------
     Dim i As Long, LngLoop As Long
     Dim IntFlNo As Integer
-    LngLoop = Range("a65536").End(xlUp).Row
+    LngLoop = Range("a65536").End(xlUp).row
     IntFlNo = FreeFile
     Open OutputFile For Output As #IntFlNo
     Dim Shtname As String
@@ -481,7 +481,7 @@ Sub MotionExport_Move_2()
     
     Dim i As Long, LngLoop As Long
     Dim IntFlNo As Integer
-    LngLoop = Range("a65536").End(xlUp).Row
+    LngLoop = Range("a65536").End(xlUp).row
     IntFlNo = FreeFile
     Open OutputFile For Output As #IntFlNo
     
@@ -774,7 +774,7 @@ Sub MotionExport_Atk_2()
     '-----------------------------------
     Dim i As Long, LngLoop As Long
     Dim IntFlNo As Integer
-    LngLoop = Range("a65536").End(xlUp).Row
+    LngLoop = Range("a65536").End(xlUp).row
     IntFlNo = FreeFile
     Open OutputFile For Output As #IntFlNo
     Dim Shtname As String

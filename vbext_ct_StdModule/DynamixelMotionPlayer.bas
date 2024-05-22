@@ -18,3 +18,19 @@ Sub dynamixelTorqueOff()
     Call comClose
 End Sub
 
+Sub dynamixelSendPose()
+    Dim buttonOrShapeName As String
+    Dim result As String
+    Dim buttom_row As Long
+    Dim button_col As Long
+
+    buttonOrShapeName = Application.Caller
+    result = getButtonCenterCell(buttonOrShapeName)
+    'MsgBox result
+    
+    button_row = GetRowFromResult(result)
+    button_col = GetColumnFromResult(result)
+    
+    MsgBox "Row: " & button_row & ", Column: " & button_col
+End Sub
+
