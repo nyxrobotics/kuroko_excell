@@ -9,9 +9,10 @@ Public MOTOR_TOTAL As Long
 
 'Internal variables
 Public TARGET_ID() As Long
-Public TARGET_POS() As Currency 'unit: [rad]
-Public TARGET_VEL() As Currency 'unit: [rad/sec]
-Public MEASURED_POS() As Currency 'unit: [rad]
+Public TARGET_POS() As Currency     'unit: [rad]
+Public TARGET_VEL() As Currency     'unit: [rad/sec]
+Public MEASURED_POS() As Currency   'unit: [rad]
+Public MEASURED_FLAG() As Boolean   'True: New data is available
 
 'Received packet buffer
 Public Const RX_RING_BUFFER_SIZE As Long = 1000
@@ -25,11 +26,13 @@ Sub dynamixelSetMotorNum(ByVal input_num As Long)
     ReDim TARGET_POS(MOTOR_TOTAL - 1)
     ReDim TARGET_VEL(MOTOR_TOTAL - 1)
     ReDim MEASURED_POS(MOTOR_TOTAL - 1)
+    ReDim MEASURED_FLAG(MOTOR_TOTAL - 1)
     For i = 0 To MOTOR_TOTAL - 1
         TARGET_ID(i) = 0
         TARGET_POS(i) = 0
         TARGET_VEL(i) = 0
         MEASURED_POS(i) = 0
+        MEASURED_FLAG(i) = False
     Next
 End Sub
 
@@ -112,7 +115,7 @@ Function dynamixelRequestPosePacket(id As Long) As Byte()
     dynamixelRequestPosePacket = send_packet
 End Function
 
-Function dynamixelSyncWritePosePacket() As Byte()
+Function dynamixelSyncWritePosPacket() As Byte()
     Dim packet_length As Long
     Dim data_length As Long
     packet_length = 14 + MOTOR_TOTAL * 5
@@ -151,7 +154,56 @@ Function dynamixelSyncWritePosePacket() As Byte()
     crc = dynamixelChecksum(send_packet)
     send_packet(packet_length - 2) = crc And &HFF&   'CRC Low
     send_packet(packet_length - 1) = (crc \ &H100&) And &HFF& 'CRC High
-    dynamixelSyncWritePosePacket = send_packet
+    dynamixelSyncWritePosPacket = send_packet
+End Function
+
+Function dynamixelSyncWritePosVelPacket() As Byte()
+    Dim packet_length As Long
+    Dim data_length As Long
+    packet_length = 14 + MOTOR_TOTAL * 9
+    data_length = 7 + MOTOR_TOTAL * 9
+    Dim send_packet() As Byte
+    ReDim send_packet(packet_length - 1)
+    send_packet(0) = &HFF 'Header
+    send_packet(1) = &HFF 'Header
+    send_packet(2) = &HFD 'Header
+    send_packet(3) = &H0  'Reserved
+    send_packet(4) = &HFE 'ID (0xFE: Broadcast)
+    send_packet(5) = data_length And &HFF&              'Length Low
+    send_packet(6) = (data_length \ &H100&) And &HFF&   'Length High
+    send_packet(7) = &H83 'Instruction
+    send_packet(8) = &H70 'Address Low (0x70:Goal Veocity)
+    send_packet(9) = &H0  'Address High
+    send_packet(10) = &H8 'Length Low
+    send_packet(11) = &H0 'Length High
+    Dim i As Long
+    Dim target_pose_float As Currency
+    Dim target_pose_int As Long
+    Dim target_speed_float As Currency
+    Dim target_speed_int As Long    'Velocity = Value * 0.023968 [rad/sec]
+    For i = 0 To MOTOR_TOTAL - 1
+        target_pose_float = TARGET_POS(i)
+        If target_pose_float < 0 Then
+            target_pose_float = target_pose_float + 2 * WorksheetFunction.Pi()
+        End If
+        target_pose_int = Fix(target_pose_float * 2048 / WorksheetFunction.Pi())
+        target_speed_float = Abs(TARGET_VEL(i))
+        target_speed_int = Fix(target_speed_float / 0.023968)
+        send_packet(i * 9 + 12) = TARGET_ID(i) 'ID
+        send_packet(i * 9 + 13) = target_speed_int And &HFF&
+        send_packet(i * 9 + 14) = (target_speed_int \ &H100&) And &HFF&
+        send_packet(i * 9 + 15) = (target_speed_int \ &H10000) And &HFF&
+        send_packet(i * 9 + 16) = (target_speed_int \ &H1000000) And &HFF&
+        send_packet(i * 9 + 17) = target_pose_int And &HFF&
+        send_packet(i * 9 + 18) = (target_pose_int \ &H100&) And &HFF&
+        send_packet(i * 9 + 19) = (target_pose_int \ &H10000) And &HFF&
+        send_packet(i * 9 + 20) = (target_pose_int \ &H1000000) And &HFF&
+    Next i
+    Dim crc As Long
+    crc = dynamixelChecksum(send_packet)
+    send_packet(packet_length - 2) = crc And &HFF&   'CRC Low
+    send_packet(packet_length - 1) = (crc \ &H100&) And &HFF& 'CRC High
+    dynamixelSyncWritePosVelPacket = send_packet
 End Function
 
 Function dynamixelSyncRequestPosePacket() As Byte()
@@ -297,6 +349,7 @@ Sub dynamixelDecodeRxBuffer()
                             For k = 0 To MOTOR_TOTAL - 1
                                 If TARGET_ID(k) = status_id Then
                                     MEASURED_POS(k) = status_radian
+                                    MEASURED_FLAG(k) = True
                                     Exit For
                                 End If
                             Next k
@@ -309,6 +362,14 @@ Sub dynamixelDecodeRxBuffer()
         Next i
         rx_data_size = dynamixelGetRxDataSize()
     Wend
+End Sub
+
+Function dynamixelMeasuredPoseIsUpdated(input_num As Long) As Boolean
+    dynamixelMeasuredPoseIsUpdated = MEASURED_FLAG(input_num)
+End Function
+
+Sub dynamixelClearMeasuredPoseIsUpdated(input_num As Long)
+    MEASURED_FLAG(input_num) = False
 End Sub
 
 Function dynamixelReadMeasuredPose(input_num As Long) As Currency

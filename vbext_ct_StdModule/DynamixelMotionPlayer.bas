@@ -8,9 +8,14 @@ Sub dynamixelTorqueOn()
 End Sub
 
 Sub dynamixelTorqueOff()
+    Call comComfig
+    Call comOpen
     Dim send_packet() As Byte
     send_packet() = dynamixelTorqueOffPacket()
     ec.Binary = send_packet()
+End Sub
+
+Sub dynamixelClose()
     Call comClose
 End Sub
 
@@ -23,6 +28,7 @@ Sub dynamixelGetPose()
     Dim num_motors As Long
     Dim id As Long
     Dim current_pose As Currency
+    Dim is_updated As Boolean
     Dim send_packet() As Byte
     Dim i As Long
     sheet_name = ActiveSheet.Name
@@ -31,6 +37,7 @@ Sub dynamixelGetPose()
     For i = 0 To num_motors - 1
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
+        dynamixelClearMeasuredPoseIsUpdated (i)
     Next i
     send_packet() = dynamixelSyncRequestPosePacket()
     ec.Binary = send_packet()
@@ -40,7 +47,13 @@ Sub dynamixelGetPose()
     Call dynamixelUpdateRxBuffer
     Call dynamixelDecodeRxBuffer
     For i = 0 To num_motors - 1
-        Sheets(sheet_name).Cells(i + 8, 3) = dynamixelReadMeasuredPose(i)
+        Sheets(sheet_name).Cells(i + 8, 3) = rad2Deg(dynamixelReadMeasuredPose(i))
+        is_updated = dynamixelMeasuredPoseIsUpdated(i)
+        If is_updated Then
+            Sheets(sheet_name).Cells(i + 8, 3).Font.Color = RGB(0, 0, 255)
+        Else
+            Sheets(sheet_name).Cells(i + 8, 3).Font.Color = RGB(255, 0, 0)
+        End If
     Next i
 End Sub
 
@@ -68,8 +81,13 @@ Sub dynamixelGetPoseEach()
         Call qpcWaitMs(15)
         Call dynamixelUpdateRxBuffer
         Call dynamixelDecodeRxBuffer
-        Sheets(sheet_name).Cells(i + 8, 3) = dynamixelReadMeasuredPose(i)
+        Sheets(sheet_name).Cells(i + 8, 3) = rad2Deg(dynamixelReadMeasuredPose(i))
     Next i
+End Sub
+
+Sub dynamixelPoseButton()
+    'Call dynamixelSendPose
+    Call dynamixelSendPoseWithInterval(1)
 End Sub
 
 Sub dynamixelSendPose()
@@ -93,9 +111,38 @@ Sub dynamixelSendPose()
         Call dynamixelSetTargetPos(i, 0)
     Next i
     Dim send_packet() As Byte
-    send_packet() = dynamixelSyncWritePosePacket()
+    send_packet() = dynamixelSyncWritePosPacket()
     Call qpcInit
     Call comComfig
     Call comOpen
     ec.Binary = send_packet()
 End Sub
+
+Sub dynamixelSendPoseWithInterval(ByVal input_interval As Currency)
+    Dim buttonOrShapeName As String
+    Dim result As String
+    Dim buttom_row As Long
+    Dim button_col As Long
+    'Get the pose of the button
+    buttonOrShapeName = Application.Caller
+    result = getButtonCenterCell(buttonOrShapeName)
+    button_row = GetRowFromResult(result)
+    button_col = GetColumnFromResult(result)
+    Dim i As Long
+    Dim num_motors As Long
+    num_motors = motionPlayerConfigGetNumMotors()
+    Call dynamixelSetMotorNum(num_motors)
+    For i = 0 To num_motors - 1
+        id = motionPlayerConfigGetID(i)
+        Call dynamixelSetTargetID(i, id)
+        Call dynamixelSetTargetPos(i, 0)
+        Call dynamixelSetTargetVel(i, 0.5)
+    Next i
+    Dim send_packet() As Byte
+    send_packet() = dynamixelSyncWritePosVelPacket()
+    Call qpcInit
+    Call comComfig
+    Call comOpen
+    ec.Binary = send_packet()
+End Sub
+
