@@ -130,26 +130,48 @@ Function dynamixelSyncWritePosPacket() As Byte()
     send_packet(5) = data_length And &HFF&              'Length Low
     send_packet(6) = (data_length \ &H100&) And &HFF&   'Length High
     send_packet(7) = &H83 'Instruction
-    send_packet(8) = &H74 'Address Low (0x74:Goal Position)
+    send_packet(8) = &H74 'Address Low (0x74: Goal Position)
     send_packet(9) = &H0  'Address High
     send_packet(10) = &H4 'Length Low
     send_packet(11) = &H0 'Length High
+
+    ' Sort the TARGET_ID array and get the sorted indices
+    Dim sorted_id() As Variant
+    Dim sorted_address() As Variant
+    ReDim sorted_id(LBound(TARGET_ID) To UBound(TARGET_ID))
     Dim i As Long
+    
+    ' Copy TARGET_ID to sorted_id
+    For i = LBound(TARGET_ID) To UBound(TARGET_ID)
+        sorted_id(i) = TARGET_ID(i)
+    Next i
+    
+    sorted_address = quickSortAndTrackIndices(sorted_id)
+    
+    ' Prepare sorted TARGET_POS array
+    Dim sorted_pos() As Currency
+    ReDim sorted_pos(LBound(TARGET_POS) To UBound(TARGET_POS))
+    
+    For i = LBound(sorted_address) To UBound(sorted_address)
+        sorted_pos(i) = TARGET_POS(sorted_address(i, 2))
+    Next i
+    
     Dim target_pose_float As Currency
     Dim target_pose_int As Long
     
     For i = 0 To MOTOR_TOTAL - 1
-        target_pose_float = TARGET_POS(i)
+        target_pose_float = sorted_pos(i)
         If target_pose_float < 0 Then
             target_pose_float = target_pose_float + 2 * WorksheetFunction.Pi()
         End If
         target_pose_int = Fix(target_pose_float * 2048 / WorksheetFunction.Pi())
-        send_packet(i * 5 + 12) = TARGET_ID(i) 'ID
+        send_packet(i * 5 + 12) = sorted_id(i) 'ID
         send_packet(i * 5 + 13) = target_pose_int And &HFF&
         send_packet(i * 5 + 14) = (target_pose_int \ &H100&) And &HFF&
         send_packet(i * 5 + 15) = (target_pose_int \ &H10000) And &HFF&
         send_packet(i * 5 + 16) = (target_pose_int \ &H1000000) And &HFF&
     Next i
+    
     Dim crc As Long
     crc = dynamixelChecksum(send_packet)
     send_packet(packet_length - 2) = crc And &HFF&   'CRC Low
@@ -172,24 +194,49 @@ Function dynamixelSyncWritePosVelPacket() As Byte()
     send_packet(5) = data_length And &HFF&              'Length Low
     send_packet(6) = (data_length \ &H100&) And &HFF&   'Length High
     send_packet(7) = &H83 'Instruction
-    send_packet(8) = &H70 'Address Low (0x70:Goal Veocity)
+    send_packet(8) = &H70 'Address Low (0x70: Goal Velocity)
     send_packet(9) = &H0  'Address High
     send_packet(10) = &H8 'Length Low
     send_packet(11) = &H0 'Length High
+
+    ' Sort the TARGET_ID array and get the sorted indices
+    Dim sorted_id() As Variant
+    Dim sorted_address() As Variant
+    ReDim sorted_id(LBound(TARGET_ID) To UBound(TARGET_ID))
     Dim i As Long
+    
+    ' Copy TARGET_ID to sorted_id
+    For i = LBound(TARGET_ID) To UBound(TARGET_ID)
+        sorted_id(i) = TARGET_ID(i)
+    Next i
+    
+    sorted_address = quickSortAndTrackIndices(sorted_id)
+    
+    ' Prepare sorted TARGET_POS and TARGET_VEL arrays
+    Dim sorted_pos() As Currency
+    Dim sorted_vel() As Currency
+    ReDim sorted_pos(LBound(TARGET_POS) To UBound(TARGET_POS))
+    ReDim sorted_vel(LBound(TARGET_VEL) To UBound(TARGET_VEL))
+    
+    For i = LBound(sorted_address) To UBound(sorted_address)
+        sorted_pos(i) = TARGET_POS(sorted_address(i, 2))
+        sorted_vel(i) = TARGET_VEL(sorted_address(i, 2))
+    Next i
+    
     Dim target_pose_float As Currency
     Dim target_pose_int As Long
     Dim target_speed_float As Currency
     Dim target_speed_int As Long    'Velocity = Value * 0.023968 [rad/sec]
+    
     For i = 0 To MOTOR_TOTAL - 1
-        target_pose_float = TARGET_POS(i)
+        target_pose_float = sorted_pos(i)
         If target_pose_float < 0 Then
             target_pose_float = target_pose_float + 2 * WorksheetFunction.Pi()
         End If
         target_pose_int = Fix(target_pose_float * 2048 / WorksheetFunction.Pi())
-        target_speed_float = Abs(TARGET_VEL(i))
+        target_speed_float = Abs(sorted_vel(i))
         target_speed_int = Fix(target_speed_float / 0.023968)
-        send_packet(i * 9 + 12) = TARGET_ID(i) 'ID
+        send_packet(i * 9 + 12) = sorted_id(i) 'ID
         send_packet(i * 9 + 13) = target_speed_int And &HFF&
         send_packet(i * 9 + 14) = (target_speed_int \ &H100&) And &HFF&
         send_packet(i * 9 + 15) = (target_speed_int \ &H10000) And &HFF&
@@ -199,6 +246,7 @@ Function dynamixelSyncWritePosVelPacket() As Byte()
         send_packet(i * 9 + 19) = (target_pose_int \ &H10000) And &HFF&
         send_packet(i * 9 + 20) = (target_pose_int \ &H1000000) And &HFF&
     Next i
+    
     Dim crc As Long
     crc = dynamixelChecksum(send_packet)
     send_packet(packet_length - 2) = crc And &HFF&   'CRC Low
@@ -225,16 +273,31 @@ Function dynamixelSyncRequestPosePacket() As Byte()
     send_packet(9) = &H0  'Address High
     send_packet(10) = &H4 'Length Low
     send_packet(11) = &H0 'Length High
+
+    ' Sort the TARGET_ID array and get the sorted indices
+    Dim sorted_id() As Variant
+    Dim sorted_address() As Variant
+    ReDim sorted_id(LBound(TARGET_ID) To UBound(TARGET_ID))
     Dim i As Long
-    For i = 0 To MOTOR_TOTAL - 1
-        send_packet(i + 12) = TARGET_ID(i) 'ID
+    
+    ' Copy TARGET_ID to sorted_id
+    For i = LBound(TARGET_ID) To UBound(TARGET_ID)
+        sorted_id(i) = TARGET_ID(i)
     Next i
+    
+    sorted_address = quickSortAndTrackIndices(sorted_id)
+    
+    For i = 0 To MOTOR_TOTAL - 1
+        send_packet(i + 12) = sorted_id(i) 'ID
+    Next i
+    
     Dim crc As Long
     crc = dynamixelChecksum(send_packet)
     send_packet(packet_length - 2) = crc And &HFF&   'CRC Low
     send_packet(packet_length - 1) = (crc \ &H100&) And &HFF& 'CRC High
     dynamixelSyncRequestPosePacket = send_packet
 End Function
+
 
 Sub dynamixelClearRxBuffer()
     RX_READ_POINT = 0
