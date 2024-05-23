@@ -66,8 +66,8 @@ Function dynamixelTorqueOnPacket() As Byte()
     send_packet(10) = &H1 'Parameters (1: ON)
     Dim crc As Long
     crc = dynamixelChecksum(send_packet)
-    send_packet(11) = crc And &HFF           'CRC Low
-    send_packet(12) = crc \ 256 And &HFF 'CRC High
+    send_packet(11) = crc And &HFF&       'CRC Low
+    send_packet(12) = (crc \ &H100&) And &HFF& 'CRC High
     dynamixelTorqueOnPacket = send_packet
 End Function
 
@@ -86,8 +86,8 @@ Function dynamixelTorqueOffPacket() As Byte()
     send_packet(10) = &H0 'Parameters (0: OFF)
     Dim crc As Long
     crc = dynamixelChecksum(send_packet)
-    send_packet(11) = crc And &HFF           'CRC Low
-    send_packet(12) = crc \ 256 And &HFF 'CRC High
+    send_packet(11) = crc And &HFF&       'CRC Low
+    send_packet(12) = (crc \ &H100&) And &HFF& 'CRC High
     dynamixelTorqueOffPacket = send_packet
 End Function
 
@@ -97,19 +97,61 @@ Function dynamixelRequestPosePacket(id As Long) As Byte()
     send_packet(1) = &HFF 'Header
     send_packet(2) = &HFD 'Header
     send_packet(3) = &H0  'Reserved
-    send_packet(4) = id 'ID (0xFE: Broadcast)
+    send_packet(4) = id   'ID
     send_packet(5) = &H7  'Length Low
     send_packet(6) = &H0  'Length High
     send_packet(7) = &H2  'Instruction
-    send_packet(8) = &H84 'Address Low (0x84: Read Positionb)
+    send_packet(8) = &H84 'Address Low (0x84: Read Position)
     send_packet(9) = &H0  'Address High
     send_packet(10) = &H4 'Length Low
     send_packet(11) = &H0 'Length High
     Dim crc As Long
     crc = dynamixelChecksum(send_packet)
-    send_packet(12) = crc And &HFF           'CRC Low
-    send_packet(13) = crc \ 256 And &HFF 'CRC High
+    send_packet(12) = crc And &HFF&       'CRC Low
+    send_packet(13) = (crc \ &H100&) And &HFF& 'CRC High
     dynamixelRequestPosePacket = send_packet
+End Function
+
+Function dynamixelSyncWritePosePacket() As Byte()
+    Dim packet_length As Long
+    Dim data_length As Long
+    packet_length = 14 + MOTOR_TOTAL * 5
+    data_length = 7 + MOTOR_TOTAL * 5
+    Dim send_packet() As Byte
+    ReDim send_packet(packet_length - 1)
+    send_packet(0) = &HFF 'Header
+    send_packet(1) = &HFF 'Header
+    send_packet(2) = &HFD 'Header
+    send_packet(3) = &H0  'Reserved
+    send_packet(4) = &HFE 'ID (0xFE: Broadcast)
+    send_packet(5) = data_length And &HFF&              'Length Low
+    send_packet(6) = (data_length \ &H100&) And &HFF&   'Length High
+    send_packet(7) = &H83 'Instruction
+    send_packet(8) = &H74 'Address Low (0x74:Goal Position)
+    send_packet(9) = &H0  'Address High
+    send_packet(10) = &H4 'Length Low
+    send_packet(11) = &H0 'Length High
+    Dim i As Long
+    Dim target_pose_float As Currency
+    Dim target_pose_int As Long
+    
+    For i = 0 To MOTOR_TOTAL - 1
+        target_pose_float = TARGET_POS(i)
+        If target_pose_float < 0 Then
+            target_pose_float = target_pose_float + 2 * WorksheetFunction.Pi()
+        End If
+        target_pose_int = Fix(target_pose_float * 2048 / WorksheetFunction.Pi())
+        send_packet(i * 5 + 12) = TARGET_ID(i) 'ID
+        send_packet(i * 5 + 13) = target_pose_int And &HFF&
+        send_packet(i * 5 + 14) = (target_pose_int \ &H100&) And &HFF&
+        send_packet(i * 5 + 15) = (target_pose_int \ &H10000) And &HFF&
+        send_packet(i * 5 + 16) = (target_pose_int \ &H1000000) And &HFF&
+    Next i
+    Dim crc As Long
+    crc = dynamixelChecksum(send_packet)
+    send_packet(packet_length - 2) = crc And &HFF&   'CRC Low
+    send_packet(packet_length - 1) = crc \ 256 And &HFF& 'CRC High
+    dynamixelSyncWritePosePacket = send_packet
 End Function
 
 Sub dynamixelClearRxBuffer()

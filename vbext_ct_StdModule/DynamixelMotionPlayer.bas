@@ -53,4 +53,19 @@ Sub dynamixelSendPose()
     button_row = GetRowFromResult(result)
     button_col = GetColumnFromResult(result)
     'MsgBox "Row: " & button_row & ", Column: " & button_col
+    Dim i As Long
+    Dim num_motors As Long
+    num_motors = motionPlayerConfigGetNumMotors()
+    Call dynamixelSetMotorNum(num_motors)
+    For i = 0 To num_motors - 1
+        id = motionPlayerConfigGetID(i)
+        Call dynamixelSetTargetID(i, id)
+        Call dynamixelSetTargetPos(i, 0)
+    Next i
+    Dim send_packet() As Byte
+    send_packet() = dynamixelSyncWritePosePacket()
+    Call qpcInit
+    Call comComfig
+    Call comOpen
+    ec.Binary = send_packet()
 End Sub
