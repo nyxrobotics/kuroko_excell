@@ -156,7 +156,6 @@ Function GetRowFromResult(result As String) As Long
     Dim startPos As Long
     Dim endPos As Long
     Dim rowString As String
-
     startPos = InStr(result, "Row: ") + Len("Row: ")
     endPos = InStr(result, ", Column")
     rowString = Mid(result, startPos, endPos - startPos)
@@ -166,7 +165,6 @@ End Function
 Function GetColumnFromResult(result As String) As Long
     Dim startPos As Long
     Dim colString As String
-
     startPos = InStr(result, "Column: ") + Len("Column: ")
     colString = Mid(result, startPos)
     GetColumnFromResult = CLng(colString)

@@ -26,16 +26,28 @@ Sub dynamixelSetMotorNum(ByVal input_num As Long)
     ReDim TARGET_VEL(MOTOR_TOTAL - 1)
     ReDim MEASURED_POS(MOTOR_TOTAL - 1)
     For i = 0 To MOTOR_TOTAL - 1
-        TARGET_ID(i) = 255
+        TARGET_ID(i) = 0
         TARGET_POS(i) = 0
         TARGET_VEL(i) = 0
         MEASURED_POS(i) = 0
     Next
 End Sub
 
-Sub dynamixelSetMotorID(ByVal input_num As Long, ByVal input_id As Long)
+Sub dynamixelSetTargetID(ByVal input_num As Long, ByVal input_id As Long)
     If input_num < MOTOR_TOTAL Then
         TARGET_ID(input_num) = input_id
+    End If
+End Sub
+
+Sub dynamixelSetTargetPos(ByVal input_num As Long, ByVal input_pos As Currency)
+    If input_num < MOTOR_TOTAL Then
+        TARGET_POS(input_num) = input_pos
+    End If
+End Sub
+
+Sub dynamixelSetTargetVel(ByVal input_num As Long, ByVal input_vel As Currency)
+    If input_num < MOTOR_TOTAL Then
+        TARGET_VEL(input_num) = input_vel
     End If
 End Sub
 
@@ -173,55 +185,58 @@ Sub dynamixelDecodeRxBuffer()
     Dim status_id As Long
     Dim status_pose As Long
     Dim status_radian As Currency
+    Const minimum_packet_size As Integer = 15
     
     rx_data_size = dynamixelGetRxDataSize()
-    If rx_data_size < 10 Then Exit Sub
-    
-    For i = 2 To rx_data_size - 1
-        ' Only if there are more than 10 bytes including headers, go to the next process
-        If rx_data_size - i < 10 Then Exit For
-        ' Find the 0xFF 0xFF 0xFD data and make it the header_candidate of the status packet
-        If dynamixelGetRxSingleByte((RX_READ_POINT + i - 2) Mod RX_RING_BUFFER_SIZE) = &HFF And _
-           dynamixelGetRxSingleByte((RX_READ_POINT + i - 1) Mod RX_RING_BUFFER_SIZE) = &HFF And _
-           dynamixelGetRxSingleByte((RX_READ_POINT + i) Mod RX_RING_BUFFER_SIZE) = &HFD Then
-            ' Check the length of the packet
-            header_addr_candidate = (RX_READ_POINT + i - 2) Mod RX_RING_BUFFER_SIZE
-            length_candidate = dynamixelGetRxSingleByte((header_addr_candidate + 5) Mod RX_RING_BUFFER_SIZE) + _
-                               dynamixelGetRxSingleByte((header_addr_candidate + 6) Mod RX_RING_BUFFER_SIZE) * &H100
-            footer_addr_candidate = (header_addr_candidate + 6 + length_candidate) Mod RX_RING_BUFFER_SIZE
-            If dynamixelRxSingleByteAvailable(footer_addr_candidate) Then
-                ReDim single_status_packet(6 + length_candidate)
-                For j = 0 To 6 + length_candidate
-                    single_status_packet(j) = dynamixelGetRxSingleByte((header_addr_candidate + j) Mod RX_RING_BUFFER_SIZE)
-                Next j
-                checksum_candidate = dynamixelGetRxSingleByte(footer_addr_candidate) * &H100& + _
-                                     dynamixelGetRxSingleByte((footer_addr_candidate - 1 + RX_RING_BUFFER_SIZE) Mod RX_RING_BUFFER_SIZE)
-                checksum_expected = dynamixelChecksum(single_status_packet)
-                
-                If checksum_candidate = dynamixelChecksum(single_status_packet) Then
-                    ' Received status packet
-                    status_id = single_status_packet(4)
-                    If status_id <> &HFD And length_candidate = 8 Then
-                        status_pose = dynamixelGetRxSingleByte((header_addr_candidate + 9) Mod RX_RING_BUFFER_SIZE) + _
-                                      dynamixelGetRxSingleByte((header_addr_candidate + 10) Mod RX_RING_BUFFER_SIZE) * &H100 + _
-                                      dynamixelGetRxSingleByte((header_addr_candidate + 11) Mod RX_RING_BUFFER_SIZE) * &H10000 + _
-                                      dynamixelGetRxSingleByte((header_addr_candidate + 12) Mod RX_RING_BUFFER_SIZE) * &H1000000
-                        status_radian = status_pose * WorksheetFunction.Pi() / 2048
-                        If status_radian > WorksheetFunction.Pi() Then
-                            status_radian = status_radian - 2 * WorksheetFunction.Pi()
-                        End If
-                        For k = 0 To MOTOR_TOTAL - 1
-                            If TARGET_ID(k) = status_id Then
-                                MEASURED_POS(k) = status_radian
-                                Exit For
+    While (rx_data_size >= minimum_packet_size)
+        For i = 0 To rx_data_size - 3
+            ' Only if there are more than minimum_packet_size bytes including headers, go to the next process
+            If rx_data_size - i < minimum_packet_size Then Exit Sub
+            ' Find the 0xFF 0xFF 0xFD data and make it the header_candidate of the status packet
+            If dynamixelGetRxSingleByte((RX_READ_POINT + i) Mod RX_RING_BUFFER_SIZE) = &HFF And _
+               dynamixelGetRxSingleByte((RX_READ_POINT + i + 1) Mod RX_RING_BUFFER_SIZE) = &HFF And _
+               dynamixelGetRxSingleByte((RX_READ_POINT + i + 2) Mod RX_RING_BUFFER_SIZE) = &HFD Then
+                ' Check the length of the packet
+                header_addr_candidate = (RX_READ_POINT + i) Mod RX_RING_BUFFER_SIZE
+                length_candidate = dynamixelGetRxSingleByte((header_addr_candidate + 5) Mod RX_RING_BUFFER_SIZE) + _
+                                   dynamixelGetRxSingleByte((header_addr_candidate + 6) Mod RX_RING_BUFFER_SIZE) * &H100
+                footer_addr_candidate = (header_addr_candidate + 6 + length_candidate) Mod RX_RING_BUFFER_SIZE
+                If dynamixelRxSingleByteAvailable(footer_addr_candidate) Then
+                    ReDim single_status_packet(6 + length_candidate)
+                    For j = 0 To 6 + length_candidate
+                        single_status_packet(j) = dynamixelGetRxSingleByte((header_addr_candidate + j) Mod RX_RING_BUFFER_SIZE)
+                    Next j
+                    checksum_candidate = dynamixelGetRxSingleByte(footer_addr_candidate) * &H100& + _
+                                         dynamixelGetRxSingleByte((footer_addr_candidate - 1 + RX_RING_BUFFER_SIZE) Mod RX_RING_BUFFER_SIZE)
+                    checksum_expected = dynamixelChecksum(single_status_packet)
+                    
+                    If checksum_candidate = dynamixelChecksum(single_status_packet) Then
+                        ' Received status packet
+                        status_id = single_status_packet(4)
+                        If status_id <> &HFD And length_candidate = 8 Then
+                            status_pose = dynamixelGetRxSingleByte((header_addr_candidate + 9) Mod RX_RING_BUFFER_SIZE) + _
+                                          dynamixelGetRxSingleByte((header_addr_candidate + 10) Mod RX_RING_BUFFER_SIZE) * &H100 + _
+                                          dynamixelGetRxSingleByte((header_addr_candidate + 11) Mod RX_RING_BUFFER_SIZE) * &H10000 + _
+                                          dynamixelGetRxSingleByte((header_addr_candidate + 12) Mod RX_RING_BUFFER_SIZE) * &H1000000
+                            status_radian = status_pose * WorksheetFunction.Pi() / 2048
+                            If status_radian > WorksheetFunction.Pi() Then
+                                status_radian = status_radian - 2 * WorksheetFunction.Pi()
                             End If
-                        Next k
+                            For k = 0 To MOTOR_TOTAL - 1
+                                If TARGET_ID(k) = status_id Then
+                                    MEASURED_POS(k) = status_radian
+                                    Exit For
+                                End If
+                            Next k
+                        End If
+                        RX_READ_POINT = (RX_READ_POINT + UBound(single_status_packet) + i + 1) Mod RX_RING_BUFFER_SIZE
+                        Exit For
                     End If
-                    RX_READ_POINT = (RX_READ_POINT + UBound(single_status_packet)) Mod RX_RING_BUFFER_SIZE
                 End If
             End If
-        End If
-    Next i
+        Next i
+        rx_data_size = dynamixelGetRxDataSize()
+    Wend
 End Sub
 
 Function dynamixelReadMeasuredPose(id As Long) As Currency

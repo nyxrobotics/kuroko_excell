@@ -493,10 +493,10 @@ Sub ButtonPlayTest_2()
         End If
     Next
     
-   Play_nyx_1 (0)
+    Play_nyx_1 (0)
     qpcWaitMs (10)
-   Application.ScreenUpdating = True
-   ec.COMn = 0
+    Application.ScreenUpdating = True
+    ec.COMn = 0
 End Sub
 
 

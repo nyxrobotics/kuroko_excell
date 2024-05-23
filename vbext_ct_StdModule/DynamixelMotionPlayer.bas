@@ -15,6 +15,7 @@ Sub dynamixelTorqueOff()
 End Sub
 
 Sub dynamixelGetPose()
+    Call dynamixelClearRxBuffer
     Call qpcInit
     Call comComfig
     Call comOpen
@@ -29,7 +30,7 @@ Sub dynamixelGetPose()
     Call dynamixelSetMotorNum(num_motors)
     For i = 0 To num_motors - 1
         id = motionPlayerConfigGetID(i)
-        Call dynamixelSetMotorID(i, id)
+        Call dynamixelSetTargetID(i, id)
         send_packet() = dynamixelRequestPosePacket(id)
         ec.Binary = send_packet()
         Call sleepSend(send_packet)
@@ -46,14 +47,10 @@ Sub dynamixelSendPose()
     Dim result As String
     Dim buttom_row As Long
     Dim button_col As Long
-
+    'Get the pose of the button
     buttonOrShapeName = Application.Caller
     result = getButtonCenterCell(buttonOrShapeName)
-    'MsgBox result
-    
     button_row = GetRowFromResult(result)
     button_col = GetColumnFromResult(result)
-    
-    MsgBox "Row: " & button_row & ", Column: " & button_col
+    'MsgBox "Row: " & button_row & ", Column: " & button_col
 End Sub
-
