@@ -150,8 +150,38 @@ Function dynamixelSyncWritePosePacket() As Byte()
     Dim crc As Long
     crc = dynamixelChecksum(send_packet)
     send_packet(packet_length - 2) = crc And &HFF&   'CRC Low
-    send_packet(packet_length - 1) = crc \ 256 And &HFF& 'CRC High
+    send_packet(packet_length - 1) = (crc \ &H100&) And &HFF& 'CRC High
     dynamixelSyncWritePosePacket = send_packet
+End Function
+
+Function dynamixelSyncRequestPosePacket() As Byte()
+    Dim packet_length As Long
+    Dim data_length As Long
+    packet_length = 14 + MOTOR_TOTAL
+    data_length = 7 + MOTOR_TOTAL
+    Dim send_packet() As Byte
+    ReDim send_packet(packet_length - 1)
+    send_packet(0) = &HFF 'Header
+    send_packet(1) = &HFF 'Header
+    send_packet(2) = &HFD 'Header
+    send_packet(3) = &H0  'Reserved
+    send_packet(4) = &HFE 'ID (0xFE: Broadcast)
+    send_packet(5) = data_length And &HFF&              'Length Low
+    send_packet(6) = (data_length \ &H100&) And &HFF&   'Length High
+    send_packet(7) = &H82 'Instruction
+    send_packet(8) = &H84 'Address Low (0x84: Read Position)
+    send_packet(9) = &H0  'Address High
+    send_packet(10) = &H4 'Length Low
+    send_packet(11) = &H0 'Length High
+    Dim i As Long
+    For i = 0 To MOTOR_TOTAL - 1
+        send_packet(i + 12) = TARGET_ID(i) 'ID
+    Next i
+    Dim crc As Long
+    crc = dynamixelChecksum(send_packet)
+    send_packet(packet_length - 2) = crc And &HFF&   'CRC Low
+    send_packet(packet_length - 1) = (crc \ &H100&) And &HFF& 'CRC High
+    dynamixelSyncRequestPosePacket = send_packet
 End Function
 
 Sub dynamixelClearRxBuffer()
@@ -281,15 +311,8 @@ Sub dynamixelDecodeRxBuffer()
     Wend
 End Sub
 
-Function dynamixelReadMeasuredPose(id As Long) As Currency
-    Dim i As Long
-    For i = 0 To MOTOR_TOTAL - 1
-        If TARGET_ID(i) = id Then
-            dynamixelReadMeasuredPose = MEASURED_POS(i)
-            Exit Function
-        End If
-    Next i
-    dynamixelReadMeasuredPose = 0
+Function dynamixelReadMeasuredPose(input_num As Long) As Currency
+    dynamixelReadMeasuredPose = MEASURED_POS(input_num)
 End Function
 
 Function dynamixelChecksum(ByRef data_in() As Byte) As Long
