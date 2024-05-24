@@ -198,7 +198,9 @@ Sub dynamixelSendPose(ByVal input_frame_num As Long)
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
         is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
-        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, 6).Value)                                      'Home
+        target_pos_rad = target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, 7).Value)                     'Offset
+        target_pos_rad = target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)   'Target
         If is_reverse Then target_pos_rad = -target_pos_rad
         Call dynamixelSetTargetPos(i, target_pos_rad)
     Next i
@@ -223,7 +225,9 @@ Sub dynamixelSendPoseWithVel(ByVal input_frame_num As Long, ByVal input_vel As C
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
         is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
-        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, 6).Value)                                      'Home
+        target_pos_rad = target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, 7).Value)                     'Offset
+        target_pos_rad = target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)   'Target
         If is_reverse Then target_pos_rad = -target_pos_rad
         Call dynamixelSetTargetPos(i, target_pos_rad)
         Call dynamixelSetTargetVel(i, input_vel)
@@ -264,7 +268,9 @@ Sub dynamixelSendPoseWithInterval(ByVal input_frame_num As Long, ByVal input_int
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
         is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
-        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, 6).Value)                                      'Home
+        target_pos_rad = target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, 7).Value)                     'Offset
+        target_pos_rad = target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)   'Target
         If is_reverse Then target_pos_rad = -target_pos_rad
         Call dynamixelSetTargetPos(i, target_pos_rad)
         current_pos_rad = dynamixelReadMeasuredPose(i)
@@ -301,8 +307,12 @@ Sub dynamixelSendAnimationFrame(ByVal input_previous_frame_num As Long, ByVal in
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
         is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
-        previous_target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, input_previous_frame_num + 8).Value)
-        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)
+        previous_target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, 6).Value)                                                         'Home
+        previous_target_pos_rad = previous_target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, 7).Value)                               'Offset
+        previous_target_pos_rad = previous_target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, input_previous_frame_num + 8).Value)    'Target
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, 6).Value)                                      'Home
+        target_pos_rad = target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, 7).Value)                     'Offset
+        target_pos_rad = target_pos_rad + deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)   'Target
         If is_reverse Then
             target_pos_rad = -target_pos_rad
             previous_target_pos_rad = -previous_target_pos_rad
