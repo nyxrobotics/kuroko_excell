@@ -44,16 +44,16 @@ Sub motionPlayerConfigSetCurrentPose(motor_num As Long, current_pose As Currency
     Sheets(sheet_name).Cells(motor_num + 8, 2) = current_pose
 End Sub
 
-Function getButtonCenterCell(buttonOrShapeName As String) As String
+Function getButtonCenterCell(button_name As String) As String
     Dim button As Object
     Dim shape As shape
     Dim result As String
 
     ' Try to get the button (Form Control Button or ActiveX Control Button)
     On Error Resume Next
-    Set button = ActiveSheet.Buttons(buttonOrShapeName)
+    Set button = ActiveSheet.Buttons(button_name)
     If button Is Nothing Then
-        Set button = ActiveSheet.OLEObjects(buttonOrShapeName).Object
+        Set button = ActiveSheet.OLEObjects(button_name).Object
     End If
     On Error GoTo 0
 
@@ -63,7 +63,7 @@ Function getButtonCenterCell(buttonOrShapeName As String) As String
     Else
         ' If button is not found, try to get the shape
         On Error Resume Next
-        Set shape = ActiveSheet.Shapes(buttonOrShapeName)
+        Set shape = ActiveSheet.Shapes(button_name)
         On Error GoTo 0
 
         If Not shape Is Nothing Then

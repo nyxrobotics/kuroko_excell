@@ -102,16 +102,22 @@ Sub dynamixelGetPoseEach()
 End Sub
 
 Sub dynamixelPoseButton()
-    'Call dynamixelSendPose
-    Call dynamixelSendPoseWithInterval(0.5)
-End Sub
-
-Sub dynamixelSendPose()
-    Dim i As Long
-    Dim buttonOrShapeName As String
-    Dim result As String
+    Dim button_result As String
+    Dim button_name As String
     Dim buttom_row As Long
     Dim button_col As Long
+    Dim animation_frame_num As Long
+    'Get the pose of the button
+    button_name = Application.Caller
+    button_result = getButtonCenterCell(button_name)
+    button_row = GetRowFromResult(button_result)
+    button_col = GetColumnFromResult(button_result)
+    animation_frame_num = button_col - 8
+    Call dynamixelSendPoseWithInterval(animation_frame_num, 0.5)
+End Sub
+
+Sub dynamixelSendPose(ByVal input_frame_num As Long)
+    Dim i As Long
     Dim sheet_name As String
     Dim num_motors As Long
     Dim target_pos_rad As Currency
@@ -121,33 +127,22 @@ Sub dynamixelSendPose()
     Call comComfig
     Call comOpen
     sheet_name = ActiveSheet.Name
-    'Get the pose of the button
-    buttonOrShapeName = Application.Caller
-    result = getButtonCenterCell(buttonOrShapeName)
-    button_row = GetRowFromResult(result)
-    button_col = GetColumnFromResult(result)
-    'MsgBox "Row: " & button_row & ", Column: " & button_col
     num_motors = motionPlayerConfigGetNumMotors()
     Call dynamixelSetMotorNum(num_motors)
     For i = 0 To num_motors - 1
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
         is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
-        target_pos_rad = Sheets(sheet_name).Cells(i + 8, button_col).Value
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)
         If is_reverse Then target_pos_rad = -target_pos_rad
         Call dynamixelSetTargetPos(i, target_pos_rad)
-        Call dynamixelSetTargetVel(i, 0)
     Next i
     send_packet() = dynamixelSyncWritePosPacket()
     ec.Binary = send_packet()
 End Sub
 
-Sub dynamixelSendPoseWithVel(ByVal input_vel As Currency)
+Sub dynamixelSendPoseWithVel(ByVal input_frame_num As Long, ByVal input_vel As Currency)
     Dim i As Long
-    Dim buttonOrShapeName As String
-    Dim result As String
-    Dim buttom_row As Long
-    Dim button_col As Long
     Dim sheet_name As String
     Dim num_motors As Long
     Dim target_pos_rad As Currency
@@ -157,18 +152,13 @@ Sub dynamixelSendPoseWithVel(ByVal input_vel As Currency)
     Call comComfig
     Call comOpen
     sheet_name = ActiveSheet.Name
-    'Get the pose of the button
-    buttonOrShapeName = Application.Caller
-    result = getButtonCenterCell(buttonOrShapeName)
-    button_row = GetRowFromResult(result)
-    button_col = GetColumnFromResult(result)
     num_motors = motionPlayerConfigGetNumMotors()
     Call dynamixelSetMotorNum(num_motors)
     For i = 0 To num_motors - 1
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
         is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
-        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, button_col).Value)
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)
         If is_reverse Then target_pos_rad = -target_pos_rad
         Call dynamixelSetTargetPos(i, target_pos_rad)
         Call dynamixelSetTargetVel(i, input_vel)
@@ -177,12 +167,8 @@ Sub dynamixelSendPoseWithVel(ByVal input_vel As Currency)
     ec.Binary = send_packet()
 End Sub
 
-Sub dynamixelSendPoseWithInterval(ByVal input_interval As Currency)
+Sub dynamixelSendPoseWithInterval(ByVal input_frame_num As Long, ByVal input_interval As Currency)
     Dim i As Long
-    Dim buttonOrShapeName As String
-    Dim result As String
-    Dim buttom_row As Long
-    Dim button_col As Long
     Dim sheet_name As String
     Dim num_motors As Long
     Dim current_pos_rad As Currency
@@ -194,11 +180,6 @@ Sub dynamixelSendPoseWithInterval(ByVal input_interval As Currency)
     Call comComfig
     Call comOpen
     sheet_name = ActiveSheet.Name
-    'Get the pose of the button
-    buttonOrShapeName = Application.Caller
-    result = getButtonCenterCell(buttonOrShapeName)
-    button_row = GetRowFromResult(result)
-    button_col = GetColumnFromResult(result)
     num_motors = motionPlayerConfigGetNumMotors()
     Call dynamixelSetMotorNum(num_motors)
     For i = 0 To num_motors - 1
@@ -218,7 +199,7 @@ Sub dynamixelSendPoseWithInterval(ByVal input_interval As Currency)
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
         is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
-        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, button_col).Value)
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, input_frame_num + 8).Value)
         If is_reverse Then target_pos_rad = -target_pos_rad
         Call dynamixelSetTargetPos(i, target_pos_rad)
         current_pos_rad = dynamixelReadMeasuredPose(i)
@@ -231,6 +212,5 @@ End Sub
 
 
 Sub dynamixelSendAnimationFrame(ByVal input_frame_num As Long)
-
 End Sub
 
