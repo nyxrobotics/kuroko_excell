@@ -103,7 +103,7 @@ End Sub
 
 Sub dynamixelPoseButton()
     'Call dynamixelSendPose
-    Call dynamixelSendPoseWithInterval(1)
+    Call dynamixelSendPoseWithInterval(0.5)
 End Sub
 
 Sub dynamixelSendPose()
@@ -117,6 +117,9 @@ Sub dynamixelSendPose()
     Dim target_pos_rad As Currency
     Dim is_reverse As Long
     Dim send_packet() As Byte
+    Call qpcInit
+    Call comComfig
+    Call comOpen
     sheet_name = ActiveSheet.Name
     'Get the pose of the button
     buttonOrShapeName = Application.Caller
@@ -136,13 +139,10 @@ Sub dynamixelSendPose()
         Call dynamixelSetTargetVel(i, 0)
     Next i
     send_packet() = dynamixelSyncWritePosPacket()
-    Call qpcInit
-    Call comComfig
-    Call comOpen
     ec.Binary = send_packet()
 End Sub
 
-Sub dynamixelSendPoseWithInterval(ByVal input_interval As Currency)
+Sub dynamixelSendPoseWithVel(ByVal input_vel As Currency)
     Dim i As Long
     Dim buttonOrShapeName As String
     Dim result As String
@@ -153,6 +153,9 @@ Sub dynamixelSendPoseWithInterval(ByVal input_interval As Currency)
     Dim target_pos_rad As Currency
     Dim is_reverse As Long
     Dim send_packet() As Byte
+    Call qpcInit
+    Call comComfig
+    Call comOpen
     sheet_name = ActiveSheet.Name
     'Get the pose of the button
     buttonOrShapeName = Application.Caller
@@ -165,16 +168,69 @@ Sub dynamixelSendPoseWithInterval(ByVal input_interval As Currency)
         id = motionPlayerConfigGetID(i)
         Call dynamixelSetTargetID(i, id)
         is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
-        target_pos_rad = Sheets(sheet_name).Cells(i + 8, button_col).Value
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, button_col).Value)
         If is_reverse Then target_pos_rad = -target_pos_rad
-        Call dynamixelSetTargetPos(i, 0)
         Call dynamixelSetTargetPos(i, target_pos_rad)
-        Call dynamixelSetTargetVel(i, 0.5)
+        Call dynamixelSetTargetVel(i, input_vel)
     Next i
     send_packet() = dynamixelSyncWritePosVelPacket()
+    ec.Binary = send_packet()
+End Sub
+
+Sub dynamixelSendPoseWithInterval(ByVal input_interval As Currency)
+    Dim i As Long
+    Dim buttonOrShapeName As String
+    Dim result As String
+    Dim buttom_row As Long
+    Dim button_col As Long
+    Dim sheet_name As String
+    Dim num_motors As Long
+    Dim current_pos_rad As Currency
+    Dim target_pos_rad As Currency
+    Dim target_vel_rad_per_sec As Currency
+    Dim is_reverse As Long
+    Dim send_packet() As Byte
     Call qpcInit
     Call comComfig
     Call comOpen
+    sheet_name = ActiveSheet.Name
+    'Get the pose of the button
+    buttonOrShapeName = Application.Caller
+    result = getButtonCenterCell(buttonOrShapeName)
+    button_row = GetRowFromResult(result)
+    button_col = GetColumnFromResult(result)
+    num_motors = motionPlayerConfigGetNumMotors()
+    Call dynamixelSetMotorNum(num_motors)
+    For i = 0 To num_motors - 1
+        id = motionPlayerConfigGetID(i)
+        Call dynamixelSetTargetID(i, id)
+        dynamixelClearMeasuredPoseIsUpdated (i)
+    Next i
+    send_packet() = dynamixelSyncRequestPosePacket()
     ec.Binary = send_packet()
+    Call sleepSend(send_packet)
+    Call sleepReceive(15 * num_motors)
+    Call qpcWaitMs(15 + num_motors)
+    Call dynamixelUpdateRxBuffer
+    Call dynamixelDecodeRxBuffer
+    
+    For i = 0 To num_motors - 1
+        id = motionPlayerConfigGetID(i)
+        Call dynamixelSetTargetID(i, id)
+        is_reverse = Sheets(sheet_name).Cells(i + 8, 5).Value
+        target_pos_rad = deg2Rad(Sheets(sheet_name).Cells(i + 8, button_col).Value)
+        If is_reverse Then target_pos_rad = -target_pos_rad
+        Call dynamixelSetTargetPos(i, target_pos_rad)
+        current_pos_rad = dynamixelReadMeasuredPose(i)
+        target_vel_rad_per_sec = (target_pos_rad - current_pos_rad) / input_interval
+        Call dynamixelSetTargetVel(i, target_vel_rad_per_sec)
+    Next i
+    send_packet() = dynamixelSyncWritePosVelPacket()
+    ec.Binary = send_packet()
+End Sub
+
+
+Sub dynamixelSendAnimationFrame(ByVal input_frame_num As Long)
+
 End Sub
 

@@ -161,10 +161,7 @@ Function dynamixelSyncWritePosPacket() As Byte()
     
     For i = 0 To MOTOR_TOTAL - 1
         target_pose_float = sorted_pos(i)
-        If target_pose_float < 0 Then
-            target_pose_float = target_pose_float + 2 * WorksheetFunction.Pi()
-        End If
-        target_pose_int = Fix(target_pose_float * 2048 / WorksheetFunction.Pi())
+        target_pose_int = 2048 + Fix(target_pose_float * 2048 / WorksheetFunction.Pi())
         send_packet(i * 5 + 12) = sorted_id(i) 'ID
         send_packet(i * 5 + 13) = target_pose_int And &HFF&
         send_packet(i * 5 + 14) = (target_pose_int \ &H100&) And &HFF&
@@ -230,10 +227,7 @@ Function dynamixelSyncWritePosVelPacket() As Byte()
     
     For i = 0 To MOTOR_TOTAL - 1
         target_pose_float = sorted_pos(i)
-        If target_pose_float < 0 Then
-            target_pose_float = target_pose_float + 2 * WorksheetFunction.Pi()
-        End If
-        target_pose_int = Fix(target_pose_float * 2048 / WorksheetFunction.Pi())
+        target_pose_int = 2048 + Fix(target_pose_float * 2048 / WorksheetFunction.Pi())
         target_speed_float = Abs(sorted_vel(i))
         target_speed_int = Fix(target_speed_float / 0.023968)
         send_packet(i * 9 + 12) = sorted_id(i) 'ID
