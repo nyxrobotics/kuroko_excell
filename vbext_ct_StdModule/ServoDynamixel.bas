@@ -335,7 +335,7 @@ End Function
 Function dynamixelGetRxSingleByte(point As Long) As Byte
     Dim target_point As Long
     target_point = point Mod RX_RING_BUFFER_SIZE
-    dynamixelGetRxSingleByte = RX_RING_BUFFER(target_point)
+    dynamixelGetRxSingleByte = RX_RING_BUFFER(target_point) And &HFF&
 End Function
 
 Function dynamixelRxSingleByteAvailable(point As Long) As Boolean
@@ -401,11 +401,25 @@ Sub dynamixelDecodeRxBuffer()
                         ' Received status packet
                         status_id = single_status_packet(4)
                         If status_id <> &HFD And length_candidate = 8 Then
-                            status_pose = dynamixelGetRxSingleByte((header_addr_candidate + 9) Mod RX_RING_BUFFER_SIZE) + _
-                                          dynamixelGetRxSingleByte((header_addr_candidate + 10) Mod RX_RING_BUFFER_SIZE) * &H100 + _
-                                          dynamixelGetRxSingleByte((header_addr_candidate + 11) Mod RX_RING_BUFFER_SIZE) * &H10000 + _
-                                          dynamixelGetRxSingleByte((header_addr_candidate + 12) Mod RX_RING_BUFFER_SIZE) * &H1000000
-                            status_radian = status_pose * WorksheetFunction.Pi() / 2048
+                            Dim debug_data As Byte
+                            'Prevent overflow
+                            If dynamixelGetRxSingleByte((header_addr_candidate + 12) Mod RX_RING_BUFFER_SIZE) < &H80 Then
+                                'Positive value
+                                status_pose = dynamixelGetRxSingleByte((header_addr_candidate + 9) Mod RX_RING_BUFFER_SIZE) + _
+                                              dynamixelGetRxSingleByte((header_addr_candidate + 10) Mod RX_RING_BUFFER_SIZE) * &H100 + _
+                                              dynamixelGetRxSingleByte((header_addr_candidate + 11) Mod RX_RING_BUFFER_SIZE) * &H10000 + _
+                                              dynamixelGetRxSingleByte((header_addr_candidate + 12) Mod RX_RING_BUFFER_SIZE) * &H1000000
+                            Else
+                                'Negative value
+                                status_pose = -(1 + _
+                                    (&HFF - dynamixelGetRxSingleByte((header_addr_candidate + 9) Mod RX_RING_BUFFER_SIZE)) + _
+                                    (&HFF - dynamixelGetRxSingleByte((header_addr_candidate + 10) Mod RX_RING_BUFFER_SIZE)) * &H100 + _
+                                    (&HFF - dynamixelGetRxSingleByte((header_addr_candidate + 11) Mod RX_RING_BUFFER_SIZE)) * &H10000 + _
+                                    (&HFF - dynamixelGetRxSingleByte((header_addr_candidate + 12) Mod RX_RING_BUFFER_SIZE)) * &H1000000 _
+                                    )
+
+                            End If
+                            status_radian = status_pose * WorksheetFunction.Pi() / 2048 - WorksheetFunction.Pi()
                             If status_radian > WorksheetFunction.Pi() Then
                                 status_radian = status_radian - 2 * WorksheetFunction.Pi()
                             End If
