@@ -105,6 +105,7 @@ Sub dynamixelPlayButton()
     Dim i As Long
     Dim j As Long
     Dim sheet_name As String
+    Dim play_frame As Long
     Dim motion_start_frame As Long
     Dim loop_start_frame As Long
     Dim loop_end_frame As Long
@@ -137,30 +138,35 @@ Sub dynamixelPlayButton()
     Next i
     'Play motion
     Call dynamixelSendPoseWithInterval(motion_start_frame, 0.5)
+    play_frame = motion_start_frame
     Call qpcWait(1#)
     If loop_end_frame <> 0 Then
         For i = motion_start_frame + 1 To loop_end_frame
             If 0 = Sheets(sheet_name).Cells(7, i + 8).Value Then
-                Call dynamixelSendAnimationFrame(i - 1, i)
+                Call dynamixelSendAnimationFrame(play_frame, i)
+                play_frame = i
             End If
         Next i
         For j = 1 To loop_count
             Call dynamixelSendAnimationFrame(loop_end_frame, loop_start_frame)
             For i = loop_start_frame + 1 To loop_end_frame
                 If 0 = Sheets(sheet_name).Cells(7, i + 8).Value Then
-                    Call dynamixelSendAnimationFrame(i - 1, i)
+                    Call dynamixelSendAnimationFrame(play_frame, i)
+                play_frame = i
                 End If
             Next i
         Next j
         For i = loop_end_frame + 1 To motion_end_frame
             If 0 = Sheets(sheet_name).Cells(7, i + 8).Value Or 2 = Sheets(sheet_name).Cells(7, i + 8).Value Then
-                Call dynamixelSendAnimationFrame(i - 1, i)
+                Call dynamixelSendAnimationFrame(play_frame, i)
+                play_frame = i
             End If
         Next i
     ElseIf motion_end_frame > motion_start_frame Then
         For i = motion_start_frame + 1 To motion_end_frame
             If 0 = Sheets(sheet_name).Cells(7, i + 8).Value Or 2 = Sheets(sheet_name).Cells(7, i + 8).Value Then
-                Call dynamixelSendAnimationFrame(i - 1, i)
+                Call dynamixelSendAnimationFrame(play_frame, i)
+                play_frame = i
             End If
         Next i
     End If
@@ -317,8 +323,12 @@ Sub dynamixelSendAnimationFrame(ByVal input_previous_frame_num As Long, ByVal in
             target_pos_rad = -target_pos_rad
             previous_target_pos_rad = -previous_target_pos_rad
         End If
+        If Abs(target_pos_rad - previous_target_pos_rad) < 0.1 Or travel_interval < 0.01 Then
+            target_vel_rad_per_sec = 0
+        Else
+            target_vel_rad_per_sec = (target_pos_rad - previous_target_pos_rad) / travel_interval
+        End If
         Call dynamixelSetTargetPos(i, target_pos_rad)
-        target_vel_rad_per_sec = (target_pos_rad - current_pos_rad) / travel_interval
         Call dynamixelSetTargetVel(i, target_vel_rad_per_sec)
     Next i
     send_packet() = dynamixelSyncWritePosVelPacket()
