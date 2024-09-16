@@ -499,6 +499,41 @@ Sub Change_Right_Left()
     Next i
 End Sub
 
+
+Sub Calc_calibration_offset()
+    Application.ScreenUpdating = False
+    Dim Shtname As String
+    Shtname = ActiveSheet.Name
+    Dim StartFrame As Integer, EndFrame As Integer, LoopStart As Integer, LoopEnd As Integer
+    StartFrame = 0
+    EndFrame = 0
+    LoopStart = 0
+    LoopEnd = 0
+    '-------------
+    'Compare the sum of the Home and Offset angles in the left and right pairs, with the average being Home and the difference from the average being Offset.
+    For i = 1 To servosend
+        If (Cells(i + 7, 4).Value = "o") Then
+            Cells(i + 7, 7).Value = Cells(i + 7, 7).Value
+            Cells(i + 7, 8).Value = Cells(i + 7, 8).Value
+        Else
+        For j = i + 1 To servosend
+            If Cells(i + 7, 4).Value = Cells(j + 7, 4).Value And Not (Cells(i + 7, 4).Value = "") And Not (Cells(j + 7, 4).Value = "") Then
+                Dim average As Currency
+                Dim diff_i As Currency
+                Dim diff_j As Currency
+                average = (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value + Cells(j + 7, 6).Value + Cells(j + 7, 7).Value) * 0.5
+                diff_i = Cells(i + 7, 6).Value + Cells(i + 7, 7).Value - average
+                diff_j = Cells(j + 7, 6).Value + Cells(j + 7, 7).Value - average
+                Cells(i + 7, 6).Value = average
+                Cells(i + 7, 7).Value = diff_i
+                Cells(j + 7, 6).Value = average
+                Cells(j + 7, 7).Value = diff_j
+            End If
+        Next j
+        End If
+    Next i
+End Sub
+
 Sub Change_Start_End()
     Application.ScreenUpdating = False
     Dim Shtname As String
