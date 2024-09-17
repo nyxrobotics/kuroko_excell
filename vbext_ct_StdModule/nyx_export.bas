@@ -18,9 +18,10 @@ End Function
 
 
 
-Sub MotionExport_Move()
+Sub MotionExport_withLoop_cpp()
 
     '----------------------------------
+    '歩行・起き上がりモーション用
     'motion_exportフォルダがなければ作成する
     
     Dim MotionExportDirectry As String
@@ -316,8 +317,9 @@ End Sub
 
 
 
-Sub MotionExport_Atk()
+Sub MotionExport_withBranch_cpp()
     '----------------------------------
+    '攻撃モーション用
     'motion_exportフォルダがなければ作成する
     Dim MotionExportDirectry As String
     MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
@@ -637,12 +639,139 @@ Sub Change_Start_End()
     Next i
 End Sub
 
+Sub MotionExport_Yaml()
+
+    Dim MotionExportDirectry As String
+    MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
+    If Dir(MotionExportDirectry, vbDirectory) = "" Then
+        MkDir MotionExportDirectry
+    End If
+    
+    ' 出力ファイル名の設定
+    Dim Filename As String
+    Filename = GetFNameFromFStr(ActiveWorkbook.Name) & "_" & ActiveSheet.Name
+    Dim OutputFile As String
+    OutputFile = ActiveWorkbook.Path & "\motion_export\" & Filename & ".yaml"
+    
+    ' YAMLファイルを開く
+    Dim IntFlNo As Integer
+    IntFlNo = FreeFile
+    Open OutputFile For Output As #IntFlNo
+    
+    ' joint_namesの取得 (1列目が空になるまで)
+    Dim joint_names() As String
+    Dim total_joints As Integer
+    Dim row As Integer
+    row = 8 ' joint_namesの開始行
+
+    ' 1列目が空欄になる直前までループしてジョイント数をカウント
+    total_joints = 0
+    Do While Not IsEmpty(Cells(row, 1).Value)
+        total_joints = total_joints + 1
+        row = row + 1
+    Loop
+    
+    ' joint_names配列を適切なサイズにReDim
+    ReDim joint_names(total_joints - 1)
+    
+    ' 配列にジョイント名を格納
+    row = 8
+    Dim i As Integer
+    For i = 0 To total_joints - 1
+        joint_names(i) = Cells(row, 1).Value
+        row = row + 1
+    Next i
+    
+    ' sectionsの出力
+    Print #IntFlNo, "sections:"
+    
+    ' 例: start_section
+    Print #IntFlNo, "  - section_name: start_section"
+    Print #IntFlNo, "    next_sections:"
+    Print #IntFlNo, "      - loop_section"
+    
+    ' joint_names出力
+    Print #IntFlNo, "    joint_trajectory:"
+    Print #IntFlNo, "      joint_names:"
+    For i = LBound(joint_names) To UBound(joint_names)
+        Print #IntFlNo, "        - " & joint_names(i)
+    Next i
+    
+    ' points出力 (positions, velocities, accelerations, effort)
+    Print #IntFlNo, "      points:"
+    row = 8 ' モーションデータの開始行
+    Do While Not IsEmpty(Cells(7, row).Value)
+        ' positionsの取得
+        Dim positions As String
+        positions = ""
+        For i = 0 To total_joints - 1
+            If i > 0 Then
+                positions = positions & ", " & Cells(i + 8, row).Value
+            Else
+                positions = Cells(i + 8, row).Value
+            End If
+        Next i
+        
+        ' velocitiesの取得
+        Dim velocities As String
+        velocities = ""
+        Dim movingTime As Double
+        movingTime = Cells(4, row).Value
+        
+        ' 最初のフレームや MovingTime が 0 の場合は、全ジョイントの速度を 0 に設定
+        If row = 8 Or movingTime = 0 Then
+            For i = 0 To total_joints - 1
+                If i > 0 Then
+                    velocities = velocities & ", 0"
+                Else
+                    velocities = "0"
+                End If
+            Next i
+        Else
+            ' MovingTime が 0 ではない場合に速度を計算
+            For i = 0 To total_joints - 1
+                If i > 0 Then
+                    velocities = velocities & ", " & (Cells(i + 8, row + 1).Value - Cells(i + 8, row).Value) / (movingTime / 100)
+                Else
+                    velocities = (Cells(i + 8, row + 1).Value - Cells(i + 8, row).Value) / (movingTime / 100)
+                End If
+            Next i
+        End If
+        
+        ' accelerationsとeffortをジョイント数に合わせて0で埋める
+        Dim accelerations As String
+        Dim effort As String
+        accelerations = "0"
+        effort = "0"
+        For i = 1 To total_joints - 1
+            accelerations = accelerations & ", 0"
+            effort = effort & ", 0"
+        Next i
+        
+        ' YAML形式での出力
+        Print #IntFlNo, "        - positions: [" & positions & "]"
+        Print #IntFlNo, "          velocities: [" & velocities & "]"
+        Print #IntFlNo, "          accelerations: [" & accelerations & "]"
+        Print #IntFlNo, "          effort: [" & effort & "]"
+        Print #IntFlNo, "          time_from_start: " & (movingTime + Cells(5, row).Value) / 100 ' MovingTimeとWaitingTimeを合計した値
+
+        row = row + 1
+    Loop
+    
+    ' YAMLファイルを閉じる
+    Close #IntFlNo
+
+End Sub
+
+
+
+
 
 Sub MotionExport()
     If Cells(2, 2) = "a" Then
-        Call MotionExport_Atk
+        Call MotionExport_withBranch_cpp
     Else
-        Call MotionExport_Move
+        Call MotionExport_withLoop_cpp
     End If
 End Sub
 
