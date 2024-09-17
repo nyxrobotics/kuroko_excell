@@ -641,129 +641,201 @@ End Sub
 
 Sub MotionExport_Yaml()
 
+    ' 初期設定
     Dim MotionExportDirectry As String
     MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
     If Dir(MotionExportDirectry, vbDirectory) = "" Then
         MkDir MotionExportDirectry
     End If
     
-    ' 出力ファイル名の設定
     Dim Filename As String
     Filename = GetFNameFromFStr(ActiveWorkbook.Name) & "_" & ActiveSheet.Name
     Dim OutputFile As String
     OutputFile = ActiveWorkbook.Path & "\motion_export\" & Filename & ".yaml"
     
-    ' YAMLファイルを開く
+    ' ファイルを開く
     Dim IntFlNo As Integer
     IntFlNo = FreeFile
     Open OutputFile For Output As #IntFlNo
     
-    ' joint_namesの取得 (1列目が空になるまで)
+    ' Joint namesの取得
     Dim joint_names() As String
     Dim total_joints As Integer
-    Dim row As Integer
-    row = 8 ' joint_namesの開始行
-
-    ' 1列目が空欄になる直前までループしてジョイント数をカウント
     total_joints = 0
+    Dim row As Integer
+    row = 8
+    
+    ' 1列目が空欄になるまでのループでジョイント数を取得
     Do While Not IsEmpty(Cells(row, 1).Value)
         total_joints = total_joints + 1
         row = row + 1
     Loop
     
-    ' joint_names配列を適切なサイズにReDim
+    ' ジョイント配列の再割り当て
     ReDim joint_names(total_joints - 1)
-    
-    ' 配列にジョイント名を格納
     row = 8
-    Dim i As Integer
     For i = 0 To total_joints - 1
         joint_names(i) = Cells(row, 1).Value
         row = row + 1
     Next i
     
-    ' sectionsの出力
+    ' セクションの出力
     Print #IntFlNo, "sections:"
     
-    ' 例: start_section
-    Print #IntFlNo, "  - section_name: start_section"
-    Print #IntFlNo, "    next_sections:"
-    Print #IntFlNo, "      - loop_section"
+    ' ループの開始・終了フレームをチェック
+    Dim loop_start_frame As Integer
+    Dim loop_end_frame As Integer
+    loop_end_frame = -1
+    If IsNumeric(Cells(1, 8).Value) Then
+        loop_end_frame = Cells(1, 8).Value
+        loop_start_frame = Cells(1, loop_end_frame + 8).Value
+    Else
+        loop_start_frame = -1
+    End If
     
-    ' joint_names出力
-    Print #IntFlNo, "    joint_trajectory:"
-    Print #IntFlNo, "      joint_names:"
-    For i = LBound(joint_names) To UBound(joint_names)
-        Print #IntFlNo, "        - " & joint_names(i)
-    Next i
+    ' セクションの状態管理
+    Dim current_section As String
+    current_section = "start_section"
+    Dim in_loop As Boolean
+    in_loop = False
+    Dim section_written As Boolean
+    section_written = False
+    Dim end_flag As Boolean
+    end_flag = False
     
-    ' points出力 (positions, velocities, accelerations, effort)
-    Print #IntFlNo, "      points:"
-    row = 8 ' モーションデータの開始行
-    Do While Not IsEmpty(Cells(7, row).Value)
-        ' positionsの取得
-        Dim positions As String
-        positions = ""
-        For i = 0 To total_joints - 1
-            If i > 0 Then
-                positions = positions & ", " & Cells(i + 8, row).Value
-            Else
-                positions = Cells(i + 8, row).Value
-            End If
-        Next i
+    ' フレームごとの処理
+    row = 8
+    Do While Not IsEmpty(Cells(7, row).Value) And Not end_flag
+        Dim flag As Integer
+        flag = Cells(7, row).Value
         
-        ' velocitiesの取得
-        Dim velocities As String
-        velocities = ""
-        Dim movingTime As Double
-        movingTime = Cells(4, row).Value
-        
-        ' 最初のフレームや MovingTime が 0 の場合は、全ジョイントの速度を 0 に設定
-        If row = 8 Or movingTime = 0 Then
-            For i = 0 To total_joints - 1
-                If i > 0 Then
-                    velocities = velocities & ", 0"
-                Else
-                    velocities = "0"
-                End If
-            Next i
-        Else
-            ' MovingTime が 0 ではない場合に速度を計算
-            For i = 0 To total_joints - 1
-                If i > 0 Then
-                    velocities = velocities & ", " & (Cells(i + 8, row + 1).Value - Cells(i + 8, row).Value) / (movingTime / 100)
-                Else
-                    velocities = (Cells(i + 8, row + 1).Value - Cells(i + 8, row).Value) / (movingTime / 100)
-                End If
-            Next i
+        ' フレーム判定
+        If row - 8 = loop_start_frame And Not in_loop Then
+            current_section = "loop_section"
+            in_loop = True
+        ElseIf row - 8 = loop_end_frame Then
+            current_section = "finish_section"
+            in_loop = False
         End If
         
-        ' accelerationsとeffortをジョイント数に合わせて0で埋める
-        Dim accelerations As String
-        Dim effort As String
-        accelerations = "0"
-        effort = "0"
-        For i = 1 To total_joints - 1
-            accelerations = accelerations & ", 0"
-            effort = effort & ", 0"
-        Next i
-        
-        ' YAML形式での出力
-        Print #IntFlNo, "        - positions: [" & positions & "]"
-        Print #IntFlNo, "          velocities: [" & velocities & "]"
-        Print #IntFlNo, "          accelerations: [" & accelerations & "]"
-        Print #IntFlNo, "          effort: [" & effort & "]"
-        Print #IntFlNo, "          time_from_start: " & (movingTime + Cells(5, row).Value) / 100 ' MovingTimeとWaitingTimeを合計した値
+        ' 各セクションの処理
+        Select Case flag
+            Case 1 ' START
+                If current_section = "start_section" Or current_section = "loop_section" Then
+                    Print #IntFlNo, "  - section_name: " & current_section
+                    If current_section = "start_section" Then
+                        Print #IntFlNo, "    next_sections:"
+                        Print #IntFlNo, "      - loop_section"
+                    ElseIf current_section = "loop_section" Then
+                        Print #IntFlNo, "    next_sections:"
+                        Print #IntFlNo, "      - finish_section"
+                    End If
+                    section_written = True
+                End If
+                
+                ' ジョイント名の出力
+                Print #IntFlNo, "    joint_trajectory:"
+                Print #IntFlNo, "      joint_names:"
+                For i = LBound(joint_names) To UBound(joint_names)
+                    Print #IntFlNo, "        - " & joint_names(i)
+                Next i
+                Print #IntFlNo, "      points:"
+            
+            Case 0 ' PLAY
+                ' ジョイントの位置、速度、加速度、努力の出力
+                Dim positions As String
+                positions = ""
+                For i = 0 To total_joints - 1
+                    If i > 0 Then
+                        positions = positions & ", " & Cells(i + 8, row).Value
+                    Else
+                        positions = Cells(i + 8, row).Value
+                    End If
+                Next i
+                
+                ' velocitiesの計算
+                Dim velocities As String
+                velocities = ""
+                Dim movingTime As Double
+                movingTime = Cells(4, row).Value
+                
+                ' 初回フレームやMovingTimeが0なら速度を0に
+                If row = 8 Or movingTime = 0 Then
+                    For i = 0 To total_joints - 1
+                        If i > 0 Then
+                            velocities = velocities & ", 0"
+                        Else
+                            velocities = "0"
+                        End If
+                    Next i
+                Else
+                    ' 速度を計算
+                    For i = 0 To total_joints - 1
+                        If i > 0 Then
+                            velocities = velocities & ", " & (Cells(i + 8, row + 1).Value - Cells(i + 8, row).Value) / (movingTime / 100)
+                        Else
+                            velocities = (Cells(i + 8, row + 1).Value - Cells(i + 8, row).Value) / (movingTime / 100)
+                        End If
+                    Next i
+                End If
+                
+                ' accelerationsとeffortを0で埋める
+                Dim accelerations As String
+                Dim effort As String
+                accelerations = "0"
+                effort = "0"
+                For i = 1 To total_joints - 1
+                    accelerations = accelerations & ", 0"
+                    effort = effort & ", 0"
+                Next i
+                
+                ' YAML形式で出力
+                Print #IntFlNo, "        - positions: [" & positions & "]"
+                Print #IntFlNo, "          velocities: [" & velocities & "]"
+                Print #IntFlNo, "          accelerations: [" & accelerations & "]"
+                Print #IntFlNo, "          effort: [" & effort & "]"
+                Print #IntFlNo, "          time_from_start: " & (movingTime + Cells(5, row).Value) / 100 ' MovingTimeとWaitingTimeを合計した値
+            
+            Case 2 ' END (モーションの終了)
+                ' finish_sectionが書かれていなければここで書き出す
+                If current_section <> "finish_section" Then
+                    current_section = "finish_section"
+                    Print #IntFlNo, "  - section_name: finish_section"
+                    Print #IntFlNo, "    joint_trajectory:"
+                    Print #IntFlNo, "      joint_names:"
+                    For i = LBound(joint_names) To UBound(joint_names)
+                        Print #IntFlNo, "        - " & joint_names(i)
+                    Next i
+                    Print #IntFlNo, "      points:"
+                    section_written = True
+                End If
+                end_flag = True ' ENDフラグが立ったらループを終了
 
+            Case 3 ' SKIP
+                ' スキップ処理
+                row = row + 1
+                GoTo ContinueLoop
+        End Select
+
+ContinueLoop:
         row = row + 1
     Loop
     
-    ' YAMLファイルを閉じる
+    ' 必要に応じてfinish_sectionの出力
+    If current_section = "finish_section" And Not section_written Then
+        Print #IntFlNo, "  - section_name: finish_section"
+        Print #IntFlNo, "    joint_trajectory:"
+        Print #IntFlNo, "      joint_names:"
+        For i = LBound(joint_names) To UBound(joint_names)
+            Print #IntFlNo, "        - " & joint_names(i)
+        Next i
+        Print #IntFlNo, "      points:"
+    End If
+    
+    ' ファイルを閉じる
     Close #IntFlNo
 
 End Sub
-
-
 
 
 
