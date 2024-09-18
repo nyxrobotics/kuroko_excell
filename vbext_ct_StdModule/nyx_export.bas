@@ -320,7 +320,13 @@ Sub MotionExport_Yaml()
                 ' 速度を計算（直前のskipでないフレームとの差）
                 For i = 0 To total_joints - 1
                     Dim velocity As Double
-                    velocity = Abs((Cells(i + 8, col).Value - Cells(i + 8, prev_col).Value) / (movingTime / 100)) ' 速度は絶対値を取る
+                    ' 角度差をラジアンで計算し、時間に対して割る (rad/sec)
+                    velocity = (Cells(i + 8, col).Value - Cells(i + 8, prev_col).Value) * WorksheetFunction.Pi() / 180 / (movingTime / 100)
+                    
+                    ' reverseフラグが1の場合、速度の符号を反転
+                    If Cells(i + 8, 5).Value = 1 Then
+                        velocity = velocity * -1
+                    End If
                     
                     If i > 0 Then
                         velocities = velocities & ", " & Format(Round(velocity, 3), "0.000")
@@ -367,6 +373,8 @@ Sub MotionExport_Yaml()
     Close #IntFlNo
 
 End Sub
+
+
 
 
 
