@@ -17,443 +17,6 @@ End Function
 '--------------------------------------------------------------------
 
 
-
-Sub MotionExport_withLoop_cpp()
-
-    '----------------------------------
-    '歩行・起き上がりモーション用
-    'motion_exportフォルダがなければ作成する
-    
-    Dim MotionExportDirectry As String
-    MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
-    If Dir(MotionExportDirectry, vbDirectory) = "" Then
-        MkDir MotionExportDirectry
-    End If
-    
-    '----------------------------------
-    '出力ファイル名を決定
-    Dim Filename As String
-    Filename = GetFNameFromFStr(ActiveWorkbook.Name) & "_" & ActiveSheet.Name
-    Dim OutputFile As String
-    OutputFile = ActiveWorkbook.Path & "\motion_export\" & Filename & ".c"
-    
-    '-----------------------------------
-    
-    Dim i As Long, LngLoop As Long
-    Dim IntFlNo As Integer
-    LngLoop = Range("a65536").End(xlUp).row
-    IntFlNo = FreeFile
-    Open OutputFile For Output As #IntFlNo
-    
-    Dim Shtname As String
-    Shtname = ActiveSheet.Name
-    Dim StartFrame As Integer, EndFrame As Integer, LoopStart As Integer, LoopEnd As Integer
-    StartFrame = 0
-    EndFrame = 0
-    LoopStart = 0
-    LoopEnd = 0
-    '-------------
-    '開始位置を調べる
-    For k = 8 To 68
-        If Sheets(Shtname).Cells(7, k).Value = 1 Then
-            StartFrame = k - 8
-            EndFrame = StartFrame
-            k = 68
-        End If
-    Next
-   
-    '-------------
-    '終了位置を調べる
-    For k = StartFrame + 8 To 68
-        If Sheets(Shtname).Cells(7, k).Value = 2 Then
-            EndFrame = k - 8
-            k = 68
-        End If
-    Next
-    
-    '-------------
-    'ループ位置を調べる
-    For k = (StartFrame + 8) To (EndFrame + 8)
-        If Not Sheets(Shtname).Cells(1, k) = "" Then
-            LoopStart = Sheets(Shtname).Cells(1, k).Value
-            LoopEnd = k - 8
-            k = EndFrame + 8
-        End If
-    Next
-    
-    '-------------
-    
-    
-    Dim TotalFrame As Integer
-    '----------------------------------
-    'スターティングモーション
-    If LoopStart <> 0 Then
-    TotalFrame = LoopStart - StartFrame
-    Else
-        If EndFrame > StartFrame Then
-        TotalFrame = EndFrame - StartFrame + 1
-        Else
-        TotalFrame = 0
-        End If
-    End If
-    
-    
-    Dim A(1000) As String
-    
-    A(1) = String(4 - LenB(StrConv(TotalFrame, vbFromUnicode)), " ") & TotalFrame
-    A(1) = A(1) & ", " & String(4 - LenB(StrConv(servosend, vbFromUnicode)), " ") & servosend
-    For i = 8 To (servosend + 7)
-        A(1) = A(1) & ", " & String(4 - LenB(StrConv(Cells(i, 2).Value, vbFromUnicode)), " ") & Cells(i, 2).Value
-    Next i
-        
-    A(2) = String(4 - LenB(StrConv(Cells(5, 8).Value, vbFromUnicode)), " ") & Cells(5, 8).Value
-    A(2) = A(2) & ", " & String(4 - LenB(StrConv(Cells(6, 8).Value, vbFromUnicode)), " ") & Cells(6, 8).Value
-    For i = 1 To servosend
-        If (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value) < 0 Then '(-1 ^ Cells(i + 7, 5).Value) *
-            A(2) = A(2) & ","
-            A(2) = A(2) & String(4 - LenB(StrConv(-10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value), vbFromUnicode)), " ")
-            A(2) = A(2) & 10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value)
-        Else
-            A(2) = A(2) & ", "
-            A(2) = A(2) & String(4 - LenB(StrConv(10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value), vbFromUnicode)), " ")
-            A(2) = A(2) & 10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value)
-        End If
-    Next i
-    
-    If TotalFrame > 0 Then
-        For i = 3 To TotalFrame + 2
-            A(i) = String(4 - LenB(StrConv(Cells(5, 7 + StartFrame + i - 2).Value, vbFromUnicode)), " ") & Cells(5, 7 + StartFrame + i - 2).Value
-            A(i) = A(i) & ", " & String(4 - LenB(StrConv(Cells(6, 7 + StartFrame + i - 2).Value, vbFromUnicode)), " ") & Cells(6, 7 + StartFrame + i - 2).Value
-            For j = 1 To servosend
-                If (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * Cells(7 + j, i + StartFrame + 5).Value < 0 Then
-                    A(i) = A(i) & ","
-                    A(i) = A(i) & String(4 - LenB(StrConv(-10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + StartFrame + 5).Value), vbFromUnicode)), " ")
-                    A(i) = A(i) & 10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + StartFrame + 5).Value)
-                Else
-                    A(i) = A(i) & ", "
-                    A(i) = A(i) & String(4 - LenB(StrConv(10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + StartFrame + 5).Value), vbFromUnicode)), " ")
-                    A(i) = A(i) & 10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + StartFrame + 5).Value)
-                End If
-            Next j
-        Next i
-    End If
-    
-    If TotalFrame > 0 Then
-    Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_Start[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(一個目モーションの総フレーム数、二個目サーボの総数、三個目以降が指定したID)"
-    Print #IntFlNo, "{" & A(2) & "},//初期姿勢(一個目移動時間、二個目待機時間、三個目以降角度)"
-        If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//以下モーションデータ(一個目移動時間、二個目待機時間、三個目以降角度)"
-            If TotalFrame > 2 Then
-            For i = 4 To (TotalFrame + 1)
-            Print #IntFlNo, "{" & A(i) & "},"
-            Next i
-            End If
-        Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
-        Else
-        Print #IntFlNo, "{" & A(3) & "}//以下モーションデータ(一個目移動時間、二個目待機時間、三個目以降角度)"
-        End If
-    Print #IntFlNo, "};"
-    Print #IntFlNo, ""
-    End If
-    
-
-    '----------------------------------------
-    'ループモーション
-    If LoopStart = 0 Then
-    TotalFrame = 0
-    Else
-        If LoopEnd = 0 Then
-        TotalFrame = 0
-        Else
-            If LoopEnd - LoopStart < 0 Then
-            TotalFrame = 0
-            Else
-            TotalFrame = LoopEnd - LoopStart + 1
-            End If
-        End If
-    End If
-    
-
-    
-    A(1) = String(4 - LenB(StrConv(TotalFrame, vbFromUnicode)), " ") & TotalFrame
-    A(1) = A(1) & ", " & String(4 - LenB(StrConv(servosend, vbFromUnicode)), " ") & servosend
-    For i = 8 To (servosend + 7)
-        A(1) = A(1) & ", " & String(4 - LenB(StrConv(Cells(i, 2).Value, vbFromUnicode)), " ") & Cells(i, 2).Value
-    Next i
-        
-    A(2) = String(4 - LenB(StrConv(Cells(5, 8).Value, vbFromUnicode)), " ") & Cells(5, 8).Value
-    A(2) = A(2) & ", " & String(4 - LenB(StrConv(Cells(6, 8).Value, vbFromUnicode)), " ") & Cells(6, 8).Value
-    For i = 1 To servosend
-        If (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value) < 0 Then '(-1 ^ Cells(i + 7, 5).Value) *
-            A(2) = A(2) & ","
-            A(2) = A(2) & String(4 - LenB(StrConv(-10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value), vbFromUnicode)), " ")
-            A(2) = A(2) & 10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value)
-        Else
-            A(2) = A(2) & ", "
-            A(2) = A(2) & String(4 - LenB(StrConv(10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value), vbFromUnicode)), " ")
-            A(2) = A(2) & 10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value)
-        End If
-    Next i
-        
-    If TotalFrame > 0 Then
-        For i = 3 To TotalFrame + 2
-            A(i) = String(4 - LenB(StrConv(Cells(5, 7 + LoopStart + i - 2).Value, vbFromUnicode)), " ") & Cells(5, 7 + LoopStart + i - 2).Value
-            A(i) = A(i) & ", " & String(4 - LenB(StrConv(Cells(6, 7 + LoopStart + i - 2).Value, vbFromUnicode)), " ") & Cells(6, 7 + LoopStart + i - 2).Value
-            For j = 1 To servosend
-                If (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * Cells(7 + j, i + LoopStart + 5).Value < 0 Then
-                    A(i) = A(i) & ","
-                    A(i) = A(i) & String(4 - LenB(StrConv(-10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + LoopStart + 5).Value), vbFromUnicode)), " ")
-                    A(i) = A(i) & 10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + LoopStart + 5).Value)
-                Else
-                    A(i) = A(i) & ", "
-                    A(i) = A(i) & String(4 - LenB(StrConv(10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + LoopStart + 5).Value), vbFromUnicode)), " ")
-                    A(i) = A(i) & 10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + LoopStart + 5).Value)
-                End If
-            Next j
-        Next i
-    End If
-    
-    
-    If TotalFrame > 0 Then
-    Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_Loop[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(一個目モーションの総フレーム数、二個目サーボの総数、三個目以降が指定したID)"
-    Print #IntFlNo, "{" & A(2) & "},//初期姿勢(一個目移動時間、二個目待機時間、三個目以降角度)"
-        If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//以下モーションデータ(一個目移動時間、二個目待機時間、三個目以降角度)"
-            If TotalFrame > 2 Then
-            For i = 4 To (TotalFrame + 1)
-            Print #IntFlNo, "{" & A(i) & "},"
-            Next i
-            End If
-        Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
-        Else
-        Print #IntFlNo, "{" & A(3) & "}//以下モーションデータ(一個目移動時間、二個目待機時間、三個目以降角度)"
-        End If
-    Print #IntFlNo, "};"
-    Print #IntFlNo, ""
-    End If
-    '----------------------------------------
-    'エンドモーション
-    If LoopEnd = 0 Then
-    TotalFrame = 0
-    Else
-        If LoopEnd = 0 Then
-        TotalFrame = 0
-        Else
-            If LoopEnd - LoopStart < 0 Then
-                TotalFrame = 0
-            Else
-                TotalFrame = EndFrame - LoopEnd
-            End If
-        End If
-    End If
-
-    A(1) = String(4 - LenB(StrConv(TotalFrame, vbFromUnicode)), " ") & TotalFrame
-    A(1) = A(1) & ", " & String(4 - LenB(StrConv(servosend, vbFromUnicode)), " ") & servosend
-    For i = 8 To (servosend + 7)
-        A(1) = A(1) & ", " & String(4 - LenB(StrConv(Cells(i, 2).Value, vbFromUnicode)), " ") & Cells(i, 2).Value
-    Next i
-        
-    A(2) = String(4 - LenB(StrConv(Cells(5, 8).Value, vbFromUnicode)), " ") & Cells(5, 8).Value
-    A(2) = A(2) & ", " & String(4 - LenB(StrConv(Cells(6, 8).Value, vbFromUnicode)), " ") & Cells(6, 8).Value
-    For i = 1 To servosend
-        If (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value) < 0 Then '(-1 ^ Cells(i + 7, 5).Value) *
-            A(2) = A(2) & ","
-            A(2) = A(2) & String(4 - LenB(StrConv(-10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value), vbFromUnicode)), " ")
-            A(2) = A(2) & 10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value)
-        Else
-            A(2) = A(2) & ", "
-            A(2) = A(2) & String(4 - LenB(StrConv(10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value), vbFromUnicode)), " ")
-            A(2) = A(2) & 10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value)
-        End If
-    Next i
-    
-    If TotalFrame > 0 Then
-        For i = 3 To TotalFrame + 2
-            A(i) = String(4 - LenB(StrConv(Cells(5, 8 + LoopEnd + i - 2).Value, vbFromUnicode)), " ") & Cells(5, 7 + LoopEnd + 1 + i - 2).Value
-            A(i) = A(i) & ", " & String(4 - LenB(StrConv(Cells(6, 8 + LoopEnd + i - 2).Value, vbFromUnicode)), " ") & Cells(6, 8 + LoopEnd + i - 2).Value
-            For j = 1 To servosend
-                If (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * Cells(7 + j, i + LoopEnd + 6).Value < 0 Then
-                    A(i) = A(i) & ","
-                    A(i) = A(i) & String(4 - LenB(StrConv(-10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + LoopEnd + 6).Value), vbFromUnicode)), " ")
-                    A(i) = A(i) & 10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + LoopEnd + 6).Value)
-                Else
-                    A(i) = A(i) & ", "
-                    A(i) = A(i) & String(4 - LenB(StrConv(10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + LoopEnd + 6).Value), vbFromUnicode)), " ")
-                    A(i) = A(i) & 10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + LoopEnd + 6).Value)
-                End If
-            Next j
-        Next i
-    End If
-    
-    
-    If TotalFrame > 0 Then
-    Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_End[" & TotalFrame + 2 & "][" & servosend + 2 & "]={"
-    Print #IntFlNo, "{" & A(1) & "},//(一個目モーションの総フレーム数、二個目サーボの総数、三個目以降が指定したID)"
-    Print #IntFlNo, "{" & A(2) & "},//初期姿勢(一個目移動時間、二個目待機時間、三個目以降角度)"
-        If TotalFrame > 1 Then
-        Print #IntFlNo, "{" & A(3) & "},//以下モーションデータ(一個目移動時間、二個目待機時間、三個目以降角度)"
-            If TotalFrame > 2 Then
-            For i = 4 To (TotalFrame + 1)
-            Print #IntFlNo, "{" & A(i) & "},"
-            Next i
-            End If
-        Print #IntFlNo, "{" & A(TotalFrame + 2) & "}"
-        Else
-        Print #IntFlNo, "{" & A(3) & "}//以下モーションデータ(一個目移動時間、二個目待機時間、三個目以降角度)"
-        End If
-    Print #IntFlNo, "};"
-    Print #IntFlNo, ""
-    Else
-    End If
-    
-
-    '----------------------------------------
-    
-      
-    Close #IntFlNo
-End Sub
-
-
-
-Sub MotionExport_withBranch_cpp()
-    '----------------------------------
-    '攻撃モーション用
-    'motion_exportフォルダがなければ作成する
-    Dim MotionExportDirectry As String
-    MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
-    If Dir(MotionExportDirectry, vbDirectory) = "" Then
-        MkDir MotionExportDirectry
-    End If
-    '----------------------------------
-    '出力ファイル名を決定
-    Dim Filename As String
-    Filename = GetFNameFromFStr(ActiveWorkbook.Name) & "_" & ActiveSheet.Name
-    Dim OutputFile As String
-    OutputFile = ActiveWorkbook.Path & "\motion_export\" & Filename & ".c"
-    '-----------------------------------
-    Dim i As Long, LngLoop As Long
-    Dim IntFlNo As Integer
-    LngLoop = Range("a65536").End(xlUp).row
-    IntFlNo = FreeFile
-    Open OutputFile For Output As #IntFlNo
-    Dim Shtname As String
-    Shtname = ActiveSheet.Name
-    Dim StartFrame As Integer, EndFrame As Integer, LoopStart As Integer, LoopEnd As Integer
-    StartFrame = 0
-    EndFrame = 0
-    LoopStart = 0
-    LoopEnd = 0
-    '-------------
-    '開始位置を調べる
-    For k = 8 To 68
-        If Sheets(Shtname).Cells(7, k).Value = 1 Then
-            StartFrame = k - 8
-            EndFrame = StartFrame
-            k = 68
-        End If
-    Next
-    '-------------
-    '終了位置を調べる
-    For k = StartFrame + 8 To 68
-        If Sheets(Shtname).Cells(7, k).Value = 2 Then
-            EndFrame = k - 8
-            k = 68
-        End If
-    Next
-    '-------------
-    '分割位置を調べる
-    Dim DotPoint(100) As Integer
-    Dim Dots As Integer
-    Dim l As Integer, m As Integer
-    m = (StartFrame + 8)
-    For l = 1 To 100
-        DotPoint(l) = 0
-    Next
-    For l = 1 To 100
-        For k = m To (EndFrame + 8)
-            If Sheets(Shtname).Cells(1, k) = "d" Then
-            m = k + 1
-            DotPoint(l) = k - 8
-            k = EndFrame + 8
-            End If
-        Next
-    Next
-    For l = 1 To 100
-        If DotPoint(l) = 0 Then
-        Dots = l
-        DotPoint(l) = EndFrame
-        l = 100
-        Else
-        End If
-    Next
-    Dim A(1000) As String
-    '-------------
-    If Dots > 0 Then
-        m = StartFrame - 1
-        For l = 1 To Dots
-                TotalFrame = DotPoint(l) - m + 1
-                A(1) = String(4 - LenB(StrConv(TotalFrame - 1, vbFromUnicode)), " ") & TotalFrame - 1
-                A(1) = A(1) & ", " & String(4 - LenB(StrConv(servosend, vbFromUnicode)), " ") & servosend
-                For i = 8 To (servosend + 7)
-                    A(1) = A(1) & ", " & String(4 - LenB(StrConv(Cells(i, 2).Value, vbFromUnicode)), " ") & Cells(i, 2).Value
-                Next i
-                A(2) = String(4 - LenB(StrConv(Cells(5, 8).Value, vbFromUnicode)), " ") & Cells(5, 8).Value
-                A(2) = A(2) & ", " & String(4 - LenB(StrConv(Cells(6, 8).Value, vbFromUnicode)), " ") & Cells(6, 8).Value
-                For i = 1 To servosend
-                    If (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value) < 0 Then '(-1 ^ Cells(i + 7, 5).Value) *
-                        A(2) = A(2) & ","
-                        A(2) = A(2) & String(4 - LenB(StrConv(-10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value), vbFromUnicode)), " ")
-                        A(2) = A(2) & 10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value)
-                    Else
-                        A(2) = A(2) & ", "
-                        A(2) = A(2) & String(4 - LenB(StrConv(10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value), vbFromUnicode)), " ")
-                        A(2) = A(2) & 10 * (1 - 2 * ((Cells(i + 7, 5).Value) Mod 2)) * (Cells(i + 7, 6).Value + Cells(i + 7, 7).Value)
-                    End If
-                Next i
-                If DotPoint(l) > m Then
-                    For i = 3 To (DotPoint(l) - m) + 2
-                        A(i) = String(4 - LenB(StrConv(Cells(5, m + i + 6).Value, vbFromUnicode)), " ") & Cells(5, m + i + 6).Value
-                        A(i) = A(i) & ", " & String(4 - LenB(StrConv(Cells(6, m + i + 6).Value, vbFromUnicode)), " ") & Cells(6, m + i + 6).Value
-                        For j = 1 To servosend
-                            If (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * Cells(7 + j, i + m + 6).Value < 0 Then
-                                A(i) = A(i) & ","
-                                A(i) = A(i) & String(4 - LenB(StrConv(-10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + m + 6).Value), vbFromUnicode)), " ")
-                                A(i) = A(i) & 10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + m + 6).Value)
-                            Else
-                                A(i) = A(i) & ", "
-                                A(i) = A(i) & String(4 - LenB(StrConv(10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + m + 6).Value), vbFromUnicode)), " ")
-                                A(i) = A(i) & 10 * (1 - 2 * ((Cells(j + 7, 5).Value) Mod 2)) * CInt(Cells(7 + j, i + m + 6).Value)
-                            End If
-                        Next j
-                    Next i
-                    
-                    Print #IntFlNo, "int " & ActiveSheet.Name & "_Motion_" & l & "[" & TotalFrame + 1 & "][" & servosend + 2 & "]={"
-                    Print #IntFlNo, "{" & A(1) & "},//(一個目モーションの総フレーム数、二個目サーボの総数、三個目以降が指定したID)"
-                    Print #IntFlNo, "{" & A(2) & "},//初期姿勢(一個目移動時間、二個目待機時間、三個目以降角度)"
-                        If TotalFrame > 2 Then
-                        Print #IntFlNo, "{" & A(3) & "},//以下モーションデータ(一個目移動時間、二個目待機時間、三個目以降角度)"
-                            If TotalFrame > 2 Then
-                            For i = 4 To (DotPoint(l) - m) + 1
-                            Print #IntFlNo, "{" & A(i) & "},"
-                            Next i
-                            End If
-                        Print #IntFlNo, "{" & A((DotPoint(l) - m) + 2) & "}"
-                        Else
-                        Print #IntFlNo, "{" & A(3) & "}//以下モーションデータ(一個目移動時間、二個目待機時間、三個目以降角度)"
-                        End If
-                    Print #IntFlNo, "};"
-                    Print #IntFlNo, ""
-                End If
-                m = DotPoint(l)
-        Next l
-    End If
-    Close #IntFlNo
-End Sub
-
-
-
 Sub Change_Right_Left()
     Application.ScreenUpdating = False
     Dim Shtname As String
@@ -802,14 +365,109 @@ Sub MotionExport_Yaml()
 
 End Sub
 
+Sub MotionExport_InitialPose_Yaml()
+
+    ' 初期設定
+    Dim MotionExportDirectry As String
+    MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
+    If Dir(MotionExportDirectry, vbDirectory) = "" Then
+        MkDir MotionExportDirectry
+    End If
+    
+    Dim Filename As String
+    Filename = "initial_pose.yaml"
+    Dim OutputFile As String
+    OutputFile = ActiveWorkbook.Path & "\motion_export\" & Filename
+    
+    ' ファイルを開く
+    Dim IntFlNo As Integer
+    IntFlNo = FreeFile
+    Open OutputFile For Output As #IntFlNo
+    
+    ' YAML出力の初期行
+    Print #IntFlNo, "initial_pose:"
+    
+    ' Joint namesと初期位置の取得・書き出し
+    Dim row As Integer
+    row = 8
+    Do While Not IsEmpty(Cells(row, 1).Value)
+        Dim joint_name As String
+        joint_name = Cells(row, 1).Value
+        Dim initial_pose As Double
+        initial_pose = Cells(row, 6).Value ' 6列目が初期位置
+        Dim reverse As Integer
+        reverse = Cells(row, 5).Value ' 5列目がreverseフラグ
+        
+        ' reverseフラグが1のときは符号反転
+        If reverse = 1 Then
+            initial_pose = -initial_pose
+        End If
+        
+        initial_pose = Round(initial_pose * WorksheetFunction.Pi() / 180, 3) ' 度をラジアンに変換し、小数点以下3桁に丸める
+        Print #IntFlNo, "  " & joint_name & ": " & Format(initial_pose, "0.000")
+        row = row + 1
+    Loop
+    
+    ' ファイルを閉じる
+    Close #IntFlNo
+
+End Sub
+
+
+Sub MotionExport_Offset_Yaml()
+
+    ' 初期設定
+    Dim MotionExportDirectry As String
+    MotionExportDirectry = ActiveWorkbook.Path & "\motion_export"
+    If Dir(MotionExportDirectry, vbDirectory) = "" Then
+        MkDir MotionExportDirectry
+    End If
+    
+    Dim Filename As String
+    Filename = "offset.yaml"
+    Dim OutputFile As String
+    OutputFile = ActiveWorkbook.Path & "\motion_export\" & Filename
+    
+    ' ファイルを開く
+    Dim IntFlNo As Integer
+    IntFlNo = FreeFile
+    Open OutputFile For Output As #IntFlNo
+    
+    ' YAML出力の初期行
+    Print #IntFlNo, "offset:"
+    
+    ' Joint namesとオフセット値の取得・書き出し
+    Dim row As Integer
+    row = 8
+    Do While Not IsEmpty(Cells(row, 1).Value)
+        Dim joint_name As String
+        joint_name = Cells(row, 1).Value
+        Dim offset As Double
+        offset = Cells(row, 7).Value ' 7列目がオフセット値
+        Dim reverse As Integer
+        reverse = Cells(row, 5).Value ' 5列目がreverseフラグ
+        
+        ' reverseフラグが1のときは符号反転
+        If reverse = 1 Then
+            offset = -offset
+        End If
+        
+        offset = Round(offset * WorksheetFunction.Pi() / 180, 3) ' 度をラジアンに変換し、小数点以下3桁に丸める
+        Print #IntFlNo, "  " & joint_name & ": " & Format(offset, "0.000")
+        row = row + 1
+    Loop
+    
+    ' ファイルを閉じる
+    Close #IntFlNo
+
+End Sub
+
 
 
 Sub MotionExport()
-    If Cells(2, 2) = "a" Then
-        Call MotionExport_withBranch_cpp
-    Else
-        Call MotionExport_withLoop_cpp
-    End If
+    Call MotionExport_Yaml
+    Call MotionExport_InitialPose_Yaml
+    Call MotionExport_Offset_Yaml
 End Sub
 
 
