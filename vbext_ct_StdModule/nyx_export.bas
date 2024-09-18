@@ -718,10 +718,24 @@ Sub MotionExport_Yaml()
             Dim positions As String
             positions = ""
             For i = 0 To total_joints - 1
+                Dim position_with_home As Double
+                Dim reverse_flag As Integer
+                reverse_flag = Cells(i + 8, 5).Value ' 5列目が符号反転フラグ
+                
+                position_with_home = Cells(i + 8, col).Value + Cells(i + 8, 6).Value ' 現在の角度にHome（初期位置）を加算
+                
+                ' 反転フラグが1の場合、角度に-1を掛ける
+                If reverse_flag = 1 Then
+                    position_with_home = position_with_home * -1
+                End If
+                
+                ' 角度をdegreeからradianに変換し、小数点以下3桁に丸める
+                position_with_home = Round(position_with_home * WorksheetFunction.Pi() / 180, 3)
+                
                 If i > 0 Then
-                    positions = positions & ", " & Cells(i + 8, col).Value
+                    positions = positions & ", " & Format(position_with_home, "0.000")
                 Else
-                    positions = Cells(i + 8, col).Value
+                    positions = Format(position_with_home, "0.000")
                 End If
             Next i
             
@@ -735,18 +749,21 @@ Sub MotionExport_Yaml()
             If prev_col = -1 Or movingTime = 0 Then
                 For i = 0 To total_joints - 1
                     If i > 0 Then
-                        velocities = velocities & ", 0"
+                        velocities = velocities & ", 0.000"
                     Else
-                        velocities = "0"
+                        velocities = "0.000"
                     End If
                 Next i
             Else
                 ' 速度を計算（直前のskipでないフレームとの差）
                 For i = 0 To total_joints - 1
+                    Dim velocity As Double
+                    velocity = Abs((Cells(i + 8, col).Value - Cells(i + 8, prev_col).Value) / (movingTime / 100)) ' 速度は絶対値を取る
+                    
                     If i > 0 Then
-                        velocities = velocities & ", " & (Cells(i + 8, col).Value - Cells(i + 8, prev_col).Value) / (movingTime / 100)
+                        velocities = velocities & ", " & Format(Round(velocity, 3), "0.000")
                     Else
-                        velocities = (Cells(i + 8, col).Value - Cells(i + 8, prev_col).Value) / (movingTime / 100)
+                        velocities = Format(Round(velocity, 3), "0.000")
                     End If
                 Next i
             End If
@@ -754,11 +771,11 @@ Sub MotionExport_Yaml()
             ' accelerationsとeffortを0で埋める
             Dim accelerations As String
             Dim effort As String
-            accelerations = "0"
-            effort = "0"
+            accelerations = "0.000"
+            effort = "0.000"
             For i = 1 To total_joints - 1
-                accelerations = accelerations & ", 0"
-                effort = effort & ", 0"
+                accelerations = accelerations & ", 0.000"
+                effort = effort & ", 0.000"
             Next i
             
             ' YAML形式で出力
@@ -766,7 +783,7 @@ Sub MotionExport_Yaml()
             Print #IntFlNo, "          velocities: [" & velocities & "]"
             Print #IntFlNo, "          accelerations: [" & accelerations & "]"
             Print #IntFlNo, "          effort: [" & effort & "]"
-            Print #IntFlNo, "          time_from_start: " & (movingTime + Cells(5, col).Value) / 100 ' MovingTimeとWaitingTimeを合計した値
+            Print #IntFlNo, "          time_from_start: " & Format((movingTime + Cells(5, col).Value) / 100, "0.000") ' MovingTimeとWaitingTimeを合計した値
             
             ' 現在のフレームを前回のフレームとして保存
             prev_col = col
@@ -784,9 +801,6 @@ Sub MotionExport_Yaml()
     Close #IntFlNo
 
 End Sub
-
-
-
 
 
 
