@@ -8,7 +8,7 @@ Attribute VB_Name = "FutabaMotionPlayer"
 Public posnum, sdeg, deg, load, temp As Integer
 Public nyx(100) As Byte
 Public nyx_deg(100) As Byte
-Public Const servosend As Integer = 23   '実際に送信するサーボの数
+Public Const servosend As Integer = 21   '実際に送信するサーボの数
 Public Const sendbyte  As Integer = 6 + 5 * servosend + 1 '実際に送信するサーボの数
 Public Const servonum  As Integer = 32   'データの数
 Public Const getstart  As Integer = 8    'データゲットスタートセル
