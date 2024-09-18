@@ -202,7 +202,6 @@ Sub Change_Start_End()
     Next i
 End Sub
 
-
 Sub MotionExport_Yaml()
 
     ' 初期設定
@@ -306,7 +305,7 @@ Sub MotionExport_Yaml()
             Dim velocities As String
             velocities = ""
             Dim movingTime As Double
-            movingTime = Cells(4, col).Value
+            movingTime = Cells(5, col).Value ' 5列目はMovingTime
             
             ' 初回フレームやMovingTimeが0なら速度を0に
             If prev_col = -1 Or movingTime = 0 Then
@@ -341,12 +340,16 @@ Sub MotionExport_Yaml()
                 effort = effort & ", 0.000"
             Next i
             
+            ' MovingTime（5行目）とWaitingTime（6行目）を使ってtime_from_startを計算
+            Dim time_from_start As Double
+            time_from_start = (Cells(5, col).Value + Cells(6, col).Value) / 100 ' 5列目と6列目の和を100で割る
+
             ' YAML形式で出力
             Print #IntFlNo, "        - positions: [" & positions & "]"
             Print #IntFlNo, "          velocities: [" & velocities & "]"
             Print #IntFlNo, "          accelerations: [" & accelerations & "]"
             Print #IntFlNo, "          effort: [" & effort & "]"
-            Print #IntFlNo, "          time_from_start: " & Format((movingTime + Cells(5, col).Value) / 100, "0.000") ' MovingTimeとWaitingTimeを合計した値
+            Print #IntFlNo, "          time_from_start: " & Format(time_from_start, "0.000") ' MovingTimeとWaitingTimeを合計した値
             
             ' 現在のフレームを前回のフレームとして保存
             prev_col = col
@@ -364,6 +367,8 @@ Sub MotionExport_Yaml()
     Close #IntFlNo
 
 End Sub
+
+
 
 Sub MotionExport_InitialPose_Yaml()
 
